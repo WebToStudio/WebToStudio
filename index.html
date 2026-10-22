@@ -2,9 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>WebTo — Páginas Web & Web Apps a tu Medida</title>
-  <!-- Vinculación directa a styles.css -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +11,11 @@
   <!-- NAVEGACIÓN / HEADER -->
   <header class="navbar">
     <div class="logo">Web<span>To</span></div>
-    <nav class="nav-links">
+    
+    <!-- Botón Hamburguesa para Móvil -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+    <nav class="nav-links" id="navLinks">
       <a href="#inicio">Inicio</a>
       <a href="#ejemplos">Ejemplos</a>
       <a href="#calculadora">Calculadora</a>
@@ -81,7 +84,7 @@
   <section id="calculadora" class="section bg-light">
     <div class="calculator-layout">
       
-      <!-- COLUMNA IZQUIERDA: EXPLICACIÓN DE SERVICIOS -->
+      <!-- COLUMNA IZQUIERDA: EXPLICACIÓN DE SERVICIOS (Se oculta en móvil) -->
       <div class="info-column">
         <h2>¿Qué opción encaja contigo?</h2>
         <p class="info-lead">Elige el formato ideal para los objetivos de tu proyecto:</p>
@@ -237,7 +240,6 @@
     <p>&copy; WebTo — Todos los derechos reservados. Código limpio y optimizado.</p>
   </footer>
 
-  <!-- Vinculación directa a script.js -->
   <script src="script.js"></script>
 </body>
 </html>

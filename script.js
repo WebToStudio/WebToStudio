@@ -1,4 +1,4 @@
-// Configura tu número de teléfono con prefijo internacional (ejemplo: 34 para España)
+// Configura tu número de teléfono
 const MY_PHONE_NUMBER = "34628594299"; 
 
 // Selección de elementos del DOM
@@ -15,8 +15,22 @@ const priceTitle = document.getElementById('priceTitle');
 const totalDisplay = document.getElementById('totalDisplay');
 const whatsappBtn = document.getElementById('whatsappBtn');
 
+// Control del Menú Hamburguesa en Móvil
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Cerrar el menú desplegable automáticamente al hacer clic en un enlace
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
 function calculateTotal() {
-  // 1. Obtener tipo de web seleccionado
   let selectedRadio = document.querySelector('input[name="webType"]:checked');
   let basePrice = parseInt(selectedRadio.value);
   let webTypeName = selectedRadio.getAttribute('data-name');
@@ -26,9 +40,7 @@ function calculateTotal() {
   let total = 0;
   let message = "";
 
-  // 2. Lógica según el tipo de proyecto
   if (basePrice === 200) {
-    // Caso Web App
     sectionsGroup.classList.add('hidden');
     extrasGroup.classList.add('hidden');
     webappNotice.classList.remove('hidden');
@@ -39,7 +51,6 @@ function calculateTotal() {
     message = `Hola WebTo! Me interesa consultar presupuesto para una *Web App Interactiva* (Desde 200€). Me gustaría comentar los detalles de la funcionalidad que necesito.`;
 
   } else {
-    // Caso Landing Page o Página Web
     extrasGroup.classList.remove('hidden');
     webappNotice.classList.add('hidden');
     priceTitle.innerText = "Precio Estimado";
@@ -53,14 +64,12 @@ function calculateTotal() {
       extraSectionsInput.value = 0;
     }
 
-    // Sumar extras
     let domainPrice = extraDomainCheckbox.checked ? parseInt(extraDomainCheckbox.value) : 0;
     let i18nPrice = extraI18nCheckbox.checked ? parseInt(extraI18nCheckbox.value) : 0;
 
     total = basePrice + extraSectionsPrice + domainPrice + i18nPrice;
     totalDisplay.innerText = total + "€";
 
-    // Mensaje de WhatsApp
     message = `Hola WebTo! Me interesa solicitar un proyecto web:%0A`;
     message += `- *Tipo:* ${webTypeName}%0A`;
     if (extraSectionsPrice > 0) message += `- *Secciones extra:* ${extraSectionsCount} (+${extraSectionsPrice}€)%0A`;
@@ -69,11 +78,9 @@ function calculateTotal() {
     message += `%0A*Precio Estimado Total: ${total}€*`;
   }
 
-  // Actualizar enlace de WhatsApp
   whatsappBtn.href = `https://wa.me/${MY_PHONE_NUMBER}?text=${message}`;
 }
 
-// Escuchar eventos
 webTypeRadios.forEach(radio => {
   radio.addEventListener('change', calculateTotal);
 });
@@ -82,5 +89,26 @@ extraSectionsInput.addEventListener('input', calculateTotal);
 extraDomainCheckbox.addEventListener('change', calculateTotal);
 extraI18nCheckbox.addEventListener('change', calculateTotal);
 
-// Ejecutar al cargar
 calculateTotal();
+
+// =========================================================
+// OBTENER EFECTO SCROLL PARA OCULTAR NAVBAR Y CERRAR MENÚ MÓVIL
+// =========================================================
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+  if (window.innerWidth <= 900) {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop && scrollTop > 70) {
+      // Bajando -> Ocultar navbar y cerrar menú lateral si estaba abierto
+      navbar.classList.add('hidden-nav');
+      navLinks.classList.remove('active');
+    } else {
+      // Subiendo -> Mostrar navbar
+      navbar.classList.remove('hidden-nav');
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }
+});
