@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebTo — Páginas Web & Web Apps a tu Medida</title>
+  <!-- Vinculación directa a styles.css -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVEGACIÓN / HEADER -->
+  <header class="navbar">
+    <div class="logo">Web<span>To</span></div>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#faq">Preguntas Frecuentes</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <span class="badge">Llevamos tu negocio a internet</span>
+      <h1>Diseño web profesional, rápido y transparente</h1>
+      <p>Landing pages desde 50€, páginas completas desde 100€ y Web Apps interactivas. Calcula tu presupuesto en 30 segundos sin compromiso.</p>
+      <div class="hero-buttons">
+        <a href="#calculadora" class="btn btn-primary">Calcular Presupuesto</a>
+        <a href="#ejemplos" class="btn btn-secondary">Ver Ejemplos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE EJEMPLOS Y PLANTILLAS -->
+  <section id="ejemplos" class="section">
+    <h2 class="section-title">Nuestros Estilos de Ejemplo</h2>
+    <p class="section-subtitle">Explora los diseños base que adaptamos 100% a la identidad de tu marca</p>
+
+    <div class="cards-grid">
+      <!-- Tarjeta 1 -->
+      <div class="card">
+        <div class="card-preview style-minimal">
+          <span>Estilo Minimalista</span>
+        </div>
+        <div class="card-body">
+          <h3>Minimal / Estilo Apple</h3>
+          <p>Limpio, elegante y directo al grano. Ideal para lanzamientos de productos, apps o consultores.</p>
+          <span class="tag">Landing / Web</span>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="card">
+        <div class="card-preview style-creative">
+          <span>Estilo Colorido</span>
+        </div>
+        <div class="card-body">
+          <h3>Colorido & Creativo</h3>
+          <p>Lleno de energía, botones dinámicos y gran contraste. Perfecto para cafeterías, marcas o tiendas.</p>
+          <span class="tag">Landing / Web</span>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="card">
+        <div class="card-preview style-corporate">
+          <span>Estilo Profesional</span>
+        </div>
+        <div class="card-body">
+          <h3>Corporativo & Serio</h3>
+          <p>Estructurado, seguro y confiable. Diseñado para clínicas, gestorías, abogados o inmobiliarias.</p>
+          <span class="tag">Web / Web App</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA EN DOS COLUMNAS -->
+  <section id="calculadora" class="section bg-light">
+    <div class="calculator-layout">
+      
+      <!-- COLUMNA IZQUIERDA: EXPLICACIÓN DE SERVICIOS -->
+      <div class="info-column">
+        <h2>¿Qué opción encaja contigo?</h2>
+        <p class="info-lead">Elige el formato ideal para los objetivos de tu proyecto:</p>
+
+        <div class="info-card">
+          <div class="info-icon">🚀</div>
+          <div>
+            <h3>Landing Page (50€)</h3>
+            <p>Página de 1 sola vista vertical enfocada a convertir. Ideal para vender un producto, servicio o evento rápido.</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🌐</div>
+          <div>
+            <h3>Página Web Multi-sección (Desde 100€)</h3>
+            <p>Sitio web completo con Portada + 2 secciones (ej: Inicio, Sobre Nosotros, Contacto). Puedes añadir más secciones por +10€/u.</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">⚡</div>
+          <div>
+            <h3>Web App Interactiva (Desde 200€)</h3>
+            <p>Página inteligente con funcionalidad interactiva personalizada (calculadoras, filtros o paneles). Presupuesto a medida.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: LA CALCULADORA -->
+      <div class="calculator-container">
+        <h2>Calcula tu Presupuesto</h2>
+
+        <!-- Selector Tipo de Web -->
+        <label class="group-title">1. Selecciona el Tipo de Proyecto:</label>
+        <div class="type-selector">
+          <label class="type-card">
+            <input type="radio" name="webType" value="50" data-name="Landing Page" checked>
+            <div class="type-card-content">
+              <span class="type-title">Landing Page</span>
+              <span class="type-price">50€</span>
+            </div>
+          </label>
+
+          <label class="type-card">
+            <input type="radio" name="webType" value="100" data-name="Página Web Multi-sección">
+            <div class="type-card-content">
+              <span class="type-title">Página Web Multi-sección</span>
+              <span class="type-price">100€</span>
+            </div>
+          </label>
+
+          <label class="type-card">
+            <input type="radio" name="webType" value="200" data-name="Web App Interactiva">
+            <div class="type-card-content">
+              <span class="type-title">Web App Interactiva</span>
+              <span class="type-price">Desde 200€</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Secciones Extra -->
+        <div class="form-group hidden" id="sectionsGroup">
+          <label for="extraSections">Secciones Extra (+10€ / unidad):</label>
+          <input type="number" id="extraSections" min="0" value="0">
+        </div>
+
+        <!-- Opciones Opcionales -->
+        <div id="extrasGroup">
+          <label class="group-title">2. Servicios Extras Opcionales:</label>
+          <div class="checkbox-group">
+            
+            <label class="checkbox-item">
+              <span class="checkbox-label-wrapper">
+                <input type="checkbox" id="extraDomain" value="30"> Dominio + Hosting (1 año)
+                <span class="tooltip-container">
+                  <span class="info-badge">i</span>
+                  <span class="tooltip-box">Registramos tu nombre web (.com o .es) y alojamos tu sitio en servidores ultra rápidos durante 1 año.</span>
+                </span>
+              </span>
+              <strong>+30€</strong>
+            </label>
+
+            <label class="checkbox-item">
+              <span class="checkbox-label-wrapper">
+                <input type="checkbox" id="extraI18n" value="25"> Multi-idioma (i18n)
+                <span class="tooltip-container">
+                  <span class="info-badge">i</span>
+                  <span class="tooltip-box">Añadimos un selector de idiomas para que tu web esté disponible en varios idiomas (ej: Español / Inglés).</span>
+                </span>
+              </span>
+              <strong>+25€</strong>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Nota informativa para Web App -->
+        <div id="webappNotice" class="webapp-notice hidden">
+          <p>💡 <strong>Las Web Apps son desarrollos interactivos personalizados.</strong> Escríbenos detallando qué funcionalidad necesitas y te daremos una valoración exacta.</p>
+        </div>
+
+        <!-- Caja de Precio y WhatsApp -->
+        <div class="price-box">
+          <div class="price-title" id="priceTitle">Precio Estimado</div>
+          <div class="total-price" id="totalDisplay">50€</div>
+          <a href="#" id="whatsappBtn" target="_blank" class="btn-whatsapp">
+            Pedir este proyecto por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
+  <section id="faq" class="section">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <p class="section-subtitle">Haz clic en cada pregunta para resolver tus dudas</p>
+
+    <div class="faq-container">
+      
+      <details class="faq-item">
+        <summary>¿Cuánto tiempo se tarda en entregar la página web?</summary>
+        <p>Por lo general, las landing pages y webs sencillas están listas en un plazo de 3 a 5 días laborables una vez que nos facilitas la información básica y el pago inicial acordado.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Tengo que aportar yo los textos e imágenes de mi web?</summary>
+        <p>Nos proporcionas la información básica de tu negocio (servicios, horarios, datos de contacto o fotos que tengas). Nosotros nos encargamos de redactar, estructurar y maquetar los textos para que queden profesionales.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cómo funciona el sistema de pagos?</summary>
+        <p>Trabajamos con un sistema transparente del 50% por adelantado para comenzar con el diseño, y el 50% restante únicamente cuando la web esté completamente terminada y aprobada por ti.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Qué pasa si necesito cambios después de entregar la página?</summary>
+        <p>Incluimos un periodo inicial de revisiones tras la entrega para ajustar detalles menores. Posteriormente, puedes solicitar paquetes de cambios puntuales desde 5€ o un plan mensual de mantenimiento.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Qué incluye el servicio de Dominio + Hosting por 30€?</summary>
+        <p>Nos encargamos del registro de tu dominio personalizado (ej: tuempresa.es), la configuración del servidor seguro HTTPS y el alojamiento de tu web durante todo un año.</p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; WebTo — Todos los derechos reservados. Código limpio y optimizado.</p>
+  </footer>
+
+  <!-- Vinculación directa a script.js -->
+  <script src="script.js"></script>
+</body>
+</html>
