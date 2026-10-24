@@ -90,7 +90,7 @@ img, iframe, object, embed {
 }
 
 /* =========================================================
-   3. SECCIONES Y ANCLAJES (ESCRITORIO)
+   3. SECCIONES Y ANCLAJES (ESTÁNDAR PROFESIONAL FLUIDO)
    ========================================================= */
 #inicio {
   min-height: 100dvh;
@@ -162,7 +162,7 @@ img, iframe, object, embed {
   background: var(--border);
 }
 
-/* CLASE SECTION MODIFICADA: Flujo natural sin 100dvh forzado en escritorio */
+/* SECCIÓN GENERAL: Flujo natural sin restricciones de altura forzada */
 .section {
   padding: 90px 5%;
   width: 100%;
@@ -601,9 +601,7 @@ input[type="number"] {
    ========================================================= */
 @media (max-width: 900px) {
   .section {
-    min-height: 100dvh;
-    padding: 30px 5% 40px;
-    justify-content: center;
+    padding: 50px 5%;
   }
 
   .menu-toggle { display: block; }
@@ -678,9 +676,9 @@ input[type="number"] {
   }
 
   #inicio { scroll-margin-top: 70px; }
-  #ejemplos { scroll-margin-top: -25px; }
-  #calculadora { scroll-margin-top: -25px; }
-  #faq { scroll-margin-top: -35px; }
+  #ejemplos { scroll-margin-top: 70px; }
+  #calculadora { scroll-margin-top: 70px; }
+  #faq { scroll-margin-top: 70px; }
 
   .navbar.hidden-nav {
     transform: translateY(-100%);
