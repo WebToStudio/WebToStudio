@@ -35,7 +35,7 @@ img, iframe, object, embed {
 }
 
 /* =========================================================
-   2. NAVBAR (ESCRITORIO)
+   2. NAVBAR (ESCRITORIO Y TABLETS HORIZONTALES)
    ========================================================= */
 .navbar {
   display: flex;
@@ -162,19 +162,18 @@ img, iframe, object, embed {
   background: var(--border);
 }
 
+/* CLASE SECTION MODIFICADA: Flujo natural sin 100dvh forzado en escritorio */
 .section {
-  min-height: 100dvh;
+  padding: 90px 5%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 40px 5% 100px;
-  width: 100%;
 }
 
-#ejemplos { scroll-margin-top: 20px; }
-#calculadora { scroll-margin-top: 10px; }
-#faq { scroll-margin-top: 0px; }
+#ejemplos { scroll-margin-top: 70px; }
+#calculadora { scroll-margin-top: 70px; }
+#faq { scroll-margin-top: 70px; }
 
 .bg-light {
   background-color: var(--bg-light);
@@ -308,9 +307,9 @@ img, iframe, object, embed {
 }
 
 .calculator-container h2 {
-  margin-top: 0;
+  margin-top: 5px;
   font-size: 1.35rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .group-title {
@@ -598,13 +597,13 @@ input[type="number"] {
 }
 
 /* =========================================================
-   5. ADAPTACIÓN RESPONSIVE EXCLUSIVA PARA MÓVIL Y TABLET (≤ 900px)
+   5. ADAPTACIÓN RESPONSIVE MÓVIL (≤ 900px)
    ========================================================= */
 @media (max-width: 900px) {
-  
   .section {
     min-height: 100dvh;
     padding: 30px 5% 40px;
+    justify-content: center;
   }
 
   .menu-toggle { display: block; }
@@ -666,7 +665,6 @@ input[type="number"] {
     gap: 0;
   }
 
-  /* TOOLTIP CENTRADO Y SEGURO PARA PANTALLAS VERTICALES */
   .tooltip-box {
     width: 170px;
     left: 50%;
@@ -686,5 +684,14 @@ input[type="number"] {
 
   .navbar.hidden-nav {
     transform: translateY(-100%);
+  }
+}
+
+/* =========================================================
+   6. OCULTAR TOOLTIPS EN VISTAS HORIZONTALES (≥ 901px)
+   ========================================================= */
+@media (min-width: 901px) {
+  .type-selector .tooltip-container {
+    display: none !important;
   }
 }
