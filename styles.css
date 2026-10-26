@@ -90,7 +90,7 @@ img, iframe, object, embed {
 }
 
 /* =========================================================
-   3. SECCIONES Y ANCLAJES (ESTÁNDAR PROFESIONAL FLUIDO)
+   3. SECCIONES Y ANCLAJES (ESCRITORIO)
    ========================================================= */
 #inicio {
   min-height: 100dvh;
@@ -162,7 +162,7 @@ img, iframe, object, embed {
   background: var(--border);
 }
 
-/* SECCIÓN GENERAL: Flujo natural sin restricciones de altura forzada */
+/* SECCIÓN GENERAL */
 .section {
   padding: 90px 5%;
   width: 100%;
@@ -601,7 +601,12 @@ input[type="number"] {
    ========================================================= */
 @media (max-width: 900px) {
   .section {
-    padding: 50px 5%;
+    padding: 70px 5%;
+  }
+
+  /* Transición difuminada suave para los fondos claros */
+  .section.bg-light {
+    background: linear-gradient(to bottom, #ffffff, #f8fafc 15%, #f8fafc 85%, #ffffff);
   }
 
   .menu-toggle { display: block; }
@@ -633,7 +638,7 @@ input[type="number"] {
 
   .hero {
     min-height: calc(100dvh - 70px);
-    padding: 30px 5% 20px;
+    padding: 40px 5% 30px;
   }
 
   .hero h1 {
@@ -675,10 +680,16 @@ input[type="number"] {
     margin-left: -5px;
   }
 
-  #inicio { scroll-margin-top: 70px; }
-  #ejemplos { scroll-margin-top: 70px; }
-  #calculadora { scroll-margin-top: 70px; }
-  #faq { scroll-margin-top: 70px; }
+  /* 
+    SCROLL-MARGIN-TOP A 0px EN MÓVIL:
+    Como la barra de navegación se oculta al interactuar o hacer scroll,
+    ponemos el margen a 0 para que el salto fije el contenido de forma limpia
+    sin generar espacios blancos gigantescos.
+  */
+  #inicio { scroll-margin-top: 0px; }
+  #ejemplos { scroll-margin-top: 0px; }
+  #calculadora { scroll-margin-top: 0px; }
+  #faq { scroll-margin-top: 0px; }
 
   .navbar.hidden-nav {
     transform: translateY(-100%);
