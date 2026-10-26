@@ -35,7 +35,7 @@ img, iframe, object, embed {
 }
 
 /* =========================================================
-   2. NAVBAR (ESCRITORIO)
+   2. NAVBAR (ESCRITORIO Y TABLETS HORIZONTALES)
    ========================================================= */
 .navbar {
   display: flex;
@@ -102,7 +102,7 @@ img, iframe, object, embed {
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  scroll-margin-top: 20px;
+  scroll-margin-top: 0px;
 }
 
 .badge {
@@ -162,22 +162,18 @@ img, iframe, object, embed {
   background: var(--border);
 }
 
+/* SECCIÓN GENERAL Y DIFUMINADO GLOBAL DE FONDOS CLAROS */
 .section {
-  min-height: 100dvh;
+  padding: 90px 5%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 40px 5% 100px;
-  width: 100%;
 }
 
-#ejemplos { scroll-margin-top: 20px; }
-#calculadora { scroll-margin-top: 10px; }
-#faq { scroll-margin-top: 0px; }
-
-.bg-light {
-  background-color: var(--bg-light);
+/* El difuminado suave se aplica ahora tanto en PC como en móvil */
+.section.bg-light {
+  background: linear-gradient(to bottom, #ffffff, #f8fafc 15%, #f8fafc 85%, #ffffff);
 }
 
 .section-title {
@@ -308,9 +304,9 @@ img, iframe, object, embed {
 }
 
 .calculator-container h2 {
-  margin-top: 0;
+  margin-top: 5px;
   font-size: 1.35rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .group-title {
@@ -598,13 +594,11 @@ input[type="number"] {
 }
 
 /* =========================================================
-   5. ADAPTACIÓN RESPONSIVE EXCLUSIVA PARA MÓVIL Y TABLET (≤ 900px)
+   5. ADAPTACIÓN RESPONSIVE MÓVIL (≤ 900px)
    ========================================================= */
 @media (max-width: 900px) {
-  
   .section {
-    min-height: 100dvh;
-    padding: 30px 5% 40px;
+    padding: 70px 5%;
   }
 
   .menu-toggle { display: block; }
@@ -636,7 +630,7 @@ input[type="number"] {
 
   .hero {
     min-height: calc(100dvh - 70px);
-    padding: 30px 5% 20px;
+    padding: 40px 5% 30px;
   }
 
   .hero h1 {
@@ -666,7 +660,6 @@ input[type="number"] {
     gap: 0;
   }
 
-  /* TOOLTIP CENTRADO Y SEGURO PARA PANTALLAS VERTICALES */
   .tooltip-box {
     width: 170px;
     left: 50%;
@@ -679,12 +672,22 @@ input[type="number"] {
     margin-left: -5px;
   }
 
-  #inicio { scroll-margin-top: 70px; }
-  #ejemplos { scroll-margin-top: -25px; }
-  #calculadora { scroll-margin-top: -25px; }
-  #faq { scroll-margin-top: -35px; }
+  /* Saltos limpios a 0px en móvil al ocultarse la barra superior */
+  #inicio { scroll-margin-top: -70px; }
+  #ejemplos { scroll-margin-top: -70px; }
+  #calculadora { scroll-margin-top: -70px; }
+  #faq { scroll-margin-top: -70px; }
 
   .navbar.hidden-nav {
     transform: translateY(-100%);
+  }
+}
+
+/* =========================================================
+   6. OCULTAR TOOLTIPS EN VISTAS HORIZONTALES (≥ 901px)
+   ========================================================= */
+@media (min-width: 901px) {
+  .type-selector .tooltip-container {
+    display: none !important;
   }
 }
