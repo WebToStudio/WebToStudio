@@ -102,7 +102,7 @@ img, iframe, object, embed {
   text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  scroll-margin-top: 0px;
+  scroll-margin-top: 20px;
 }
 
 .badge {
@@ -171,10 +171,14 @@ img, iframe, object, embed {
   align-items: center;
 }
 
-/* El difuminado suave se aplica ahora tanto en PC como en móvil */
+/* El difuminado suave se aplica tanto en PC como en móvil */
 .section.bg-light {
   background: linear-gradient(to bottom, #ffffff, #f8fafc 15%, #f8fafc 85%, #ffffff);
 }
+
+#ejemplos { scroll-margin-top: 70px; }
+#calculadora { scroll-margin-top: 70px; }
+#faq { scroll-margin-top: 70px; }
 
 .section-title {
   text-align: center;
@@ -672,7 +676,7 @@ input[type="number"] {
     margin-left: -5px;
   }
 
-  /* Saltos limpios a 0px en móvil al ocultarse la barra superior */
+  /* Saltos ajustados a -70px en móvil como has configurado */
   #inicio { scroll-margin-top: -70px; }
   #ejemplos { scroll-margin-top: -70px; }
   #calculadora { scroll-margin-top: -70px; }
