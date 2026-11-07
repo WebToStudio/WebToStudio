@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebToStudio — Webs que Llenan Negocios</title>
-  <meta name="description" content="Diseño web enfocado en captación y ventas para hostelería y negocios locales.">
+  <meta name="description" content="Diseño web enfocado en captación y ventas para negocios locales y profesionales.">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,8 +14,14 @@
   <!-- NAVEGACIÓN / HEADER -->
   <header class="navbar">
     <a href="#inicio" class="logo">WebTo<span>Studio</span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+    </button>
     <nav class="nav-links" id="navLinks">
+      <div class="nav-links-header">
+        <span class="nav-menu-title">Menú de Navegación</span>
+      </div>
       <a href="#inicio">Inicio</a>
       <a href="#realidad">La Realidad</a>
       <a href="#retorno">Rentabilidad</a>
@@ -23,23 +29,42 @@
       <a href="#ejemplos">Estilos</a>
       <a href="#contacto">Contacto</a>
       <a href="#faq">Preguntas</a>
+
+      <!-- Botón de llamada integrado en el menú móvil -->
+      <div class="nav-drawer-cta">
+        <span class="drawer-cta-text">¿No puedes esperar? ¡Llama ya!</span>
+        <a href="tel:34628594299" class="btn-drawer-call">📞 628 59 42 99</a>
+      </div>
     </nav>
   </header>
 
   <!-- HERO SECTION -->
   <section id="inicio" class="hero">
-    <span class="badge">📍 Para Negocios que No Pueden Perder Clientes</span>
+    <div class="hero-pill-badge">
+      <span class="pulse-dot"></span>
+      <span>Para Negocios que No Pueden Perder Clientes</span>
+    </div>
     <h1>Si no te encuentran en el móvil, tu persiana está bajada.</h1>
     <p>Cada día, decenas de personas buscan en Google dónde comer o a quién contratar en tu zona. Si tu web no existe o no carga rápido, se van a la competencia en 3 segundos.</p>
     <div class="hero-buttons">
       <a href="#sin-jerga" class="btn btn-primary">Olvidarme de tecnicismos</a>
       <a href="#realidad" class="btn btn-secondary">¿Por qué pierdes ventas?</a>
     </div>
+
+    <!-- Bloque de llamada destacado tipo Apple -->
+    <div class="hero-call-card">
+      <p class="hero-call-text">¿No puedes esperar? ¡Llama ya!</p>
+      <a href="tel:34628594299" class="btn-call-inline">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>Hablar con un experto ahora</span>
+      </a>
+    </div>
   </section>
 
   <!-- LA ANALOGÍA DEL BAR / NEGOCIO FÍSICO -->
   <section id="realidad" class="section bg-light">
     <div class="container-narrow">
+      <div class="section-badge-center">Anatomía del fracaso digital</div>
       <h2 class="section-title">Piénsalo como la puerta de tu propio local</h2>
       <p class="section-subtitle">Lo que ocurre en internet todos los fines de semana</p>
 
@@ -68,23 +93,24 @@
   <!-- CÁLCULO DE COSTES Y RETORNO (ROI) -->
   <section id="retorno" class="section">
     <div class="container-narrow">
+      <div class="section-badge-center">Inversión Inteligente</div>
       <h2 class="section-title">¿Una web es un gasto o una inversión?</h2>
       <p class="section-subtitle">Hagamos las matemáticas exactas de tu negocio</p>
 
       <div class="roi-box">
         <div class="roi-numbers">
           <div class="roi-item">
-            <span class="roi-digit">50€ - 100€</span>
-            <span class="roi-label">Coste total de tu solución web</span>
+            <span class="roi-digit">Desde 20€/mes</span>
+            <span class="roi-label">La opción más económica para empezar</span>
           </div>
-          <div class="roi-separator">=</div>
+          <div class="roi-separator">+</div>
           <div class="roi-item">
-            <span class="roi-digit">2 a 3</span>
-            <span class="roi-label">Mesas o servicios extra para pagarla</span>
+            <span class="roi-digit">A medida</span>
+            <span class="roi-label">Según la complejidad y características</span>
           </div>
         </div>
         <p class="roi-text">
-          No cobramos los 1.500€ de una agencia tradicional. Con conseguir únicamente <strong>2 clientes adicionales en un mes</strong>, la inversión está completamente amortizada. A partir de ahí, todo es beneficio limpio directo para tu negocio.
+          No todos los proyectos necesitan lo mismo. Partimos de una base muy accesible de <strong>20€ al mes</strong> como opción más económica, y el precio final varía de forma completamente transparente en función de la complejidad, los módulos y las características específicas que requiera tu proyecto.
         </p>
       </div>
     </div>
@@ -93,34 +119,25 @@
   <!-- SECCIÓN CERO JERGA TÉCNICA -->
   <section id="sin-jerga" class="section no-jargon-section">
     <div class="jargon-bg-container">
-
-      <!-- PALABRA 1 -->
       <div class="jargon-item">
         <span class="jargon-word">¿Landing?</span>
         <span class="jargon-def">Página web de destino única diseñada con un único objetivo de conversión directa y captación...</span>
       </div>
-
-      <!-- PALABRA 2 -->
       <div class="jargon-item">
         <span class="jargon-word">¿Hosting?</span>
         <span class="jargon-def">Servicio de alojamiento en servidores remotos conectados a la red 24/7 con transferencias SSD...</span>
       </div>
-
-      <!-- PALABRA 3 -->
       <div class="jargon-item">
         <span class="jargon-word">¿Dominio?</span>
         <span class="jargon-def">Identificador alfanumérico asociado a direcciones IP bajo registros DNS globales autoritativos...</span>
       </div>
-
     </div>
 
-    <!-- MENSAJE DE TRANQUILIDAD Y CIERRE -->
     <div class="jargon-message-box">
       <h2>Olvídate de aprenderte todo esto.</h2>
       <p class="jargon-text">
         Tú dedícate a atender a tus clientes y a gestionar tu negocio. Con nuestro servicio llave en mano no tienes que lidiar con términos raros ni configuraciones: <strong>cualquier duda o cambio lo resuelves en segundos mandándonos un simple mensaje</strong>.
       </p>
-
       <a href="https://wa.me/34628594299?text=Hola%20WebToStudio!%20No%20quiero%20complicarme%20con%20tecnicismos,%20quiero%20una%20web%20para%20mi%20negocio." target="_blank" class="btn-whatsapp-jargon">
         Escríbenos por WhatsApp y nosotros nos encargamos
       </a>
@@ -130,11 +147,11 @@
   <!-- SECCIÓN DE EJEMPLOS Y ESTILOS -->
   <section id="ejemplos" class="section bg-light">
     <span id="proyectos"></span>
+    <div class="section-badge-center">Catálogo de Opciones</div>
     <h2 class="section-title">Estilos adaptados a tu sector</h2>
     <p class="section-subtitle">Elige un estilo visual y prueba sus tres niveles de complejidad</p>
 
     <div class="cards-grid">
-      <!-- Tarjeta 1: Estilo Minimalista -->
       <div class="card">
         <div class="card-preview style-minimal">Estilo Minimalista</div>
         <div class="card-body">
@@ -149,7 +166,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta 2: Estilo Colorido -->
       <div class="card">
         <div class="card-preview style-creative">Estilo Colorido</div>
         <div class="card-body">
@@ -164,7 +180,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta 3: Estilo Profesional -->
       <div class="card">
         <div class="card-preview style-corporate">Estilo Profesional</div>
         <div class="card-body">
@@ -184,6 +199,7 @@
   <!-- FORMULARIO DIRECTO A CORREO CORPORATIVO -->
   <section id="contacto" class="section">
     <div class="container-narrow">
+      <div class="section-badge-center">Atención Directa</div>
       <h2 class="section-title">¿Prefieres escribirnos por email?</h2>
       <p class="section-subtitle">Cuéntanos sobre tu negocio y te respondemos en menos de 24 horas</p>
 
@@ -210,6 +226,7 @@
 
   <!-- FAQ -->
   <section id="faq" class="section bg-light">
+    <div class="section-badge-center">Resolvemos Dudas</div>
     <h2 class="section-title">Preguntas Frecuentes</h2>
     <p class="section-subtitle">Todo claro antes de empezar, sin rodeos</p>
 
