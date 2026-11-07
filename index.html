@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebToStudio — Webs que Llenan Negocios</title>
   <meta name="description" content="Diseño web enfocado en captación y ventas para negocios locales y profesionales.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -144,7 +147,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN DE EJEMPLOS Y ESTILOS -->
+  <!-- SECCIÓN DE EJEMPLOS Y ESTILOS (TARJETAS 100% PERSONALIZADAS) -->
   <section id="ejemplos" class="section bg-light">
     <span id="proyectos"></span>
     <div class="section-badge-center">Catálogo de Opciones</div>
@@ -152,47 +155,92 @@
     <p class="section-subtitle">Elige un estilo visual y prueba sus tres niveles de complejidad</p>
 
     <div class="cards-grid">
-      <div class="card">
-        <div class="card-preview style-minimal">Estilo Minimalista</div>
-        <div class="card-body">
-          <h3>Minimalista · Marcas & Tiendas</h3>
-          <p>Estilo limpio, directo y sin distracciones para presentar productos estrella, clínicas o catálogos.</p>
-          <span class="demo-group-label">Demos Estilo Minimalista:</span>
-          <div class="demo-buttons">
-            <a href="demos/MiaWeb/index.html" class="demo-btn">Landing</a>
-            <a href="demos/multi/ClinicaDental/index.html" class="demo-btn">Multisección</a>
-            <a href="demos/apps/VentaCoches/index.html" class="demo-btn">App Web</a>
+
+      <!-- =======================================================
+           TARJETA 1: ESTILO MINIMALISTA (100% ESTILO APPLE SIN CAJA EXTRA)
+           ======================================================= -->
+      <article class="card card-minimal">
+        <div class="card-preview style-minimal">
+          <div class="apple-hero-preview">
+            <span class="apple-kicker">DISEÑO PURO</span>
+            <div class="apple-headline">Menos ruido.<br>Más ventas.</div>
+            <span class="apple-link-demo">Ver demos ›</span>
           </div>
         </div>
-      </div>
-
-      <div class="card">
-        <div class="card-preview style-creative">Estilo Colorido</div>
         <div class="card-body">
-          <h3>Colorido · Hostelería & Ocio</h3>
-          <p>Diseño vibrante y dinámico con gran contraste. Ideal para restaurantes, eventos y tiendas urbanas.</p>
-          <span class="demo-group-label">Demos Estilo Colorido:</span>
+          <span class="style-eyebrow eyebrow-minimal">Apple Aesthetic · Pureza</span>
+          <h3>Minimalista · Marcas &amp; Tiendas</h3>
+          <p>Espacios respirables, tipografía precisa y foco absoluto en tu producto estrella, clínica o catálogo sin distracciones.</p>
+          <span class="demo-group-label">Probar demos minimalistas:</span>
           <div class="demo-buttons">
-            <a href="demos/Tapeo/index.html" class="demo-btn">Landing</a>
-            <a href="demos/multi/Eventos/index.html" class="demo-btn">Multisección</a>
-            <a href="demos/apps/VentaRopa/index.html" class="demo-btn">App Web</a>
+            <a href="demos/MiaWeb/index.html" class="demo-btn btn-minimal">Landing</a>
+            <a href="demos/multi/ClinicaDental/index.html" class="demo-btn btn-minimal">Multisección</a>
+            <a href="demos/apps/VentaCoches/index.html" class="demo-btn btn-minimal btn-minimal-accent">App Web</a>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="card">
-        <div class="card-preview style-corporate">Estilo Profesional</div>
+      <!-- =======================================================
+           TARJETA 2: ESTILO COLORIDO (VIBRANTE & PEGATINAS)
+           ======================================================= -->
+      <article class="card card-creative">
+        <div class="sticker-tag sticker-top">🔥 TOP IMPACTO</div>
+        <div class="card-preview style-creative">
+          <div class="creative-collage">
+            <span class="creative-chip chip-yellow">⚡ +CONVERSIÓN</span>
+            <span class="creative-chip chip-pink">🎨 100% ÚNICO</span>
+            <span class="creative-chip chip-lime">★ OCIO &amp; STREET</span>
+          </div>
+        </div>
         <div class="card-body">
+          <span class="style-eyebrow eyebrow-creative">Vibrant Pop · Energía</span>
+          <h3>Colorido · Hostelería &amp; Ocio</h3>
+          <p>Colores vivos, contraste brutal y personalidad arrolladora para restaurantes, eventos, marcas jóvenes y tiendas urbanas.</p>
+          <span class="demo-group-label">Probar demos coloridas:</span>
+          <div class="demo-buttons">
+            <a href="demos/Tapeo/index.html" class="demo-btn btn-creative btn-creative-1">Landing</a>
+            <a href="demos/multi/Eventos/index.html" class="demo-btn btn-creative btn-creative-2">Multisección</a>
+            <a href="demos/apps/VentaRopa/index.html" class="demo-btn btn-creative btn-creative-3">App Web</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- =======================================================
+           TARJETA 3: ESTILO PROFESIONAL (AGENCIA & EMPRESA)
+           ======================================================= -->
+      <article class="card card-corporate">
+        <div class="card-preview style-corporate">
+          <div class="corp-grid-overlay"></div>
+          <div class="corp-window">
+            <div class="corp-window-bar">
+              <span>ESTRUCTURA · AGENCIA</span>
+              <span class="corp-status-badge">VERIFICADO</span>
+            </div>
+            <div class="corp-metrics">
+              <div class="corp-metric-box">
+                <strong>24/7</strong>
+                <span>Operativo</span>
+              </div>
+              <div class="corp-metric-box">
+                <strong>100%</strong>
+                <span>Confianza</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="style-eyebrow eyebrow-corporate">Corporate · Autoridad</span>
           <h3>Profesional · Servicios Locales</h3>
-          <p>Estructura seria, confiable y corporativa para barberías, reformas, clínicas y gestión deportiva.</p>
-          <span class="demo-group-label">Demos Estilo Profesional:</span>
+          <p>Arquitectura sólida, seria y de máxima confianza para reformas, barberías, despachos, clínicas y gestión deportiva.</p>
+          <span class="demo-group-label">Probar demos profesionales:</span>
           <div class="demo-buttons">
-            <a href="demos/Barberia/index.html" class="demo-btn">Landing</a>
-            <a href="demos/multi/Reformas/index.html" class="demo-btn">Multisección</a>
-            <a href="demos/apps/IntranetDeportiva/index.html" class="demo-btn">App Web</a>
+            <a href="demos/Barberia/index.html" class="demo-btn btn-corporate">Landing</a>
+            <a href="demos/multi/Reformas/index.html" class="demo-btn btn-corporate">Multisección</a>
+            <a href="demos/apps/IntranetDeportiva/index.html" class="demo-btn btn-corporate btn-corporate-solid">App Web</a>
           </div>
         </div>
-      </div>
+      </article>
+
     </div>
   </section>
 
