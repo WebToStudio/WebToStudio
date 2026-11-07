@@ -132,6 +132,68 @@ img, iframe, object, embed {
 }
 
 /* =========================================================
+   2.5 CINTA DIAGONAL DE PROMOCIÓN (ANCLADA MÁS AL CENTRO)
+   ========================================================= */
+.promo-corner-wrapper {
+  position: absolute;
+  top: 64px;
+  right: 0;
+  width: 340px;
+  height: 220px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.promo-corner-ribbon {
+  position: absolute;
+  top: 34px;
+  right: -55px;
+  width: 420px;
+  height: 32px;
+  background: linear-gradient(90deg, #0071e3 0%, #6366f1 45%, #ec4899 80%, #f59e0b 100%);
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transform: rotate(26deg);
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.28);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: auto;
+  transition: filter 0.2s ease;
+}
+
+.promo-corner-ribbon:hover {
+  filter: brightness(1.08);
+}
+
+.promo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: promoMarquee 12s linear infinite;
+}
+
+.promo-marquee-track span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes promoMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
    3. HERO SECTION (Ajustado para verse entero de un vistazo)
    ========================================================= */
 #inicio {
@@ -141,7 +203,7 @@ img, iframe, object, embed {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 88px 5% 40px;
+  padding: 96px 5% 40px;
   text-align: center;
   max-width: 920px;
   margin: 0 auto;
@@ -1155,6 +1217,23 @@ input:focus, textarea:focus {
    10. ADAPTACIÓN RESPONSIVE MÓVIL Y MENÚ LATERAL
    ========================================================= */
 @media (max-width: 900px) {
+  .promo-corner-wrapper {
+    width: 260px;
+    height: 180px;
+  }
+
+  .promo-corner-ribbon {
+    top: 24px;
+    right: -52px;
+    width: 350px;
+    height: 28px;
+    transform: rotate(26deg);
+  }
+
+  .promo-marquee-track span {
+    font-size: 0.62rem;
+  }
+
   .section {
     padding: 50px 5%;
   }
@@ -1249,7 +1328,7 @@ input:focus, textarea:focus {
   .hero {
     min-height: calc(100vh - 64px);
     min-height: calc(100dvh - 64px);
-    padding: 24px 5% 20px;
+    padding: 46px 5% 20px;
   }
 
   .hero h1 {
