@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicita tu cita en Aura Clínica Dental y Fisioterapia. Horarios, ubicación y teléfono de urgencias.">
+  <title>Contacto y Cita Previa — Aura Clínica Dental &amp; Fisioterapia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="app-header"></div>
+
+  <main>
+    <!-- Cabecera de Página -->
+    <section class="page-header">
+      <div class="container">
+        <span class="badge">Cita Previa</span>
+        <h1>Estamos aquí para cuidarte</h1>
+        <p>Completa el formulario y nuestro equipo de recepción te confirmará tu cita en menos de 2 horas laborables.</p>
+      </div>
+    </section>
+
+    <!-- Formulario e Información de Clínica -->
+    <section class="section">
+      <div class="container contact-grid">
+        
+        <!-- Formulario de Solicitud -->
+        <div class="contact-form-wrapper">
+          <h2>Solicitar cita</h2>
+          <p class="form-intro">Primera revisión y diagnóstico 3D sin compromiso.</p>
+
+          <form id="appointment-form" class="appointment-form">
+            <div class="form-group">
+              <label for="patient-name">Nombre y apellidos *</label>
+              <input 
+                type="text" 
+                id="patient-name" 
+                name="name" 
+                placeholder="Ej. María García López" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="patient-phone">Teléfono de contacto *</label>
+              <input 
+                type="tel" 
+                id="patient-phone" 
+                name="phone" 
+                placeholder="Ej. 600 123 456" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="treatment-select">Tratamiento o especialidad *</label>
+              <select id="treatment-select" name="treatment" required>
+                <option value="">Selecciona una opción...</option>
+                <optgroup label="Valoración General">
+                  <option value="Primera Revisión Gratuita">Primera Revisión Gratuita</option>
+                </optgroup>
+                <optgroup label="Odontología Avanzada">
+                  <option value="Ortodoncia Invisible">Ortodoncia Invisible</option>
+                  <option value="Implantología Guiada">Implantología Guiada</option>
+                  <option value="Estética y Blanqueamiento">Estética y Blanqueamiento</option>
+                </optgroup>
+                <optgroup label="Fisioterapia &amp; Rehabilitación">
+                  <option value="Fisioterapia Deportiva">Fisioterapia Deportiva</option>
+                  <option value="Fisioterapia Invasiva Ecoguiada">Fisioterapia Invasiva Ecoguiada</option>
+                  <option value="Rehabilitación de ATM y Bruxismo">Rehabilitación de ATM y Bruxismo</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appointment-date">Fecha preferida *</label>
+                <input 
+                  type="date" 
+                  id="appointment-date" 
+                  name="date" 
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="appointment-slot">Franja horaria *</label>
+                <select id="appointment-slot" name="slot" required>
+                  <option value="">Elige franja...</option>
+                  <option value="Mañana (09:00 - 14:00)">Mañana (09:00 - 14:00)</option>
+                  <option value="Mediodía (14:00 - 16:30)">Mediodía (14:00 - 16:30)</option>
+                  <option value="Tarde (16:30 - 20:30)">Tarde (16:30 - 20:30)</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Confirmar solicitud de cita</button>
+          </form>
+
+          <!-- Mensaje de confirmación elegante oculto por defecto -->
+          <div id="form-confirmation" class="confirmation-card" hidden>
+            <div class="confirmation-icon" aria-hidden="true">✓</div>
+            <h3>Solicitud recibida correctamente</h3>
+            <p id="confirmation-details"></p>
+            <button type="button" id="reset-form-btn" class="btn btn-outline">Solicitar otra cita</button>
+          </div>
+        </div>
+
+        <!-- Información de Ubicación, Urgencias y Horarios -->
+        <aside class="contact-info-sidebar">
+          <div class="info-card">
+            <h3>Ubicación de la clínica</h3>
+            <p>Calle Velázquez 48, Bajo Derecha<br>28001 Salamanca, Madrid</p>
+            <span class="info-note">Acceso a pie de calle adaptado · Metro Velázquez / Serrano</span>
+          </div>
+
+          <div class="info-card info-card-highlight">
+            <span class="urgent-badge">Atención Prioritaria</span>
+            <h3>Teléfono de Urgencias</h3>
+            <p class="urgent-phone"><a href="tel:+34910002418">910 00 24 18</a></p>
+            <p class="info-note">Dolor dental agudo, traumatismos o bloqueo articular agudo de lunes a sábado.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Horario de atención</h3>
+            <ul class="schedule-list">
+              <li>
+                <span>Lunes a Jueves</span>
+                <strong>09:00 – 20:30</strong>
+              </li>
+              <li>
+                <span>Viernes</span>
+                <strong>09:00 – 18:00</strong>
+              </li>
+              <li>
+                <span>Sábados</span>
+                <strong>10:00 – 14:00 (Cita previa)</strong>
+              </li>
+              <li>
+                <span>Domingos y Festivos</span>
+                <strong>Cerrado</strong>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Brava — Tapas de autor, raciones con mucha calle y vermú de grifo. Consulta nuestra carta digital y reserva tu mesa.">
+  <title>La Brava — Tapas & Vermú | Carta Digital</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Títulos) & Inter (Lectura rápida en móvil) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       SISTEMA DE VARIABLES CSS (Personaliza cualquier bar en menos de 2 min)
+       ========================================================================== */
+    :root {
+      /* Paleta de Colores Principal */
+      --bg-body: #FFFDF8;           /* Blanco cálido / crema */
+      --bg-surface: #FFFFFF;        /* Blanco puro para tarjetas */
+      --bg-muted: #F6F1E7;          /* Crema tostado suave para secciones alternas */
+      
+      /* Textos */
+      --text-main: #1D1D1F;         /* Carbón suave */
+      --text-muted: #5C5C66;        /* Gris cálido secundario */
+      --text-inverse: #FFFFFF;
+
+      /* Acentos Vibrantes */
+      --color-primary: #F2542D;     /* Naranja terracota / coral */
+      --color-primary-hover: #D9411C;
+      --color-secondary: #F5B700;   /* Amarillo mostaza */
+      --color-accent: #2A9D8F;      /* Verde oliva / etiquetas saludables */
+
+      /* Bordes, Sombras y Radios */
+      --border-light: rgba(29, 29, 31, 0.08);
+      --shadow-sm: 0 4px 12px rgba(29, 29, 31, 0.05);
+      --shadow-md: 0 12px 28px rgba(29, 29, 31, 0.08);
+      --shadow-pop: 0 10px 25px rgba(242, 84, 45, 0.25);
+      
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-pill: 9999px;
+
+      /* Tipografía */
+      --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Espaciado y Contenedor */
+      --container-max: 1140px;
+      --nav-height: 70px;
+    }
+
+    /* ==========================================================================
+       RESET & BASE (Mobile First)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ==========================================================================
+       BARRA DEMO WEBTOSTUDIO
+       ========================================================================== */
+    .demo-bar {
+      background-color: var(--text-main);
+      color: var(--text-inverse);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.55rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .demo-bar a {
+      color: var(--color-secondary);
+      font-weight: 600;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+    }
+
+    .demo-bar a:hover {
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       NAVBAR FIJA
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(255, 253, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: var(--radius-pill);
+      transition: transform 0.18s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      min-height: 44px;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--text-inverse);
+      box-shadow: var(--shadow-pop);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      border: 1.5px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .btn-nav {
+      padding: 0.6rem 1.15rem;
+      font-size: 0.875rem;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 2rem 0 3.25rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+      align-items: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background-color: rgba(245, 183, 0, 0.18);
+      color: #8A6500;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 6vw, 3.65rem);
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .hero h1 mark {
+      background: linear-gradient(120deg, rgba(245, 183, 0, 0.45) 0%, rgba(242, 84, 45, 0.28) 100%);
+      color: inherit;
+      padding: 0 0.3rem;
+      border-radius: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      max-width: 52ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .hero-actions .btn {
+      flex: 1 1 auto;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 4 / 3;
+      background-color: var(--bg-muted);
+      border: 4px solid var(--bg-surface);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--bg-surface);
+      padding: 0.6rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.825rem;
+      box-shadow: var(--shadow-md);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border-light);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .badge-top {
+      top: -12px;
+      left: 12px;
+      color: var(--color-primary);
+    }
+
+    .badge-bottom {
+      bottom: -14px;
+      right: 12px;
+      color: var(--color-accent);
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* ==========================================================================
+       CARTA DIGITAL INTERACTIVA (El corazón de la web)
+       ========================================================================== */
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Pestañas deslizables en móvil (Experiencia QR real) */
+    .menu-tabs {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding: 0.25rem 0.25rem 1rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .menu-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 0 0 auto;
+      padding: 0.65rem 1.2rem;
+      border-radius: var(--radius-pill);
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--border-light);
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .tab-btn.active {
+      background-color: var(--text-main);
+      color: var(--text-inverse);
+      border-color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Grid de Tapas */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.35rem;
+    }
+
+    .tapa-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      animation: fadeUp 0.35s ease forwards;
+    }
+
+    .tapa-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tapa-card.hidden {
+      display: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tapa-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background-color: var(--bg-muted);
+      overflow: hidden;
+    }
+
+    .tapa-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .tapa-card:hover .tapa-media img {
+      transform: scale(1.04);
+    }
+
+    .tapa-price-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background-color: var(--color-secondary);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .tapa-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .tapa-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.22rem 0.65rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.01em;
+    }
+
+    .tag-olive {
+      background-color: rgba(42, 157, 143, 0.14);
+      color: #1E756A;
+    }
+
+    .tag-coral {
+      background-color: rgba(242, 84, 45, 0.13);
+      color: #C93A16;
+    }
+
+    .tag-mustard {
+      background-color: rgba(245, 183, 0, 0.22);
+      color: #825F00;
+    }
+
+    .tapa-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .tapa-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       BANNER DESTACADO "COMBO VERMÚ & TAPA"
+       ========================================================================== */
+    .promo-section {
+      padding: 1.5rem 0 3.5rem;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #FF7849 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      color: var(--text-inverse);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+      box-shadow: var(--shadow-pop);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-badge {
+      display: inline-block;
+      background-color: var(--color-secondary);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.85rem;
+    }
+
+    .promo-content h2 {
+      font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+      margin-bottom: 0.75rem;
+      color: var(--text-inverse);
+    }
+
+    .promo-content p {
+      font-size: 1rem;
+      opacity: 0.95;
+      margin-bottom: 1.25rem;
+      max-width: 48ch;
+    }
+
+    .promo-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .promo-price {
+      font-family: var(--font-heading);
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      background: rgba(29, 29, 31, 0.18);
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-md);
+    }
+
+    .promo-schedule {
+      font-size: 0.875rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .promo-visual {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border: 3px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .promo-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       RESEÑAS DE CLIENTES
+       ========================================================================== */
+    .reviews-section {
+      background-color: var(--bg-muted);
+      border-radius: var(--radius-lg);
+      margin: 0 0.75rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background-color: var(--bg-surface);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .stars {
+      color: var(--color-secondary);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      color: var(--text-inverse);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .reviewer-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .reviewer-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       DÓNDE ESTAMOS Y HORARIOS
+       ========================================================================== */
+    .location-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.35rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .info-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .location-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1EBE5D;
+      transform: translateY(-2px);
+    }
+
+    .map-placeholder {
+      background: linear-gradient(145deg, #EAE3D5 0%, #DFD5C3 100%);
+      border-radius: var(--radius-md);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .map-pin {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .map-placeholder strong {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .map-placeholder span {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-light);
+      padding: 2.5rem 0;
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .footer-logo span {
+      color: var(--color-primary);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 1rem 0;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       MODAL DE RESERVA RÁPIDA (UX Interactiva)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(29, 29, 31, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 2000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      max-width: 420px;
+      width: 100%;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      animation: fadeUp 0.25s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-muted);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .form-group {
+      margin-top: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-light);
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: var(--bg-body);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (Tablet & Desktop)
+       ========================================================================== */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero {
+        padding: 3.5rem 0 4.5rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3rem;
+      }
+
+      .hero-actions .btn {
+        flex: 0 0 auto;
+      }
+
+      .menu-tabs {
+        justify-content: center;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .promo-banner {
+        grid-template-columns: 1.15fr 0.85fr;
+        padding: 2.75rem 3rem;
+      }
+
+      .reviews-section {
+        margin: 0 auto;
+        max-width: var(--container-max);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .location-card {
+        grid-template-columns: 1.1fr 0.9fr;
+        padding: 2.5rem;
+      }
+
+      .location-actions {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DEMO WEBTOSTUDIO -->
+  <div class="demo-bar">
+    <span>💡 Demo WebToStudio: Landing Colorida</span>
+    <a href="/index.html#proyectos">← Volver</a>
+  </div>
+
+  <!-- NAVBAR FIJA -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="logo" aria-label="La Brava Inicio">La Brava<span>.</span></a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#carta">La Carta</a></li>
+          <li><a href="#vermu">Combo Vermú</a></li>
+          <li><a href="#opiniones">Reseñas</a></li>
+          <li><a href="#donde">Dónde Estamos</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="btn btn-primary btn-nav" id="openModalBtn">
+        Reservar Mesa
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">✨ Cocina non-stop · Vermú de grifo</div>
+          <h1>Tapas de toda la vida, pero con <mark>mucha calle</mark></h1>
+          <p class="hero-subtitle">
+            Producto de mercado, salsas caseras con rock & roll y el mejor vermú tirado del barrio. Escanea, elige tu ronda y disfruta sin prisas.
+          </p>
+          <div class="hero-actions">
+            <a href="#carta" class="btn btn-primary">Ver Carta Digital</a>
+            <a href="#donde" class="btn btn-secondary">Cómo Llegar</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="floating-badge badge-top">🔥 Top Ventas</div>
+          <div class="hero-image-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1515443961218-a51367888e4b?auto=format&fit=crop&w=900&q=80"
+              alt="Mesa llena de tapas variadas recién hechas en La Brava"
+              width="900"
+              height="675"
+            >
+          </div>
+          <div class="floating-badge badge-bottom">🌱 Opciones Veganas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARTA DIGITAL INTERACTIVA -->
+    <section id="carta" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Carta Digital · Recién Hecho</span>
+          <h2>Nuestras Tapas de Autor</h2>
+          <p>Filtra por antojo. Todo sale al centro para compartir (o no).</p>
+        </div>
+
+        <!-- Filtros por categoría -->
+        <div class="menu-tabs" role="tablist" aria-label="Categorías de la carta">
+          <button type="button" class="tab-btn active" data-filter="todas" role="tab" aria-selected="true">Todas (6)</button>
+          <button type="button" class="tab-btn" data-filter="picar" role="tab" aria-selected="false">Para Picar</button>
+          <button type="button" class="tab-btn" data-filter="bravas" role="tab" aria-selected="false">Bravas y Frituras</button>
+          <button type="button" class="tab-btn" data-filter="postres" role="tab" aria-selected="false">Postres</button>
+        </div>
+
+        <!-- Grid de 6 Tarjetas -->
+        <div class="menu-grid" id="menuGrid">
+          
+          <!-- Tapa 1 -->
+          <article class="tapa-card" data-category="bravas">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1565599837634-134bc3aadce8?auto=format&fit=crop&w=640&q=80"
+                alt="Patatas Bravas La Brava con doble salsa"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">5,90 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-coral">🔥 Top Ventas</span>
+                <span class="tag tag-olive">🌾 Sin Gluten</span>
+              </div>
+              <h3 class="tapa-title">Las Bravas de la Casa</h3>
+              <p class="tapa-desc">Patata agria confitada y frita en dos tiempos, salsa brava ahumada con chipotle y alioli suave de ajo negro.</p>
+            </div>
+          </article>
+
+          <!-- Tapa 2 -->
+          <article class="tapa-card" data-category="bravas">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1554502078-ef0fc409efce?auto=format&fit=crop&w=640&q=80"
+                alt="Croquetas cremosas de jamón ibérico"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">6,50 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-mustard">🥛 Lácteos / Gluten</span>
+              </div>
+              <h3 class="tapa-title">Croquetas de Jamón de Bellota (4 uds.)</h3>
+              <p class="tapa-desc">Bechamel ultra cremosa infusionada con hueso de jamón 100% ibérico y rebozado crujiente en panko japonés.</p>
+            </div>
+          </article>
+
+          <!-- Tapa 3 -->
+          <article class="tapa-card" data-category="picar">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=640&q=80"
+                alt="Tosta de escalivada asada con anchoa del Cantábrico"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">4,80 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-olive">🌱 Opción Vegana</span>
+              </div>
+              <h3 class="tapa-title">Coca de Escalivada a la Brasa</h3>
+              <p class="tapa-desc">Pan cristal tostado, pimiento rojo y berenjena asados al carbón, emulsión de piñones y toque de aceite virgen extra.</p>
+            </div>
+          </article>
+
+          <!-- Tapa 4 -->
+          <article class="tapa-card" data-category="picar">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=640&q=80"
+                alt="Brioche de carrillera ibérica desmechada"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">7,20 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-coral">⭐ Favorita del Chef</span>
+              </div>
+              <h3 class="tapa-title">Brioche de Carrillera al Pedro Ximénez</h3>
+              <p class="tapa-desc">Pan brioche mantequilloso marcado a la plancha, carrillera melosa cocinada 12h, cebolla encurtida y mayo cítrica.</p>
+            </div>
+          </article>
+
+          <!-- Tapa 5 -->
+          <article class="tapa-card" data-category="bravas">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=640&q=80"
+                alt="Rabitas de calamar de potera a la andaluza"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">8,90 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-mustard">🦑 Moluscos</span>
+              </div>
+              <h3 class="tapa-title">Calamares de Potera con Lima y Kimchi</h3>
+              <p class="tapa-desc">Fritura limpia en harina de garbanzo sin aceite residual, ralladura de lima fresca y mayonesa ligera de kimchi.</p>
+            </div>
+          </article>
+
+          <!-- Tapa 6 -->
+          <article class="tapa-card" data-category="postres">
+            <div class="tapa-media">
+              <img
+                src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=640&q=80"
+                alt="Tarta de queso cremosa al horno"
+                loading="lazy"
+                width="640"
+                height="400"
+              >
+              <span class="tapa-price-badge">5,50 €</span>
+            </div>
+            <div class="tapa-body">
+              <div class="tapa-tags">
+                <span class="tag tag-coral">🍰 Casero 100%</span>
+                <span class="tag tag-mustard">🥛 Lácteos / Huevo</span>
+              </div>
+              <h3 class="tapa-title">Tarta de Queso Fluida Idiazábal</h3>
+              <p class="tapa-desc">Horneada cada mañana con mezcla de queso crema artesanal, toque ahumado de Idiazábal y base crujiente de galleta tostada.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER DESTACADO "COMBO VERMÚ & TAPA" -->
+    <section id="vermu" class="promo-section">
+      <div class="container">
+        <div class="promo-banner">
+          <div class="promo-content">
+            <span class="promo-badge">🍹 Ritual del Mediodía</span>
+            <h2>Combo Vermú de Grifo + Tapa de la Casa</h2>
+            <p>
+              Vermú rojo artesanal bien frío con piel de naranja y aceituna gordal, acompañado de nuestra tapa del día recién salida de cocina.
+            </p>
+            <div class="promo-price-row">
+              <span class="promo-price">4,50 €</span>
+              <span class="promo-schedule">⏰ Todos los días de 12:00 a 14:30</span>
+            </div>
+          </div>
+          <div class="promo-visual">
+            <img
+              src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=700&q=80"
+              alt="Copa de vermú rojo con rodaja de naranja y hielo"
+              loading="lazy"
+              width="700"
+              height="438"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEÑAS DE CLIENTES -->
+    <section id="opiniones" class="section reviews-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">4,9 ★ en Google (640+ reseñas)</span>
+          <h2>Lo que dice la parroquia</h2>
+          <p>Gente real que vino por una caña y acabó pidiendo toda la carta.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <p class="review-text">"Las mejores bravas que he probado en años. Crujientes por fuera, tiernas por dentro y con una salsa que pica lo justo para pedir otro vermú."</p>
+            </div>
+            <div class="reviewer">
+              <div class="reviewer-avatar">LM</div>
+              <div>
+                <div class="reviewer-name">Laura Martínez</div>
+                <div class="reviewer-meta">Local Guide · Hace 3 días</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <p class="review-text">"Ambiente súper alegre, música buena sin molestar y un servicio rapidísimo. El brioche de carrillera y la tarta de queso son obligatorios."</p>
+            </div>
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background-color: var(--color-primary);">CR</div>
+              <div>
+                <div class="reviewer-name">Carlos Ruiz</div>
+                <div class="reviewer-meta">Cliente habitual · Hace 1 semana</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <p class="review-text">"Genial que tengan opciones veganas tan bien pensadas y marcadas en la carta QR. El combo vermú de mediodía es imbatible en calidad-precio."</p>
+            </div>
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background-color: var(--color-secondary); color: var(--text-main);">AG</div>
+              <div>
+                <div class="reviewer-name">Andrea Gómez</div>
+                <div class="reviewer-meta">Reseña verificada · Hace 2 semanas</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DÓNDE ESTAMOS Y HORARIOS -->
+    <section id="donde" class="section">
+      <div class="container">
+        <div class="location-card">
+          <div>
+            <span class="section-kicker">Te esperamos en la barra</span>
+            <h2>Dónde Estamos y Horarios</h2>
+
+            <ul class="info-list">
+              <li class="info-item">
+                <div class="info-icon">📍</div>
+                <div>
+                  <h3>Dirección</h3>
+                  <p>Calle de la Feria, 42 — Casco Antiguo (Junto al Mercado)</p>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">🕒</div>
+                <div>
+                  <h3>Horarios de Barra y Cocina</h3>
+                  <p><strong>Mar – Jue:</strong> 12:00 a 16:30 · 19:30 a 00:00</p>
+                  <p><strong>Vie – Dom:</strong> 12:00 a 01:00 (Cocina ininterrumpida)</p>
+                  <p><strong>Lunes:</strong> Cerrado por descanso del equipo</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="location-actions">
+              <a
+                href="https://wa.me/34600000000?text=Hola%20La%20Brava!%20Me%20gustar%C3%ADa%20reservar%20mesa%20%2F%20hacer%20un%20pedido."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp"
+              >
+                💬 Pedir / Reservar por WhatsApp
+              </a>
+              <a
+                href="https://maps.google.com/?q=Calle+de+la+Feria+42"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+              >
+                🗺️ Abrir en Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            <div class="map-pin">📍</div>
+            <strong>La Brava — Tapas & Vermú</strong>
+            <span>Calle de la Feria, 42 · Terraza soleada todo el año</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="footer-logo">La Brava<span>.</span></a>
+      <p>Tapas de autor, raciones honestas y vermú tirado con cariño.</p>
+      <div class="footer-links">
+        <a href="#carta">Carta Digital</a>
+        <a href="#vermu">Combo Vermú</a>
+        <a href="#opiniones">Reseñas</a>
+        <a href="#donde">Contacto</a>
+      </div>
+      <p>© 2026 La Brava — Tapas & Vermú. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL INTERACTIVO DE RESERVA DE MESA -->
+  <div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="Cerrar ventana">✕</button>
+      <span class="section-kicker">Reserva en 15 segundos</span>
+      <h3 id="modalTitle" style="font-size: 1.5rem; margin-bottom: 0.35rem;">Guarda tu sitio en La Brava</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Te confirmamos al instante por WhatsApp.</p>
+
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="guestName">Tu nombre</label>
+          <input type="text" id="guestName" placeholder="Ej. Marta Sánchez" required>
+        </div>
+        <div class="form-group">
+          <label for="guestCount">¿Cuántos venís?</label>
+          <select id="guestCount">
+            <option value="2 personas">2 personas (Mesa o barra)</option>
+            <option value="4 personas" selected>4 personas</option>
+            <option value="6 personas">6 personas</option>
+            <option value="Grupo (+6)">Grupo (+6 personas)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="guestTime">Turno preferido</label>
+          <select id="guestTime">
+            <option value="Mediodía · Vermú (13:30)">Mediodía · Vermú (13:30)</option>
+            <option value="Comida (14:30)">Comida (14:30)</option>
+            <option value="Tardeo / Cena temprana (20:30)">Tardeo / Cena temprana (20:30)</option>
+            <option value="Cena (21:45)">Cena (21:45)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.35rem;">
+          Confirmar por WhatsApp →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT INTERACTIVO -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. FILTRO DE PESTAÑAS DE LA CARTA DIGITAL
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tapaCards = document.querySelectorAll('.tapa-card');
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          // Actualizar estado activo de pestañas
+          tabButtons.forEach((btn) => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+
+          const filterValue = button.getAttribute('data-filter');
+
+          // Filtrar tarjetas con reinicio suave de animación
+          tapaCards.forEach((card) => {
+            const category = card.getAttribute('data-category');
+            const matches = filterValue === 'todas' || category === filterValue;
+
+            if (matches) {
+              card.classList.remove('hidden');
+              card.style.animation = 'none';
+              card.offsetHeight; // Forzar reflow para reiniciar animación
+              card.style.animation = '';
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 2. MODAL DE RESERVA RÁPIDA -> WHATSAPP
+      const modal = document.getElementById('bookingModal');
+      const openModalBtn = document.getElementById('openModalBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const bookingForm = document.getElementById('bookingForm');
+
+      const openModal = () => modal.classList.add('open');
+      const closeModal = () => modal.classList.remove('open');
+
+      openModalBtn.addEventListener('click', openModal);
+      closeModalBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('guestName').value.trim();
+        const people = document.getElementById('guestCount').value;
+        const time = document.getElementById('guestTime').value;
+
+        const message = `¡Hola La Brava! Soy ${name}. Me gustaría reservar para ${people} en el turno de ${time}.`;
+        const whatsappUrl = `https://wa.me/34600000000?text=${encodeURIComponent(message)}`;
+
+        closeModal();
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurador y Presupuesto — Chispa Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="badge badge-green">Configurador Interactivo</span>
+        <h1>Diseña tu evento y calcula tu estimación</h1>
+        <p class="hero-lead">Ajusta el formato, el aforo y los extras en tiempo real. Envíanos tu configuración para recibir una propuesta detallada sin compromiso.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container quote-layout">
+        
+        <!-- Panel Izquierdo: Configurador -->
+        <div class="config-panel card shadow-violet">
+          <h2>1. Configura tu experiencia</h2>
+
+          <div class="form-group">
+            <label for="event-type">Tipo de evento</label>
+            <select id="event-type" class="form-control">
+              <option value="Eventos Corporativos & Team Building" data-base="1800" data-per-head="28">Eventos Corporativos & Team Building</option>
+              <option value="Lanzamientos de Marca" data-base="2500" data-per-head="35">Lanzamientos de Marca</option>
+              <option value="Festivales & Pop-Ups" data-base="3200" data-per-head="30">Festivales & Pop-Ups</option>
+              <option value="Celebraciones Privadas" data-base="1500" data-per-head="32">Celebraciones Privadas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="slider-header">
+              <label for="attendees-slider">Número estimado de asistentes</label>
+              <span class="attendees-pill" id="attendees-display">120 personas</span>
+            </div>
+            <input type="range" id="attendees-slider" min="20" max="500" step="10" value="120" class="range-slider">
+            <div class="slider-ticks">
+              <span>20</span>
+              <span>150</span>
+              <span>300</span>
+              <span>500</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Extras y producción adicional</label>
+            <div class="extras-grid">
+              <label class="extra-checkbox">
+                <input type="checkbox" class="extra-input" value="DJ y Sonido" data-price="650" data-per-head="0" checked>
+                <span class="extra-card">
+                  <strong>🎧 DJ y Sonido Pro</strong>
+                  <small>+650 € fijo</small>
+                </span>
+              </label>
+
+              <label class="extra-checkbox">
+                <input type="checkbox" class="extra-input" value="Catering & Barra Libre" data-price="0" data-per-head="38">
+                <span class="extra-card">
+                  <strong>🍹 Catering & Barra Libre</strong>
+                  <small>+38 € / asistente</small>
+                </span>
+              </label>
+
+              <label class="extra-checkbox">
+                <input type="checkbox" class="extra-input" value="Fotomatón 360º" data-price="490" data-per-head="0">
+                <span class="extra-card">
+                  <strong>🎥 Fotomatón 360º</strong>
+                  <small>+490 € fijo</small>
+                </span>
+              </label>
+
+              <label class="extra-checkbox">
+                <input type="checkbox" class="extra-input" value="Decoración Temática" data-price="850" data-per-head="4">
+                <span class="extra-card">
+                  <strong>✨ Decoración Temática</strong>
+                  <small>Desde 850 €</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Caja de Precio Estimado -->
+          <div class="estimate-box bg-yellow">
+            <div>
+              <span class="estimate-label">Inversión orientativa estimada</span>
+              <div class="estimate-price" id="total-estimate">5.810 €</div>
+              <small id="estimate-breakdown">Producción base + 120 asistentes + 1 extra seleccionado</small>
+            </div>
+            <span class="estimate-badge">IVA no incl.</span>
+          </div>
+        </div>
+
+        <!-- Panel Derecho: Formulario de Solicitud -->
+        <div class="form-panel card shadow-pink">
+          <h2>2. Recibe tu propuesta</h2>
+          <p class="form-intro">Adjuntaremos automáticamente tu configuración actual para preparar un dossier creativo a medida.</p>
+
+          <form id="quote-form" novalidate>
+            <div class="form-group">
+              <label for="client-name">Tu nombre completo *</label>
+              <input type="text" id="client-name" class="form-control" placeholder="Ej. Sofía Navarro" required>
+            </div>
+
+            <div class="form-group">
+              <label for="client-entity">Empresa o Particular *</label>
+              <input type="text" id="client-entity" class="form-control" placeholder="Ej. Estudio Nómada S.L. / Particular" required>
+            </div>
+
+            <div class="form-group">
+              <label for="client-email">Correo electrónico *</label>
+              <input type="email" id="client-email" class="form-control" placeholder="sofia@ejemplo.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="event-date">Fecha aproximada del evento *</label>
+              <input type="date" id="event-date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Enviar solicitud de propuesta ⚡</button>
+          </form>
+
+          <!-- Confirmación Visual sin recarga -->
+          <div id="form-success" class="success-banner" hidden>
+            <div class="success-icon">🎉</div>
+            <h3>¡Chispa encendida! Solicitud recibida</h3>
+            <p id="success-summary"></p>
+            <button type="button" id="reset-form-btn" class="btn btn-secondary">Configurar otro evento</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoSelect Enterprise | Vehículos Certificados y Taller Oficial</title>
+  <meta name="description" content="Concesionario corporativo de vehículos certificados con inspección técnica de 150 puntos y servicio oficial.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <!-- Hero Showroom -->
+    <section class="hero-showroom">
+      <div class="container">
+        <div class="hero-showroom-top">
+          <span class="eyebrow">Certificación Técnica 150 Puntos</span>
+          <h1 class="hero-showroom-title">Vehículos certificados. Sin concesiones.</h1>
+          <p class="hero-showroom-sub">
+            Kilometraje auditado, garantía europea de 24 meses y entrega inmediata.
+          </p>
+        </div>
+
+        <div class="apple-search-bar" aria-label="Buscador rápido de vehículos">
+          <form id="hero-search-form" class="apple-search-form">
+            <input
+              type="text"
+              id="hero-q"
+              name="q"
+              class="field-control"
+              placeholder="Marca o modelo (ej. Polestar, BMW, Audi...)"
+              aria-label="Marca o modelo"
+            >
+
+            <select id="hero-fuel" name="fuel" class="field-control" aria-label="Propulsión">
+              <option value="">Propulsión: Todas</option>
+              <option value="Eléctrico">Eléctrico</option>
+              <option value="Híbrido">Híbrido</option>
+              <option value="Gasolina">Gasolina</option>
+              <option value="Diésel">Diésel</option>
+            </select>
+
+            <select id="hero-status" name="status" class="field-control" aria-label="Categoría">
+              <option value="">Categoría: Todas</option>
+              <option value="KM 0">KM 0</option>
+              <option value="Seminuevo">Seminuevo</option>
+              <option value="Ocasión Certificado">Ocasión Certificado</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary" style="height: 2.75rem;">
+              Buscar vehículos
+            </button>
+          </form>
+        </div>
+
+        <div class="hero-stage-card">
+          <div class="hero-stage-media">
+            <img
+              src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1400&q=85"
+              alt="Vehículo eléctrico certificado AutoSelect Enterprise"
+              loading="eager"
+              onerror="this.style.display='none'"
+            >
+          </div>
+          <div class="hero-stage-bar">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Catálogo auditado con entrega inmediata</strong>
+              <span style="font-size: 0.8125rem; color: #A1A1A6;">15 días o 1.000 km de prueba real garantizada</span>
+            </div>
+            <a href="inventario.html" class="btn btn-primary btn-sm">Explorar 10 unidades →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Unidades Destacadas -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-row">
+          <div>
+            <span class="eyebrow">Selección Destacada</span>
+            <h2 class="section-title">Disponibles para entrega inmediata</h2>
+          </div>
+          <a href="inventario.html" class="btn btn-outline">Ver inventario completo →</a>
+        </div>
+
+        <div class="grid-3">
+          <a href="inventario.html?vehicle=veh-01" class="card" style="display: block;">
+            <div class="vehicle-card-img">
+              <span class="status-pill is-km0">KM 0</span>
+              <img
+                src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=80"
+                alt="Polestar 2 Long Range Dual Motor"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3 style="font-size: 1.0625rem; font-weight: 600;">Polestar 2 Long Range Dual Motor</h3>
+              <div class="card-meta">
+                <span>2025</span> · <span>1.850 km</span> · <span>Eléctrico</span> · <span>408 CV</span>
+              </div>
+              <div class="card-price-row">
+                <span class="price-tag">46.900 €</span>
+                <span style="font-size: 0.8125rem; font-weight: 600; color: var(--accent);">Ver ficha ›</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="inventario.html?vehicle=veh-02" class="card" style="display: block;">
+            <div class="vehicle-card-img">
+              <span class="status-pill">Seminuevo</span>
+              <img
+                src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"
+                alt="BMW 330e M Sport Touring"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3 style="font-size: 1.0625rem; font-weight: 600;">BMW 330e M Sport Touring</h3>
+              <div class="card-meta">
+                <span>2024</span> · <span>18.400 km</span> · <span>Híbrido</span> · <span>292 CV</span>
+              </div>
+              <div class="card-price-row">
+                <span class="price-tag">42.500 €</span>
+                <span style="font-size: 0.8125rem; font-weight: 600; color: var(--accent);">Ver ficha ›</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="inventario.html?vehicle=veh-03" class="card" style="display: block;">
+            <div class="vehicle-card-img">
+              <span class="status-pill is-cert">Ocasión Certificado</span>
+              <img
+                src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80"
+                alt="Audi Q5 Sportback 40 TDI quattro"
+                loading="lazy"
+              >
+            </div>
+            <div class="card-body">
+              <h3 style="font-size: 1.0625rem; font-weight: 600;">Audi Q5 Sportback 40 TDI quattro</h3>
+              <div class="card-meta">
+                <span>2023</span> · <span>34.200 km</span> · <span>Diésel</span> · <span>204 CV</span>
+              </div>
+              <div class="card-price-row">
+                <span class="price-tag">44.800 €</span>
+                <span style="font-size: 0.8125rem; font-weight: 600; color: var(--accent);">Ver ficha ›</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pilares + Accesos Directos -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Ecosistema AutoSelect</span>
+          <h2 class="section-title">Todo en un mismo lugar</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="pillar-card">
+            <span class="pillar-number">01 · CERTIFICACIÓN</span>
+            <h3 class="pillar-title">150 puntos auditados</h3>
+            <p class="pillar-text">Diagnóstico de batería (SoH), bastidor y electrónica antes de publicar cada unidad.</p>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-number">02 · POSVENTA</span>
+            <h3 class="pillar-title">Taller Oficial multimarca</h3>
+            <p class="pillar-text">Calcula tu revisión por kilometraje y reserva cita previa online al instante.</p>
+            <a href="taller.html" style="display: inline-block; margin-top: 0.9rem; font-size: 0.875rem; font-weight: 600; color: var(--accent);">Ir al Taller Oficial ›</a>
+          </div>
+
+          <div class="pillar-card">
+            <span class="pillar-number">03 · PLAN RENOVE</span>
+            <h3 class="pillar-title">Tasa tu coche en 3 pasos</h3>
+            <p class="pillar-text">Obtén una valoración orientativa inmediata para entregar tu vehículo actual.</p>
+            <a href="tasacion.html" style="display: inline-block; margin-top: 0.9rem; font-size: 0.875rem; font-weight: 600; color: var(--accent);">Tasar mi vehículo ›</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script>
+    document.getElementById('hero-search-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const params = new URLSearchParams();
+      const q = document.getElementById('hero-q').value.trim();
+      const fuel = document.getElementById('hero-fuel').value;
+      const status = document.getElementById('hero-status').value;
+
+      if (q) params.set('q', q);
+      if (fuel) params.set('fuel', fuel);
+      if (status) params.set('status', status);
+
+      const queryString = params.toString();
+      window.location.href = queryString ? 'inventario.html?' + queryString : 'inventario.html';
+    });
+  </script>
+</body>
+</html>

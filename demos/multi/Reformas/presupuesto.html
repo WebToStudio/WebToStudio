@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calcula online el presupuesto orientativo por m² de tu reforma y solicita una visita técnica con Norte." />
+  <title>Calculadora de Presupuesto y Contacto | NORTE. Reformas e Interiorismo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <!-- Cabecera Interior -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Estimación y Estudio Previo</span>
+        <h1>Calcula tu presupuesto orientativo</h1>
+        <p>Configura el alcance de tu proyecto para obtener una horquilla realista basada en costes actuales de ejecución material y mano de obra especializada.</p>
+      </div>
+    </section>
+
+    <!-- Módulo Calculadora en Vivo + Formulario de Solicitud -->
+    <section class="section">
+      <div class="container budget-layout">
+
+        <!-- Columna 1: Calculadora Orientativa en Vivo -->
+        <div class="calc-card" id="budget-calculator">
+          <div class="calc-card__header">
+            <span class="eyebrow eyebrow--dark">Paso 1 · Simulador Técnico</span>
+            <h2>Calculadora por m²</h2>
+          </div>
+
+          <!-- Tipo de reforma -->
+          <div class="calc-group">
+            <label class="calc-label">1. Tipo de reforma</label>
+            <div class="option-grid" id="calc-type-group">
+              <button type="button" class="option-btn active" data-type="integral">
+                <strong>Integral</strong>
+                <span>Vivienda completa</span>
+              </button>
+              <button type="button" class="option-btn" data-type="cocina">
+                <strong>Cocina</strong>
+                <span>Mobiliario e inst.</span>
+              </button>
+              <button type="button" class="option-btn" data-type="bano">
+                <strong>Baño</strong>
+                <span>Sanitarios y revest.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Calidad de acabados -->
+          <div class="calc-group">
+            <label class="calc-label">2. Calidad de acabados y materiales</label>
+            <div class="option-grid" id="calc-quality-group">
+              <button type="button" class="option-btn" data-quality="estandar">
+                <strong>Estándar</strong>
+                <span>Funcional y duradero</span>
+              </button>
+              <button type="button" class="option-btn active" data-quality="premium">
+                <strong>Premium</strong>
+                <span>Gama alta y diseño</span>
+              </button>
+              <button type="button" class="option-btn" data-quality="lujo">
+                <strong>Lujo</strong>
+                <span>A medida y piedra nat.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Deslizador de metros cuadrados -->
+          <div class="calc-group">
+            <div class="range-header">
+              <label for="calc-sqm" class="calc-label">3. Superficie aproximada a reformar</label>
+              <output for="calc-sqm" id="calc-sqm-display" class="sqm-badge">95 m²</output>
+            </div>
+            <input
+              type="range"
+              id="calc-sqm"
+              min="5"
+              max="300"
+              step="1"
+              value="95"
+              class="calc-slider"
+            />
+            <div class="range-limits">
+              <span id="calc-min-label">30 m²</span>
+              <span id="calc-max-label">300 m²</span>
+            </div>
+          </div>
+
+          <!-- Resultado en vivo -->
+          <div class="calc-result" aria-live="polite">
+            <span class="calc-result__tag">Inversión estimada (IVA no incl.)</span>
+            <div class="calc-result__price" id="calc-price-range">76.000 € – 89.300 €</div>
+            <p class="calc-result__note" id="calc-summary-text">
+              Reforma Integral · Calidad Premium · 95 m² (Incluye proyecto técnico, gremios, materiales y gestión de residuos).
+            </p>
+            <button type="button" id="btn-transfer-calc" class="btn btn--outline-light btn--sm">
+              Adjuntar estimación al formulario →
+            </button>
+          </div>
+        </div>
+
+        <!-- Columna 2: Formulario de Solicitud de Visita Técnica -->
+        <div class="form-card">
+          <div class="form-card__header">
+            <span class="eyebrow eyebrow--dark">Paso 2 · Estudio Presencial</span>
+            <h2>Solicitar visita técnica</h2>
+            <p>Un arquitecto de nuestro equipo visitará el inmueble para elaborar tu presupuesto cerrado sin compromiso.</p>
+          </div>
+
+          <form id="visit-form" novalidate>
+            <div class="form-field">
+              <label for="client-name">Nombre y apellidos *</label>
+              <input
+                type="text"
+                id="client-name"
+                name="nombre"
+                placeholder="Ej. Laura Fernández"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="client-phone">Teléfono de contacto *</label>
+              <input
+                type="tel"
+                id="client-phone"
+                name="telefono"
+                placeholder="Ej. 600 123 456"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="client-city">Localidad / Distrito de la obra *</label>
+              <input
+                type="text"
+                id="client-city"
+                name="localidad"
+                placeholder="Ej. Madrid — Chamberí"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="client-notes">Notas sobre el proyecto</label>
+              <textarea
+                id="client-notes"
+                name="notas"
+                rows="4"
+                placeholder="Indica estado actual del inmueble, fecha prevista de inicio o detalles de tu simulación..."
+              ></textarea>
+            </div>
+
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              Solicitar visita técnica gratuita
+            </button>
+          </form>
+
+          <!-- Mensaje de Confirmación Elegante -->
+          <div class="form-success" id="form-success" hidden>
+            <div class="form-success__icon" aria-hidden="true">✓</div>
+            <h3>Solicitud recibida correctamente</h3>
+            <p id="form-success-detail">
+              Gracias por contactar con Norte. Nuestro departamento técnico revisará los datos de tu proyecto y se pondrá en contacto contigo en menos de 24 horas laborables para coordinar la visita.
+            </p>
+            <button type="button" id="btn-reset-form" class="btn btn--outline-dark btn--sm">
+              Enviar otra consulta
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

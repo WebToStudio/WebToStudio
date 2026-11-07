@@ -1,0 +1,524 @@
+/* ==========================================================================
+   Módulo Agnóstico: WTS Auth, Suscripciones & Admin (.wts-aa-*)
+   ========================================================================== */
+.wts-aa-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #F1F5F9;
+  padding: 0.22rem;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.wts-aa-tab {
+  border: 0;
+  background: transparent;
+  padding: 0.44rem 0.65rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: #64748B;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.wts-aa-tab.is-active {
+  background: #FFFFFF;
+  color: #0F172A;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+}
+
+.wts-aa-form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.wts-aa-field label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.18rem;
+}
+
+.wts-aa-input {
+  width: 100%;
+  border: 1px solid #CBD5E1;
+  border-radius: 7px;
+  padding: 0.46rem 0.65rem;
+  font-family: inherit;
+  font-size: 0.86rem;
+  color: #0F172A;
+  background: #FFFFFF;
+}
+
+.wts-aa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #0F172A;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.83rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  text-decoration: none;
+}
+
+.wts-aa-btn:hover {
+  background: #F1F5F9;
+}
+
+.wts-aa-btn--primary {
+  background: #0284C7;
+  border-color: #0284C7;
+  color: #FFFFFF;
+}
+
+.wts-aa-btn--primary:hover {
+  background: #0369A1;
+}
+
+.wts-aa-btn--success {
+  background: #059669;
+  border-color: #059669;
+  color: #FFFFFF;
+}
+
+.wts-aa-btn--danger {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  color: #DC2626;
+}
+
+.wts-aa-btn--danger:hover {
+  background: #FEE2E2;
+}
+
+.wts-aa-alert {
+  padding: 0.52rem 0.75rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.wts-aa-alert--error {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+}
+
+.wts-aa-alert--ok {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #047857;
+}
+
+.wts-aa-demo-box {
+  margin-top: 0.8rem;
+  padding-top: 0.72rem;
+  border-top: 1px solid #E2E8F0;
+}
+
+.wts-aa-demo-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+
+.wts-aa-quick-card {
+  text-align: left;
+  border: 1px solid #CBD5E1;
+  background: #F8FAFC;
+  border-radius: 8px;
+  padding: 0.48rem 0.58rem;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.wts-aa-quick-card:hover {
+  border-color: #0284C7;
+  background: #F0F9FF;
+}
+
+/* ==========================================================================
+   DASHBOARD ADMIN COMPACTO: CUADRADITOS KPI + ACCESOS RÁPIDOS A TODAS LAS ÁREAS
+   ========================================================================== */
+.wts-aa-squares-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.35rem;
+}
+
+@media (min-width: 760px) {
+  .wts-aa-squares-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.wts-aa-square-kpi {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.wts-aa-square-kpi__label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.wts-aa-square-kpi__num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.1;
+  margin: 0.35rem 0 0.2rem;
+}
+
+.wts-aa-square-kpi__sub {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+.wts-aa-nav-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 680px) {
+  .wts-aa-nav-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1120px) {
+  .wts-aa-nav-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.wts-aa-nav-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.wts-aa-nav-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284C7;
+  box-shadow: 0 8px 18px -6px rgba(15, 23, 42, 0.1);
+}
+
+.wts-aa-nav-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: #F0F9FF;
+  color: #0284C7;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+}
+
+/* ==========================================================================
+   DIRECTORIO ADMIN: ESPECIALISTAS (CLICABLES) Y CLIENTES (CLICABLES)
+   ========================================================================== */
+.wts-aa-dir-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 680px) {
+  .wts-aa-dir-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1120px) {
+  .wts-aa-dir-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.wts-aa-spec-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.wts-aa-spec-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284C7;
+  box-shadow: 0 10px 22px -6px rgba(15, 23, 42, 0.12);
+}
+
+.wts-aa-spec-card__img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+}
+
+.wts-aa-spec-card__body {
+  padding: 0.95rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.wts-aa-client-sub-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.wts-aa-client-sub-card:hover {
+  transform: translateY(-2px);
+  border-color: #059669;
+  box-shadow: 0 10px 22px -6px rgba(15, 23, 42, 0.12);
+}
+
+.wts-aa-sub-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+/* Ficha Completa del Especialista y del Cliente (Admin) */
+.wts-aa-spec-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .wts-aa-spec-detail-grid {
+    grid-template-columns: 320px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.wts-aa-spec-data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .wts-aa-spec-data-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.wts-aa-data-tile {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 9px;
+  padding: 0.75rem 0.85rem;
+}
+
+.wts-aa-data-tile span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.wts-aa-data-tile strong {
+  display: block;
+  font-size: 0.94rem;
+  color: #0F172A;
+  margin-top: 0.2rem;
+}
+
+.wts-aa-entry-card {
+  border-left: 4px solid #0284C7;
+  background: #F8FAFC;
+  padding: 0.85rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 0.65rem;
+}
+
+/* ==========================================================================
+   TARJETAS DE PLANES DE SUSCRIPCIÓN
+   ========================================================================== */
+.wts-aa-plans-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 680px) {
+  .wts-aa-plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1140px) {
+  .wts-aa-plans-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.wts-aa-plan-card {
+  background: #FFFFFF;
+  border: 2px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wts-aa-plan-card.is-current {
+  background: linear-gradient(180deg, #ECFDF5 0%, #D1FAE5 100%);
+  border: 3px solid #059669;
+  box-shadow: 0 12px 26px -6px rgba(5, 150, 105, 0.25);
+}
+
+.wts-aa-plan-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.24rem 0.6rem;
+  border-radius: 999px;
+  background: #F0F9FF;
+  color: #0284C7;
+}
+
+.wts-aa-plan-card.is-current .wts-aa-plan-badge {
+  background: #059669;
+  color: #FFFFFF;
+}
+
+.wts-aa-plan-price {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0.45rem 0 0.25rem;
+}
+
+.wts-aa-plan-price span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.wts-aa-plan-features {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  color: #334155;
+}
+
+.wts-aa-plan-features li {
+  margin-bottom: 0.35rem;
+}
+
+/* ==========================================================================
+   PANELES ADMIN SIN DESBORDAMIENTO HORIZONTAL
+   ========================================================================== */
+.wts-aa-admin-stack {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.wts-aa-panel {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.wts-aa-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.wts-aa-crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.wts-aa-crud-table th,
+.wts-aa-crud-table td {
+  padding: 0.6rem 0.55rem;
+  border-bottom: 1px solid #E2E8F0;
+  text-align: left;
+}
+
+.wts-aa-crud-table th {
+  background: #F8FAFC;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.wts-aa-form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+
+@media (min-width: 640px) {
+  .wts-aa-form-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .wts-aa-form-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

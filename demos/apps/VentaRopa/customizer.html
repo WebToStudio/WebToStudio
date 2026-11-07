@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Print Studio — Personalizador Interactivo | ThreadLab</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-user-club.css" />
+  <link rel="stylesheet" href="modules/wts-wishlist.css" />
+  <link rel="stylesheet" href="modules/wts-shop-cart.css" />
+  <link rel="stylesheet" href="modules/wts-customizer.css" />
+</head>
+<body>
+  <div id="tl-header-mount"></div>
+
+  <main class="tl-section" style="padding-top:2rem;">
+    <div class="tl-container">
+      <div class="tl-section-head">
+        <div>
+          <span class="tl-tag tl-tag--blue" style="margin-bottom:0.45rem;">✦ PRINT STUDIO LAB v2.6</span>
+          <h1 class="tl-section-title">Crea tu Camiseta Personalizada</h1>
+        </div>
+
+        <p style="font-size:0.88rem; color:var(--ink-secondary); max-width:44ch; font-weight:600;">
+          Gira la prenda entre frente y espalda, combina parches SVG o déjala lisa, añade o quita serigrafía y comprueba el precio en directo.
+        </p>
+      </div>
+
+      <div id="wts-customizer-mount"></div>
+    </div>
+  </main>
+
+  <div id="tl-footer-mount"></div>
+
+  <script src="modules/wts-user-club.js"></script>
+  <script src="modules/wts-wishlist.js"></script>
+  <script src="modules/wts-shop-cart.js"></script>
+  <script src="modules/wts-customizer.js"></script>
+  <script src="js/threadlab-app.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const STUDIO_ASSETS = {
+        colors: [
+          { id: 'c-black', name: 'Negro Lavado', hex: '#18181B' },
+          { id: 'c-white', name: 'Blanco Tiza', hex: '#FAFAFA' },
+          { id: 'c-blue', name: 'Azul Eléctrico', hex: '#3B82F6' },
+          { id: 'c-coral', name: 'Coral Neón', hex: '#F43F5E' },
+          { id: 'c-yellow', name: 'Amarillo Volt', hex: '#FACC15' },
+          { id: 'c-acid', name: 'Verde Ácido', hex: '#10B981' }
+        ],
+        graphics: [
+          {
+            id: 'g-cyber-star',
+            name: 'Cyber Volt Star',
+            surcharge: 2.00,
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,5 62,38 95,50 62,62 50,95 38,62 5,50 38,38" fill="#FACC15" stroke="#18181B" stroke-width="5"/>
+              <circle cx="50" cy="50" r="13" fill="#18181B"/>
+            </svg>`
+          },
+          {
+            id: 'g-acid-smile',
+            name: 'Acid Glitch Smile',
+            surcharge: 3.50,
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="42" fill="#10B981" stroke="#18181B" stroke-width="5"/>
+              <polygon points="34,32 42,44 26,44" fill="#18181B"/>
+              <polygon points="66,32 74,44 58,44" fill="#18181B"/>
+              <path d="M28 58 Q50 82 72 58" fill="none" stroke="#18181B" stroke-width="6" stroke-linecap="round"/>
+            </svg>`
+          },
+          {
+            id: 'g-chrome-globe',
+            name: 'Wireframe Globe',
+            surcharge: 4.00,
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="40" fill="#3B82F6" stroke="#18181B" stroke-width="5"/>
+              <ellipse cx="50" cy="50" rx="20" ry="40" fill="none" stroke="#FAFAFA" stroke-width="3.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="#FAFAFA" stroke-width="3.5"/>
+              <path d="M18 30 Q50 40 82 30" fill="none" stroke="#FAFAFA" stroke-width="3"/>
+              <path d="M18 70 Q50 60 82 70" fill="none" stroke="#FAFAFA" stroke-width="3"/>
+            </svg>`
+          },
+          {
+            id: 'g-brutal-bolt',
+            name: 'High Voltage Bolt',
+            surcharge: 3.00,
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="12" width="76" height="76" rx="14" fill="#F43F5E" stroke="#18181B" stroke-width="5"/>
+              <polygon points="56,18 30,54 49,54 42,82 70,44 51,44" fill="#FACC15" stroke="#18181B" stroke-width="4" stroke-linejoin="round"/>
+            </svg>`
+          },
+          {
+            id: 'g-lab-badge',
+            name: 'ThreadLab Stamp',
+            surcharge: 2.00,
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="22" width="80" height="56" rx="8" fill="#18181B" stroke="#FAFAFA" stroke-width="3"/>
+              <text x="50" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="16" fill="#FACC15">THREAD</text>
+              <text x="50" y="67" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="15" fill="#10B981">LAB // 07</text>
+            </svg>`
+          }
+        ],
+        placements: [
+          { id: 'chest-left', name: 'Pecho Izquierdo', surcharge: 0 },
+          { id: 'center-large', name: 'Centro Grande', surcharge: 3.00 },
+          { id: 'back-full', name: 'Espalda XL', surcharge: 5.00 }
+        ]
+      };
+
+      function startCustomizer() {
+        if (!window.WTS || !window.WTS.Customizer || !window.ThreadLabApp) return;
+
+        window.WTS.Customizer.init({
+          mountId: 'wts-customizer-mount',
+          basePrice: 34.00,
+          customTextSurcharge: 4.50,
+          colors: STUDIO_ASSETS.colors,
+          graphics: STUDIO_ASSETS.graphics,
+          placements: STUDIO_ASSETS.placements,
+          formatPrice: window.ThreadLabApp.formatPrice,
+          getVipDiscountRate: window.ThreadLabApp.getVipRate,
+          onAddToCart: (itemPayload) => {
+            if (window.WTS.ShopCart) {
+              window.WTS.ShopCart.addItem(itemPayload);
+            }
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', startCustomizer);
+      document.addEventListener('wts:ready', startCustomizer);
+    })();
+  </script>
+</body>
+</html>

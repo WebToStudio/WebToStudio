@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller Oficial y Posventa | AutoSelect Enterprise</title>
+  <meta name="description" content="Packs de mantenimiento cerrado, calculadora interactiva de revisión según kilometraje y reserva de cita previa en Taller Oficial AutoSelect.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Ingeniería de Posventa</span>
+        <h1>Taller Oficial y Mantenimiento Certificado</h1>
+        <p>
+          Diagnóstico computerizado multimarca, especialistas en alta tensión (EV/PHEV), recambios originales OEM y garantía oficial en todas las intervenciones.
+        </p>
+      </div>
+    </section>
+
+    <!-- Packs de Mantenimiento -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Tarifas Transparentes</span>
+          <h2 class="section-title">Packs de Mantenimiento Cerrado</h2>
+          <p class="section-subtitle">Precios finales con mano de obra especializada, fluidos homologados e IVA incluido.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="pack-card">
+            <div>
+              <span class="eyebrow">Mantenimiento Básico</span>
+              <h3 style="font-size: 1.25rem; font-weight: 600;">Pack Essential Service</h3>
+              <p class="price-tag" style="margin-top: 0.75rem;">189 € <span style="font-size: 0.8125rem; font-weight: 400; color: var(--text-muted);">IVA incl.</span></p>
+              <ul class="pack-list">
+                <li>Cambio de aceite sintético LongLife 0W-20 / 5W-30</li>
+                <li>Sustitución de filtro de aceite OEM</li>
+                <li>Lectura completa de centralitas (OBD-II)</li>
+                <li>Revisión de 40 puntos de seguridad y frenos</li>
+                <li>Reposición de niveles y puesta a cero de intervalo</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-outline select-pack-btn" data-pack="Pack Essential Service (189 €)">Seleccionar para cita</button>
+          </article>
+
+          <article class="pack-card is-featured">
+            <div>
+              <span class="eyebrow">Recomendado · 60.000 km</span>
+              <h3 style="font-size: 1.25rem; font-weight: 600;">Pack Integral Performance</h3>
+              <p class="price-tag" style="margin-top: 0.75rem;">349 € <span style="font-size: 0.8125rem; font-weight: 400; color: var(--text-muted);">IVA incl.</span></p>
+              <ul class="pack-list">
+                <li>Todo lo incluido en Essential Service</li>
+                <li>Filtros de aire, habitáculo (carbón activo) y combustible</li>
+                <li>Sustitución de líquido de frenos DOT 4 LV</li>
+                <li>Alineación y equilibrado láser de ejes</li>
+                <li>Vehículo de cortesía 100% eléctrico durante 24h</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-primary select-pack-btn" data-pack="Pack Integral Performance (349 €)">Seleccionar para cita</button>
+          </article>
+
+          <article class="pack-card">
+            <div>
+              <span class="eyebrow">Movilidad Cero Emisiones</span>
+              <h3 style="font-size: 1.25rem; font-weight: 600;">Pack EV &amp; Hybrid Health</h3>
+              <p class="price-tag" style="margin-top: 0.75rem;">229 € <span style="font-size: 0.8125rem; font-weight: 400; color: var(--text-muted);">IVA incl.</span></p>
+              <ul class="pack-list">
+                <li>Certificado oficial de salud de batería (SoH %)</li>
+                <li>Verificación de aislamiento de red de alto voltaje</li>
+                <li>Control térmico de inversor y bomba de calor</li>
+                <li>Filtro HEPA de cabina y líquido de frenos</li>
+                <li>Actualización de firmware de gestión energética</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-outline select-pack-btn" data-pack="Pack EV & Hybrid Health (229 €)">Seleccionar para cita</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora de Revisión + Cita Previa Persistente -->
+    <section class="section section-surface">
+      <div class="container">
+        <div class="grid-2">
+          <!-- Calculadora Interactiva -->
+          <div class="calc-panel">
+            <span class="eyebrow">Presupuesto Instantáneo</span>
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Calculadora de Revisión Oficial</h2>
+            <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Configura la motorización y el tramo de kilometraje para estimar la intervención recomendada.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="field-group">
+                <label for="calc-engine" class="field-label">Tipo de motorización</label>
+                <select id="calc-engine" class="field-control">
+                  <option value="electric">100% Eléctrico (EV)</option>
+                  <option value="hybrid" selected>Híbrido / Híbrido Enchufable (HEV/PHEV)</option>
+                  <option value="gasoline">Gasolina Turbo / Inyección Directa</option>
+                  <option value="diesel">Diésel Common-Rail / AdBlue</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="calc-km" class="field-label">Kilometraje actual del vehículo</label>
+                <select id="calc-km" class="field-control">
+                  <option value="15000">15.000 km — Primera inspección</option>
+                  <option value="30000">30.000 km — Revisión intermedia</option>
+                  <option value="60000" selected>60.000 km — Revisión mayor + fluidos</option>
+                  <option value="90000">90.000 km — Mantenimiento extendido</option>
+                  <option value="120000">120.000 km — Gran revisión / distribución o transmisión</option>
+                </select>
+              </div>
+
+              <div class="field-group" style="flex-direction: row; align-items: center; gap: 0.6rem; margin-top: 0.25rem;">
+                <input type="checkbox" id="calc-courtesy" style="width: 1rem; height: 1rem; accent-color: var(--accent);">
+                <label for="calc-courtesy" style="font-size: 0.875rem; color: var(--text-secondary); cursor: pointer;">
+                  Añadir vehículo de sustitución eléctrico (+25 €)
+                </label>
+              </div>
+            </div>
+
+            <div class="result-highlight" id="calc-output">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;">
+                <span style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; color: var(--text-secondary);">Estimación cerrada</span>
+                <span id="calc-total-price" style="font-size: 1.75rem; font-weight: 700; color: var(--accent);">315 €</span>
+              </div>
+              <p id="calc-breakdown" style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;"></p>
+              <button type="button" id="apply-calc-to-booking" class="btn btn-dark btn-sm" style="margin-top: 1rem;">
+                Transferir presupuesto a cita previa →
+              </button>
+            </div>
+          </div>
+
+          <!-- Formulario de Cita Previa con localStorage -->
+          <div class="form-panel" id="booking-section">
+            <span class="eyebrow">Reserva Online</span>
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Solicitar Cita en Taller</h2>
+            <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Tu reserva queda registrada localmente con código de confirmación inmediato.
+            </p>
+
+            <form id="workshop-booking-form" style="display: flex; flex-direction: column; gap: 0.95rem;">
+              <div class="grid-2" style="gap: 0.95rem;">
+                <div class="field-group">
+                  <label for="bk-name" class="field-label">Nombre completo *</label>
+                  <input type="text" id="bk-name" class="field-control" required placeholder="Carlos Mendoza">
+                </div>
+                <div class="field-group">
+                  <label for="bk-phone" class="field-label">Teléfono de contacto *</label>
+                  <input type="tel" id="bk-phone" class="field-control" required placeholder="612 345 678">
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap: 0.95rem;">
+                <div class="field-group">
+                  <label for="bk-plate" class="field-label">Matrícula o Modelo *</label>
+                  <input type="text" id="bk-plate" class="field-control" required placeholder="4821 MKL · BMW 330e">
+                </div>
+                <div class="field-group">
+                  <label for="bk-center" class="field-label">Centro Oficial *</label>
+                  <select id="bk-center" class="field-control" required>
+                    <option value="Madrid — Alcobendas Hub">Madrid — Alcobendas Hub</option>
+                    <option value="Barcelona — Zona Franca">Barcelona — Zona Franca</option>
+                    <option value="Sevilla — Parque Torneo">Sevilla — Parque Torneo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap: 0.95rem;">
+                <div class="field-group">
+                  <label for="bk-date" class="field-label">Fecha preferente *</label>
+                  <input type="date" id="bk-date" class="field-control" required>
+                </div>
+                <div class="field-group">
+                  <label for="bk-time" class="field-label">Franja horaria *</label>
+                  <select id="bk-time" class="field-control" required>
+                    <option value="08:30">08:30 — Recepción temprana</option>
+                    <option value="10:30">10:30 — Mañana</option>
+                    <option value="13:00">13:00 — Mediodía</option>
+                    <option value="16:30">16:30 — Tarde</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="bk-service" class="field-label">Intervención / Presupuesto</label>
+                <input type="text" id="bk-service" class="field-control" value="Revisión 60.000 km · Híbrido (315 €)">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 0.35rem;">Confirmar Cita Previa</button>
+            </form>
+
+            <div id="booking-feedback"></div>
+
+            <div id="saved-bookings-wrapper" style="margin-top: 1.75rem; display: none;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary);">
+                  Tus citas guardadas en este navegador
+                </h3>
+                <button type="button" id="clear-bookings-btn" class="btn btn-ghost btn-sm" style="color: var(--danger);">Borrar historial</button>
+              </div>
+              <div id="saved-bookings-list" style="display: flex; flex-direction: column; gap: 0.65rem;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script>
+    (function () {
+      const STORAGE_KEY = 'autoselect_workshop_bookings_v1';
+
+      const ENGINE_BASE = {
+        electric: { label: 'Eléctrico', base: 145, factor: 1.0 },
+        hybrid: { label: 'Híbrido', base: 210, factor: 1.15 },
+        gasoline: { label: 'Gasolina', base: 195, factor: 1.1 },
+        diesel: { label: 'Diésel', base: 225, factor: 1.2 }
+      };
+
+      const KM_MULTIPLIER = {
+        15000: { add: 0, detail: 'Diagnosis electrónica, filtro habitáculo y control de 40 puntos.' },
+        30000: { add: 55, detail: 'Sustitución de filtros principales, líquido de frenos y equilibrado.' },
+        60000: { add: 105, detail: 'Mantenimiento mayor: todos los filtros, fluidos hidráulicos y diagnosis profunda.' },
+        90000: { add: 145, detail: 'Revisión extendida, bujías/calentadores y verificación de suspensión.' },
+        120000: { add: 260, detail: 'Gran revisión: transmisión/reductora, circuito refrigeración y kit distribución.' }
+      };
+
+      const engineEl = document.getElementById('calc-engine');
+      const kmEl = document.getElementById('calc-km');
+      const courtesyEl = document.getElementById('calc-courtesy');
+      const totalPriceEl = document.getElementById('calc-total-price');
+      const breakdownEl = document.getElementById('calc-breakdown');
+      const serviceInputEl = document.getElementById('bk-service');
+
+      let currentQuoteSummary = '';
+
+      function updateCalculator() {
+        const eng = ENGINE_BASE[engineEl.value];
+        const km = Number(kmEl.value);
+        const kmInfo = KM_MULTIPLIER[km];
+        const courtesyCost = courtesyEl.checked ? 25 : 0;
+
+        const total = Math.round((eng.base + kmInfo.add) * eng.factor) + courtesyCost;
+        totalPriceEl.textContent = `${total} €`;
+        breakdownEl.textContent = `Incluye: ${kmInfo.detail}${courtesyEl.checked ? ' + Vehículo cortesía EV.' : ''}`;
+        currentQuoteSummary = `Revisión ${km.toLocaleString('es-ES')} km · ${eng.label} (${total} €)`;
+      }
+
+      engineEl.addEventListener('change', updateCalculator);
+      kmEl.addEventListener('change', updateCalculator);
+      courtesyEl.addEventListener('change', updateCalculator);
+
+      document.getElementById('apply-calc-to-booking').addEventListener('click', () => {
+        serviceInputEl.value = currentQuoteSummary;
+        document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('bk-name').focus();
+      });
+
+      document.querySelectorAll('.select-pack-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          serviceInputEl.value = btn.getAttribute('data-pack');
+          document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('bk-name').focus();
+        });
+      });
+
+      // Set min date to today
+      const dateInput = document.getElementById('bk-date');
+      const todayIso = new Date().toISOString().split('T')[0];
+      dateInput.min = todayIso;
+      dateInput.value = todayIso;
+
+      function loadBookings() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function renderBookings() {
+        const bookings = loadBookings();
+        const wrapper = document.getElementById('saved-bookings-wrapper');
+        const list = document.getElementById('saved-bookings-list');
+
+        if (!bookings.length) {
+          wrapper.style.display = 'none';
+          return;
+        }
+
+        wrapper.style.display = 'block';
+        list.innerHTML = bookings.map((b) => `
+          <div class="saved-appointment-item">
+            <div style="display: flex; justify-content: space-between; font-weight: 600;">
+              <span>Ref. ${b.code} — ${b.plate}</span>
+              <span style="color: var(--accent);">${b.date} · ${b.time}h</span>
+            </div>
+            <span style="color: var(--text-secondary);">${b.center} · ${b.service}</span>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('workshop-booking-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const code = 'AS-' + Math.floor(100000 + Math.random() * 900000);
+        const booking = {
+          code,
+          name: document.getElementById('bk-name').value.trim(),
+          phone: document.getElementById('bk-phone').value.trim(),
+          plate: document.getElementById('bk-plate').value.trim().toUpperCase(),
+          center: document.getElementById('bk-center').value,
+          date: document.getElementById('bk-date').value,
+          time: document.getElementById('bk-time').value,
+          service: serviceInputEl.value.trim()
+        };
+
+        const bookings = loadBookings();
+        bookings.unshift(booking);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings));
+
+        document.getElementById('booking-feedback').innerHTML = `
+          <div class="alert alert-success">
+            <strong>Cita confirmada (${booking.code})</strong> para <strong>${booking.plate}</strong> el ${booking.date} a las ${booking.time}h en ${booking.center}.
+          </div>
+        `;
+
+        this.reset();
+        dateInput.value = todayIso;
+        serviceInputEl.value = currentQuoteSummary;
+        renderBookings();
+      });
+
+      document.getElementById('clear-bookings-btn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        renderBookings();
+      });
+
+      updateCalculator();
+      renderBookings();
+    })();
+  </script>
+</body>
+</html>

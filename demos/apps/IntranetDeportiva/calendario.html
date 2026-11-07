@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda y Reservas | Apex Sport &amp; Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-calendar.css" />
+</head>
+<body class="apex-app-body" data-apex-page="calendar">
+  <div class="apex-app-shell">
+    <aside id="apex-sidebar-mount" class="apex-sidebar"></aside>
+
+    <div class="apex-app-main">
+      <header id="apex-topbar-mount" class="apex-app-topbar"></header>
+
+      <main class="apex-app-content">
+        <div class="apex-page-head">
+          <div>
+            <h1 id="calendar-page-title">Calendario de Especialidades</h1>
+            <p id="calendar-page-subtitle">Filtra por unidad médica o deportiva y pulsa cualquier franja libre para agendar.</p>
+          </div>
+          <div class="apex-area-tabs" id="calendar-area-filter">
+            <button type="button" class="apex-chip is-active" data-area="all">Todas</button>
+            <button type="button" class="apex-chip" data-area="fisioterapia">Fisioterapia</button>
+            <button type="button" class="apex-chip" data-area="medicina">Medicina</button>
+            <button type="button" class="apex-chip" data-area="psicologia">Psicología</button>
+            <button type="button" class="apex-chip" data-area="entrenamiento">Entrenamiento</button>
+          </div>
+        </div>
+
+        <div id="app-calendar-mount"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/layout.js"></script>
+  <script src="modules/wts-calendar.js"></script>
+  <script src="js/apex-app.js"></script>
+</body>
+</html>

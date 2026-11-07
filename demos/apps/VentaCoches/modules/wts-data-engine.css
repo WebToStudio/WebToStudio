@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Module: WTSDataEngine (.wts-de-*) — Compact Filter Bar & Collapsible Drawer
+   ========================================================================== */
+
+.wts-de-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.wts-de-topbar {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color, #D2D2D7);
+  border-radius: 14px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.wts-de-compact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.wts-de-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.wts-de-input {
+  height: 2.55rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border-subtle, #E5E5EA);
+  border-radius: 10px;
+  background: var(--bg-page, #F5F5F7);
+  font-size: 0.875rem;
+  color: var(--text-primary, #1D1D1F);
+  width: 100%;
+  transition: all 160ms ease;
+}
+
+.wts-de-input:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: var(--accent, #0071E3);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.14);
+}
+
+.wts-de-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 2.55rem;
+  padding: 0 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color, #D2D2D7);
+  background: #FFFFFF;
+  color: var(--text-primary, #1D1D1F);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 160ms ease;
+}
+
+.wts-de-filter-toggle:hover,
+.wts-de-filter-toggle.is-open {
+  border-color: var(--accent, #0071E3);
+  color: var(--accent, #0071E3);
+  background: var(--accent-soft, #E8F3FF);
+}
+
+.wts-de-badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--accent, #0071E3);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* Panel desplegable de filtros */
+.wts-de-drawer {
+  display: none;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle, #E5E5EA);
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wts-de-drawer.is-open {
+  display: flex;
+}
+
+.wts-de-controls-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 680px) {
+  .wts-de-controls-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
+
+.wts-de-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.wts-de-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary, #424245);
+}
+
+.wts-de-select {
+  height: 2.55rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border-color, #D2D2D7);
+  border-radius: 10px;
+  background: #FFFFFF;
+  font-size: 0.875rem;
+  color: var(--text-primary, #1D1D1F);
+  width: 100%;
+}
+
+.wts-de-select:focus {
+  outline: none;
+  border-color: var(--accent, #0071E3);
+}
+
+.wts-de-drawer-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle, #E5E5EA);
+}
+
+.wts-de-substatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--text-muted, #6E6E73);
+  padding-inline: 0.2rem;
+}
+
+.wts-de-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--border-color, #D2D2D7);
+  background: #FFFFFF;
+  color: var(--text-primary, #1D1D1F);
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.wts-de-btn:hover {
+  border-color: var(--accent, #0071E3);
+  color: var(--accent, #0071E3);
+}
+
+.wts-de-btn-primary {
+  background: var(--accent, #0071E3);
+  border-color: var(--accent, #0071E3);
+  color: #FFFFFF;
+}
+
+.wts-de-btn-primary:hover {
+  background: var(--accent-hover, #0077ED);
+  color: #FFFFFF;
+}
+
+.wts-de-btn-danger {
+  color: var(--danger, #DC2626);
+  border-color: #FECACA;
+}
+
+.wts-de-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.35rem;
+}
+
+@media (min-width: 720px) {
+  .wts-de-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .wts-de-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.wts-de-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color, #D2D2D7);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.wts-de-card:hover {
+  border-color: var(--accent, #0071E3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.wts-de-empty {
+  text-align: center;
+  padding: 3rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color, #D2D2D7);
+  border-radius: 16px;
+  color: var(--text-secondary, #424245);
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Certificado | AutoSelect Enterprise</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="modules/wts-data-engine.css">
+  <link rel="stylesheet" href="modules/wts-compare.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="section" style="padding-top: 1.25rem;">
+      <div class="container">
+        <div id="admin-toolbar-actions" style="display: none; justify-content: flex-end; gap: 0.5rem; margin-bottom: 1rem;">
+          <button type="button" id="btn-reset-demo-stock" class="btn btn-outline btn-sm">Restaurar stock</button>
+          <button type="button" id="btn-open-create-vehicle" class="btn btn-primary btn-sm">+ Añadir unidad</button>
+        </div>
+
+        <div id="script-error-log"></div>
+        <div id="wts-inventory-root"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="wts-compare-root"></div>
+
+  <!-- Modal Ficha Técnica + Simulador Financiero + Prueba de Conducción -->
+  <div class="enterprise-modal-backdrop" id="vehicle-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+    <div class="enterprise-modal">
+      <div class="enterprise-modal-header">
+        <div style="min-width: 0;">
+          <span id="detail-modal-badge" class="eyebrow" style="margin-bottom: 0.1rem;">Vehículo Certificado</span>
+          <h2 id="detail-modal-title" style="font-size: 1.1rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Detalle</h2>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="close-detail-modal" aria-label="Cerrar ficha">Cerrar ✕</button>
+      </div>
+      <div class="enterprise-modal-body" id="vehicle-detail-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal Gestión de Stock (Solo modo ?admin=1) -->
+  <div class="enterprise-modal-backdrop" id="vehicle-form-modal" role="dialog" aria-modal="true" aria-labelledby="form-modal-title">
+    <div class="enterprise-modal" style="max-width: 640px;">
+      <div class="enterprise-modal-header">
+        <h2 id="form-modal-title" style="font-size: 1.1rem; font-weight: 600;">Gestión de Unidad</h2>
+        <button type="button" class="btn btn-outline btn-sm" id="close-form-modal">Cerrar ✕</button>
+      </div>
+      <div class="enterprise-modal-body">
+        <form id="vehicle-crud-form" style="display: flex; flex-direction: column; gap: 0.9rem;">
+          <input type="hidden" id="vf-id">
+          <div class="grid-2" style="gap: 0.9rem;">
+            <div class="field-group">
+              <label for="vf-title" class="field-label">Marca y Modelo *</label>
+              <input type="text" id="vf-title" class="field-control" required>
+            </div>
+            <div class="field-group">
+              <label for="vf-price" class="field-label">Precio (€) *</label>
+              <input type="number" id="vf-price" class="field-control" required min="1000" step="100">
+            </div>
+          </div>
+          <div class="grid-2" style="gap: 0.9rem;">
+            <div class="field-group">
+              <label for="vf-status" class="field-label">Estado *</label>
+              <select id="vf-status" class="field-control" required>
+                <option value="KM 0">KM 0</option>
+                <option value="Seminuevo">Seminuevo</option>
+                <option value="Ocasión Certificado">Ocasión Certificado</option>
+                <option value="Reservado">Reservado</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="vf-year" class="field-label">Año *</label>
+              <input type="number" id="vf-year" class="field-control" required min="2015" max="2026" value="2024">
+            </div>
+          </div>
+          <div class="grid-2" style="gap: 0.9rem;">
+            <div class="field-group">
+              <label for="vf-km" class="field-label">Kilómetros *</label>
+              <input type="number" id="vf-km" class="field-control" required min="0" step="100">
+            </div>
+            <div class="field-group">
+              <label for="vf-fuel" class="field-label">Combustible *</label>
+              <select id="vf-fuel" class="field-control" required>
+                <option value="Eléctrico">Eléctrico</option>
+                <option value="Híbrido">Híbrido</option>
+                <option value="Gasolina">Gasolina</option>
+                <option value="Diésel">Diésel</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-3" style="gap: 0.9rem;">
+            <div class="field-group">
+              <label for="vf-transmission" class="field-label">Cambio *</label>
+              <select id="vf-transmission" class="field-control" required>
+                <option value="Automático">Automático</option>
+                <option value="Manual">Manual</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="vf-power" class="field-label">Potencia (CV) *</label>
+              <input type="number" id="vf-power" class="field-control" required min="50" max="1500">
+            </div>
+            <div class="field-group">
+              <label for="vf-topSpeed" class="field-label">Vel. Máx (km/h) *</label>
+              <input type="number" id="vf-topSpeed" class="field-control" required min="120" max="400">
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="vf-image" class="field-label">URL Imagen</label>
+            <input type="url" id="vf-image" class="field-control">
+          </div>
+          <div class="field-group">
+            <label for="vf-history" class="field-label">Historial técnico *</label>
+            <textarea id="vf-history" class="field-control" required></textarea>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button type="button" class="btn btn-outline btn-sm" id="cancel-form-modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer"></div>
+
+  <script>
+    function reportMissingFile(path) {
+      var box = document.getElementById('script-error-log');
+      if (box) {
+        box.innerHTML += '<div style="padding:12px;margin-bottom:10px;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:8px;font-size:14px;">' +
+          '<strong>No se encuentra el archivo:</strong> <code>' + path + '</code>.</div>';
+      }
+    }
+  </script>
+  <script src="js/layout.js" onerror="reportMissingFile('js/layout.js')"></script>
+  <script src="modules/wts-data-engine.js" onerror="reportMissingFile('modules/wts-data-engine.js')"></script>
+  <script src="modules/wts-compare.js" onerror="reportMissingFile('modules/wts-compare.js')"></script>
+  <script src="modules/wts-finance.js" onerror="reportMissingFile('modules/wts-finance.js')"></script>
+  <script src="js/inventario-app.js" onerror="reportMissingFile('js/inventario-app.js')"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Module: WTSCompare (.wts-cmp-*) — Apple-Style Vertical Stacked Comparator
+   ========================================================================== */
+
+.wts-cmp-dock {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 1.5rem);
+  max-width: 760px;
+  background: rgba(29, 29, 31, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #FFFFFF;
+  border: 1px solid #3A3A3C;
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.wts-cmp-items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.wts-cmp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #2C2C2E;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  max-width: 190px;
+}
+
+.wts-cmp-chip span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wts-cmp-chip button {
+  background: transparent;
+  border: none;
+  color: #A1A1A6;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.wts-cmp-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.wts-cmp-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.wts-cmp-btn-primary {
+  background: var(--accent, #0071E3);
+  color: #FFFFFF;
+}
+
+.wts-cmp-btn-ghost {
+  background: transparent;
+  color: #D1D1D6;
+  border-color: #48484A;
+}
+
+/* Modal Comparativo estilo Apple Compare (Sin scroll horizontal) */
+.wts-cmp-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(29, 29, 31, 0.74);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.75rem 0.65rem 3.5rem;
+}
+
+.wts-cmp-modal {
+  background: #FFFFFF;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.wts-cmp-modal-head {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle, #E5E5EA);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.wts-cmp-sticky-cars {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem 1.15rem;
+  background: var(--bg-page, #F5F5F7);
+  border-bottom: 1px solid var(--border-subtle, #E5E5EA);
+}
+
+.wts-cmp-car-head {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle, #E5E5EA);
+  border-radius: 12px;
+  padding: 0.65rem;
+  text-align: center;
+  min-width: 0;
+}
+
+.wts-cmp-car-head img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.wts-cmp-car-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary, #1D1D1F);
+}
+
+.wts-cmp-specs-list {
+  padding: 1rem 1.15rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wts-cmp-spec-group {
+  border-bottom: 1px solid var(--border-subtle, #E5E5EA);
+  padding-bottom: 0.9rem;
+}
+
+.wts-cmp-spec-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.wts-cmp-spec-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #6E6E73);
+  margin-bottom: 0.5rem;
+}
+
+.wts-cmp-spec-values {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.wts-cmp-val-box {
+  background: var(--bg-page, #F5F5F7);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.65rem 0.55rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, #1D1D1F);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  word-break: break-word;
+}
+
+.wts-cmp-val-box.is-best {
+  background: var(--accent-soft, #E8F3FF);
+  border-color: var(--accent, #0071E3);
+  color: var(--accent, #0071E3);
+  font-weight: 700;
+}
+
+.wts-cmp-best-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--accent, #0071E3);
+  color: #FFFFFF;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+}

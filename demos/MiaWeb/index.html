@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeowHoodie — Estilo supremo para felinos exigentes</title>
+  
+  <!-- Tipografía elegante (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+/* ==========================================================================
+   0. VARIABLES Y CONFIGURACIÓN BASE (MOBILE-FIRST PEQUEÑO < 480px)
+   ========================================================================== */
+:root {
+  --bg-main: #fbfbfd;
+  --bg-card: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #0071e3;
+  --accent-hover: #0077ed;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+  
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-full: 9999px;
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 92%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  margin-bottom: 0.6rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.btn-lg {
+  padding: 1rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.promo-banner {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+}
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  padding: 0.7rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.brand-logo span {
+  color: var(--accent-color);
+}
+
+.nav-links {
+  display: none;
+}
+
+/* Hero & Product Showcase */
+.hero {
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.3rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 90%;
+  margin: 0 auto 1.5rem auto;
+}
+
+.price-tag {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.product-showcase {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: #1c1c1e;
+  transition: var(--transition);
+}
+
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+.hero-product-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+/* Indicadores de puntos del carrusel ubicados abajo de forma limpia */
+.slide-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(4px);
+  z-index: 5;
+}
+
+.slide-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slide-dot.active {
+  background: #ffffff;
+  width: 16px;
+  border-radius: 3px;
+}
+
+/* Selector de colores */
+.color-selector {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+
+.dot-black { background-color: #1c1c1e; }
+.dot-white { background-color: #ffffff; border: 2px solid #d1d1d6; }
+.dot-blue { background-color: #0071e3; }
+
+.color-dot:hover {
+  transform: scale(1.15);
+}
+
+.color-dot.active {
+  transform: scale(1.12);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.25);
+}
+
+/* Features */
+.features {
+  padding: 3.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.bento-content p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.emoji-lg {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+
+/* Reviews */
+.reviews {
+  padding: 2.5rem 0 4rem 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.review-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.review-stars {
+  color: #ffb800;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.avatar {
+  font-size: 1.6rem;
+  background: var(--bg-main);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.review-author h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.review-author span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* CTA & Formulario de Checkout Inline */
+.cta-section {
+  padding-bottom: 3.5rem;
+}
+
+.cta-box {
+  background: #1d1d1f;
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.cta-box h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-box p {
+  color: #86868b;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.order-form-wrapper {
+  margin-top: 1.5rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.inline-checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-input::placeholder {
+  color: #86868b;
+}
+
+.form-input:focus {
+  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+select.form-input {
+  appearance: none;
+  background-color: #2c2c2e;
+  cursor: pointer;
+}
+
+.form-success {
+  padding: 1.5rem 1rem;
+  background: rgba(0, 113, 227, 0.15);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.4s ease-in-out;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.success-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.form-success h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.form-success p {
+  color: #a1a1a6;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.guarantee {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: 0.75rem;
+  color: #86868b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+  border-top: 1px solid var(--border-light);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   BARRA DEMO SUPERIOR (INTEGRACIÓN CON WEBTOSTUDIO)
+   ========================================================================== */
+.webtostudio-demo-bar {
+  background: #111113;
+  color: #ececed;
+  font-size: 0.78rem;
+  padding: 0.45rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.webtostudio-demo-bar a {
+  color: #2997ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.webtostudio-demo-bar a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   1. ESCALÓN: MÓVILES GRANDES / PHABLETS (min-width: 480px)
+   ========================================================================== */
+@media (min-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+  
+  .container {
+    width: 88%;
+  }
+
+  .btn {
+    width: auto;
+    display: inline-flex;
+  }
+
+  .hero-actions .btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .product-image-container {
+    max-width: 360px;
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ==========================================================================
+   2. ESCALÓN: TABLETS VERTICAL (min-width: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .promo-banner {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .nav-inner {
+    padding: 0.9rem 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.8rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+
+  .hero {
+    padding: 5rem 0 3rem 0;
+  }
+
+  .hero-title {
+    font-size: 3.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+  }
+
+  .product-image-container {
+    max-width: 420px;
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .bento-wide {
+    grid-column: span 2;
+  }
+
+  .bento-card {
+    padding: 2.2rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.3rem;
+  }
+
+  .cta-box {
+    padding: 3.5rem 3rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .cta-box h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* ==========================================================================
+   3. ESCALÓN: TABLETS HORIZONTAL / LAPTOPS PEQUEÑOS (min-width: 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 980px;
+  }
+
+  .hero {
+    padding: 6rem 0 4rem 0;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+  }
+
+  .product-image-container {
+    max-width: 480px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    padding: 2rem;
+  }
+}
+
+/* ==========================================================================
+   4. ESCALÓN: ORDENADORES NORMALES Y PANORÁMICOS (min-width: 1200px)
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1080px;
+  }
+
+  .product-image-container:hover {
+    transform: translateY(-8px);
+  }
+
+  .bento-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE DEMO (Para volver a WebToStudio cuando esté subida) -->
+  <div class="webtostudio-demo-bar">
+    <span>💡 <strong>Demo WebToStudio</strong>: Landing Minimalista Monoproducto</span>
+    <a href="/index.html#proyectos">← Volver a WebToStudio</a>
+  </div>
+
+  <!-- BANNER PROMO -->
+  <div class="promo-banner">
+    Envío gratis en 24h. Si tu gato no la acepta, caja de cartón gratis.
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="nav-container">
+    <div class="nav-inner">
+      <a href="#" class="brand-logo">MeowHoodie<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#caracteristicas">Tecnología</a></li>
+        <li><a href="#opiniones">Reviews</a></li>
+      </ul>
+      <a href="#comprar" class="btn btn-sm btn-primary nav-cta">Comprar</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="container hero-content">
+        <span class="badge">Edición Limitada 2026</span>
+        <h1 class="hero-title">Elegancia pura.<br><span class="gradient-text">Actitud felina.</span></h1>
+        <p class="hero-subtitle">
+          Diseñada en Cupertino para gatos que miran por encima del hombro a los perros. 300% más de glamour.
+        </p>
+        <div class="hero-actions">
+          <a href="#comprar" class="btn btn-primary btn-lg">Conseguir mi MeowHoodie</a>
+          <a href="#caracteristicas" class="btn btn-secondary btn-lg">Ciencia</a>
+        </div>
+        <p class="price-tag">Desde 49€ — 3 pagos de 16,33€/mes</p>
+
+        <!-- PRODUCT SHOWCASE CON CARRUSEL DE 6 SLIDES (COLORES Y MEDIDAS EN BUCLE) -->
+        <div class="product-showcase">
+          <div class="product-wrapper">
+            <div class="product-image-container">
+              
+              <!-- Carrusel deslizante horizontal de 6 elementos -->
+              <div class="gallery-track" id="galleryTrack">
+                <!-- Slide 0: Negro -->
+                <div class="gallery-slide" data-index="0" data-color="black">
+                  <img src="assets/Negra.jpg" alt="Sudadera Negro Élite" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <!-- Slide 1: Medidas Negro -->
+                <div class="gallery-slide" data-index="1" data-color="black">
+                  <img src="assets/MedidasNegras.jpg" alt="Medidas Negro Élite" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <!-- Slide 2: Blanco -->
+                <div class="gallery-slide" data-index="2" data-color="white">
+                  <img src="assets/Blanca.jpg" alt="Sudadera Blanco Cupertino" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <!-- Slide 3: Medidas Blanco -->
+                <div class="gallery-slide" data-index="3" data-color="white">
+                  <img src="assets/MedidasBlancas.jpg" alt="Medidas Blanco Cupertino" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <!-- Slide 4: Azul -->
+                <div class="gallery-slide" data-index="4" data-color="blue">
+                  <img src="assets/Azul.jpg" alt="Sudadera Azul Pacífico" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <!-- Slide 5: Medidas Azul -->
+                <div class="gallery-slide" data-index="5" data-color="blue">
+                  <img src="assets/MedidasAzul.jpg" alt="Medidas Azul Pacífico" class="hero-product-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80';">
+                </div>
+              </div>
+
+              <!-- 6 Indicadores de puntos del carrusel (Ubicación limpia abajo) -->
+              <div class="slide-indicators" id="slideIndicators">
+                <span class="slide-dot active" data-index="0"></span>
+                <span class="slide-dot" data-index="1"></span>
+                <span class="slide-dot" data-index="2"></span>
+                <span class="slide-dot" data-index="3"></span>
+                <span class="slide-dot" data-index="4"></span>
+                <span class="slide-dot" data-index="5"></span>
+              </div>
+
+            </div>
+
+            <!-- Selector de colores (Circuitos) -->
+            <div class="color-selector" aria-label="Selecciona el color de la sudadera">
+              <button class="color-dot dot-black active" data-color="black" title="Negro Élite"></button>
+              <button class="color-dot dot-white" data-color="white" title="Blanco Cupertino"></button>
+              <button class="color-dot dot-blue" data-color="blue" title="Azul Pacífico"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS (BENTO GRID) -->
+    <section id="caracteristicas" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Ingeniería de vanguardia.<br>Para arañar el éxito.</h2>
+          <p>Cada costura está optimizada para que conserve su superioridad moral.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-wide">
+            <div class="bento-content">
+              <h3>Algodón Orgánico de 400g</h3>
+              <p>Suavidad tan extrema que dejará de tirar las cosas de la mesa solo para tocar la capucha.</p>
+            </div>
+            <div class="bento-visual emoji-lg">☁️</div>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-content">
+              <h3>Orificio Anti-Cintas</h3>
+              <p>Sombra para las orejas y paso libre para el arnés sin perder estilo.</p>
+            </div>
+            <div class="bento-visual emoji-lg">🎧</div>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-content">
+              <h3>Bolsillo "Anti-Drama"</h3>
+              <p>Espacio secreto integrado para guardar catnip o chuches tácticas.</p>
+            </div>
+            <div class="bento-visual emoji-lg">🌿</div>
+          </div>
+
+          <div class="bento-card bento-wide">
+            <div class="bento-content">
+              <h3>Ajuste Ergonómico 'Zero-Stray'</h3>
+              <p>Probado en más de 200 siestas consecutivas. Cero fricción, 100% comodidad.</p>
+            </div>
+            <div class="bento-visual emoji-lg">👑</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section id="opiniones" class="reviews">
+      <div class="container">
+        <div class="section-header">
+          <h2>Aprobada por la élite felina</h2>
+          <p>Reseñas reales traducidas de maullidos de alta alcurnia.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Esta capucha me da un aire de CEO que no puedo ignorar."</p>
+            <div class="review-author">
+              <div class="avatar">🐈‍⬛</div>
+              <div>
+                <h4>Don Bigotes</h4>
+                <span>Influencer Felino</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Me permite juzgar a las visitas con el doble de clase y estilo."</p>
+            <div class="review-author">
+              <div class="avatar">🐱</div>
+              <div>
+                <h4>Princesa Mishi</h4>
+                <span>Crítica de Moda</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Le doy 4 estrellas a la sudadera y 5 a la caja de cartón en la que vino."</p>
+            <div class="review-author">
+              <div class="avatar">🐈</div>
+              <div>
+                <h4>Gato Garfield</h4>
+                <span>Analista Senior</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION (CON FORMULARIO DE COMPRA INLINE) -->
+    <section id="comprar" class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Eleva la presencia de tu gato hoy.</h2>
+          <p>Stock limitado. Los humanos con estilo ya están pidiendo la suya.</p>
+          
+          <div class="cta-actions" id="ctaInitialBtn">
+            <button class="btn btn-primary btn-lg" id="openFormBtn">Pedir ahora — 49€</button>
+          </div>
+
+          <div class="order-form-wrapper" id="orderFormWrapper" style="display: none;">
+            <form id="checkoutForm" class="inline-checkout-form">
+              <div class="form-group">
+                <input type="email" id="buyerEmail" placeholder="Tu correo electrónico (para el tracking)" required class="form-input">
+              </div>
+
+              <div class="form-group">
+                <select id="buyerColor" class="form-input" required>
+                  <option value="black" selected>Color: Negro Élite</option>
+                  <option value="white">Color: Blanco Cupertino</option>
+                  <option value="blue">Color: Azul Pacífico</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <select id="buyerSize" class="form-input" required>
+                  <option value="S">Talla: S (Gato pequeño / Pensativo)</option>
+                  <option value="M" selected>Talla: M (Gato CEO / Estándar)</option>
+                  <option value="L">Talla: L (Gato Garfield / Granítico)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Confirmar Pedido (49€)</button>
+            </form>
+            
+            <div id="formSuccess" class="form-success" style="display: none;">
+              <span class="success-emoji">🎉</span>
+              <h3>¡Pedido registrado con éxito!</h3>
+              <p id="successMessageDetails">Revisa tu correo. Tu gato te mira con un 10% menos de desprecio.</p>
+            </div>
+          </div>
+
+          <span class="guarantee">🛡️ Garantía de 30 días o caja de cartón extra</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2026 MeowHoodie Inc. Diseñado para gatos con actitud.</p>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const colorDots = document.querySelectorAll('.color-dot');
+  const galleryTrack = document.getElementById('galleryTrack');
+  const slides = document.querySelectorAll('.gallery-slide');
+  const slideDots = document.querySelectorAll('.slide-dot');
+
+  // Elementos del formulario de compra inline
+  const openFormBtn = document.getElementById('openFormBtn');
+  const ctaInitialBtn = document.getElementById('ctaInitialBtn');
+  const orderFormWrapper = document.getElementById('orderFormWrapper');
+  const checkoutForm = document.getElementById('checkoutForm');
+  const formSuccess = document.getElementById('formSuccess');
+  const buyerColorSelect = document.getElementById('buyerColor');
+  const successMessageDetails = document.getElementById('successMessageDetails');
+
+  // Mapeo de índices de inicio para cada color en el carrusel de 6 slides
+  const colorStartIndex = {
+    black: 0,
+    white: 2,
+    blue: 4
+  };
+
+  const colorNames = {
+    black: 'Negro Élite',
+    white: 'Blanco Cupertino',
+    blue: 'Azul Pacífico'
+  };
+
+  let isManualSelecting = false;
+
+  // 1. Selector de colores interactivo
+  if (colorDots.length > 0 && galleryTrack) {
+    colorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        colorDots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+
+        const selectedColor = dot.getAttribute('data-color');
+        const targetIndex = colorStartIndex[selectedColor];
+
+        if (buyerColorSelect && buyerColorSelect.value !== selectedColor) {
+          buyerColorSelect.value = selectedColor;
+        }
+
+        const slideWidth = galleryTrack.clientWidth;
+        isManualSelecting = true;
+        galleryTrack.scrollTo({ left: slideWidth * targetIndex, behavior: 'smooth' });
+
+        setTimeout(() => {
+          isManualSelecting = false;
+        }, 350);
+      });
+    });
+  }
+
+  // Sincronización del select con la galería
+  if (buyerColorSelect) {
+    buyerColorSelect.addEventListener('change', (e) => {
+      const selectedColor = e.target.value;
+      const targetDot = document.querySelector(`.color-dot[data-color="${selectedColor}"]`);
+      if (targetDot) {
+        targetDot.click();
+      }
+    });
+  }
+
+  // 2. Control del carrusel, gestos táctiles e indicadores
+  if (galleryTrack && slideDots.length > 0) {
+    let touchStartX = 0;
+
+    galleryTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    galleryTrack.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const scrollLeft = galleryTrack.scrollLeft;
+      const slideWidth = galleryTrack.clientWidth;
+      const maxScroll = galleryTrack.scrollWidth - slideWidth;
+
+      // Loop circular táctil
+      if (scrollLeft >= maxScroll - 15 && touchEndX < touchStartX - 40) {
+        galleryTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (scrollLeft <= 15 && touchEndX > touchStartX + 40) {
+        galleryTrack.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      }
+    }, { passive: true });
+
+    let scrollTimeout;
+    galleryTrack.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = galleryTrack.scrollLeft;
+        const slideWidth = galleryTrack.clientWidth;
+        const currentIndex = Math.min(
+          slides.length - 1,
+          Math.max(0, Math.round(scrollLeft / slideWidth))
+        );
+
+        slideDots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+
+        if (!isManualSelecting) {
+          const currentSlide = slides[currentIndex];
+          if (currentSlide) {
+            const slideColor = currentSlide.getAttribute('data-color');
+            colorDots.forEach(dot => {
+              dot.classList.toggle('active', dot.getAttribute('data-color') === slideColor);
+            });
+
+            if (buyerColorSelect && buyerColorSelect.value !== slideColor) {
+              buyerColorSelect.value = slideColor;
+            }
+          }
+        }
+      }, 40);
+    }, { passive: true });
+
+    slideDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        const slideWidth = galleryTrack.clientWidth;
+        galleryTrack.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // 3. Checkout inline
+  if (openFormBtn && ctaInitialBtn && orderFormWrapper) {
+    openFormBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      ctaInitialBtn.style.display = 'none';
+      orderFormWrapper.style.display = 'block';
+      const emailField = document.getElementById('buyerEmail');
+      if (emailField) emailField.focus();
+    });
+  }
+
+  if (checkoutForm && formSuccess) {
+    checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('buyerEmail').value.trim();
+      const selectedSize = document.getElementById('buyerSize').value;
+      const selectedColorKey = buyerColorSelect ? buyerColorSelect.value : 'black';
+      const colorName = colorNames[selectedColorKey] || selectedColorKey;
+
+      if (emailInput !== '') {
+        checkoutForm.style.display = 'none';
+
+        if (successMessageDetails) {
+          successMessageDetails.textContent = `Hemos registrado el pedido de tu MeowHoodie (${colorName}, Talla ${selectedSize}) para el correo ${emailInput}. Recibirás el número de seguimiento en breve.`;
+        }
+
+        formSuccess.style.display = 'block';
+      }
+    });
+  }
+});
+  </script>
+</body>
+</html>

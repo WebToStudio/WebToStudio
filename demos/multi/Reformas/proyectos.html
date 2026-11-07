@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio de obras ejecutadas por Norte: comparador interactivo Antes y Después y galería de reformas integrales, cocinas y baños." />
+  <title>Proyectos y Obras Ejecutadas | NORTE. Reformas e Interiorismo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <!-- Cabecera Interior -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Portafolio Seleccionado</span>
+        <h1>Obras ejecutadas y transformaciones reales</h1>
+        <p>Explora el rigor constructivo en cada acabado y desliza la comparativa para comprobar la evolución arquitectónica de nuestros proyectos.</p>
+      </div>
+    </section>
+
+    <!-- Módulo Comparador Interactivo Antes y Después -->
+    <section class="section section--stone">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow eyebrow--dark">Transformación Real</span>
+          <h2>Comparador Interactivo: Antes y Después</h2>
+          <p>Desliza el control central para inspeccionar el estado previo en bruto frente al resultado final entregado llave en mano (Vivienda Castellana, 165 m²).</p>
+        </div>
+
+        <div class="ba-wrapper">
+          <div class="ba-container" id="ba-comparator">
+            <!-- Imagen DESPUÉS (fondo completo) -->
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85"
+              alt="Salón completamente reformado y amueblado - Después"
+              class="ba-image ba-image--after"
+            />
+            <span class="ba-badge ba-badge--after">DESPUÉS</span>
+
+            <!-- Imagen ANTES (recortada dinámicamente) -->
+            <div class="ba-before-layer" id="ba-before-layer">
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85"
+                alt="Estado original antes de la reforma - Antes"
+                class="ba-image ba-image--before"
+              />
+              <span class="ba-badge ba-badge--before">ANTES</span>
+            </div>
+
+            <!-- Línea divisoria y tirador visual -->
+            <div class="ba-divider" id="ba-divider" aria-hidden="true">
+              <div class="ba-handle">
+                <span>⇄</span>
+              </div>
+            </div>
+
+            <!-- Control deslizante accesible -->
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              aria-label="Deslizador comparador Antes y Después"
+              class="ba-range"
+              id="ba-range"
+            />
+          </div>
+          <div class="ba-caption">
+            <span><strong>Proyecto:</strong> Rehabilitación Integral Paseo de la Castellana</span>
+            <span><strong>Superficie:</strong> 165 m²</span>
+            <span><strong>Plazo de ejecución:</strong> 14 semanas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería Filtrable de Proyectos -->
+    <section class="section">
+      <div class="container">
+        <div class="gallery-toolbar">
+          <div>
+            <span class="eyebrow eyebrow--dark">Archivo de Obras</span>
+            <h2>Proyectos recientes</h2>
+          </div>
+
+          <div class="filter-group" role="group" aria-label="Filtrar proyectos por categoría">
+            <button type="button" class="filter-btn active" data-filter="todos">Todos</button>
+            <button type="button" class="filter-btn" data-filter="integrales">Integrales</button>
+            <button type="button" class="filter-btn" data-filter="cocinas">Cocinas</button>
+            <button type="button" class="filter-btn" data-filter="banos">Baños</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Proyecto 1 -->
+          <article class="project-card" data-category="integrales">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+                alt="Reforma Integral Ático Velázquez"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Integral</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Ático Dúplex Velázquez</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Madrid (Salamanca)</li>
+                <li><strong>Superficie:</strong> 180 m²</li>
+                <li><strong>Duración:</strong> 16 semanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project-card" data-category="cocinas">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
+                alt="Cocina con isla en piedra natural y roble"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Cocina</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Cocina Abierta Residencia Turó</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Barcelona (Turó Park)</li>
+                <li><strong>Superficie:</strong> 32 m²</li>
+                <li><strong>Duración:</strong> 5 semanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project-card" data-category="banos">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=80"
+                alt="Baño principal estilo spa en piedra caliza"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Baño</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Suite Baño &amp; Spa Alameda</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Valencia (Pla del Remei)</li>
+                <li><strong>Superficie:</strong> 16 m²</li>
+                <li><strong>Duración:</strong> 3 semanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Proyecto 4 -->
+          <article class="project-card" data-category="integrales">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+                alt="Vivienda unifamiliar reformada en Neguri"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Integral</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Vivienda Unifamiliar Neguri</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Getxo, Bizkaia</li>
+                <li><strong>Superficie:</strong> 240 m²</li>
+                <li><strong>Duración:</strong> 20 semanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Proyecto 5 -->
+          <article class="project-card" data-category="cocinas">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+                alt="Cocina integrada en salón minimalista"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Cocina</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Cocina Monolítica El Viso</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Madrid (Chamartín)</li>
+                <li><strong>Superficie:</strong> 28 m²</li>
+                <li><strong>Duración:</strong> 4 semanas</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Proyecto 6 -->
+          <article class="project-card" data-category="banos">
+            <div class="project-card__media">
+              <img
+                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=80"
+                alt="Baño contemporáneo con ducha a ras de suelo"
+                loading="lazy"
+              />
+              <span class="project-card__cat">Baño</span>
+            </div>
+            <div class="project-card__body">
+              <h3>Baño Principal Pedralbes</h3>
+              <ul class="project-meta">
+                <li><strong>Ubicación:</strong> Barcelona (Pedralbes)</li>
+                <li><strong>Superficie:</strong> 14 m²</li>
+                <li><strong>Duración:</strong> 3 semanas</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

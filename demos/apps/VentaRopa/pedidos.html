@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Localización y Seguimiento de Pedidos — ThreadLab</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-user-club.css" />
+  <link rel="stylesheet" href="modules/wts-wishlist.css" />
+  <link rel="stylesheet" href="modules/wts-shop-cart.css" />
+  <style>
+    .tl-order-card {
+      background: var(--bg-surface);
+      border: 2.5px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .tl-order-card.is-highlighted {
+      border-color: #18181B;
+      box-shadow: 6px 6px 0px var(--accent-acid);
+      background: #F0FDF4;
+    }
+
+    .tl-order-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px dashed #D4D4D8;
+    }
+
+    .tl-live-route-box {
+      background: #18181B;
+      color: #FAFAFA;
+      border: 2px solid #18181B;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .tl-progress-steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.45rem;
+    }
+
+    @media (min-width: 680px) {
+      .tl-progress-steps {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .tl-step-box {
+      padding: 0.55rem 0.45rem;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-subtle);
+      text-align: center;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .tl-step-box.is-done {
+      background: var(--accent-acid);
+    }
+
+    .tl-step-box.is-current {
+      background: var(--accent-yellow);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .tl-order-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tl-order-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div id="tl-header-mount"></div>
+
+  <main class="tl-section" style="padding-top:2rem;">
+    <div class="tl-container">
+      <div class="tl-section-head">
+        <div>
+          <span class="tl-tag tl-tag--acid" style="margin-bottom:0.45rem;">LOCALIZACIÓN EN TIEMPO REAL</span>
+          <h1 class="tl-section-title">Localizar tu Pedido</h1>
+        </div>
+
+        <form id="order-search-form" style="display:flex; gap:0.5rem; flex-wrap:wrap; width:100%; max-width:360px;">
+          <input
+            type="text"
+            id="order-tracking-input"
+            class="tl-search-input"
+            style="flex:1; min-width:0; border-radius:10px; padding-right:0.85rem;"
+            placeholder="Código TL-XXXX-XXXX..."
+          />
+          <button type="submit" class="tl-btn tl-btn--sm tl-btn--dark">Localizar</button>
+          <button type="button" id="order-clear-btn" class="tl-btn tl-btn--sm" style="display:none;">Ver todos</button>
+        </form>
+      </div>
+
+      <div id="orders-list-mount" style="display:flex; flex-direction:column; gap:1.35rem;"></div>
+    </div>
+  </main>
+
+  <div id="tl-footer-mount"></div>
+
+  <script src="modules/wts-user-club.js"></script>
+  <script src="modules/wts-wishlist.js"></script>
+  <script src="modules/wts-shop-cart.js"></script>
+  <script src="js/threadlab-app.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      let highlightedTrackingId = '';
+
+      function getInitialTrackingParam() {
+        const params = new URLSearchParams(window.location.search);
+        return (params.get('track') || '').trim().toUpperCase();
+      }
+
+      function renderOrders(filterCode = '') {
+        const mount = document.getElementById('orders-list-mount');
+        const clearBtn = document.getElementById('order-clear-btn');
+        if (!mount || !window.WTS || !window.WTS.ShopCart || !window.ThreadLabApp) return;
+
+        let orders = window.WTS.ShopCart.getOrders();
+        const query = filterCode.trim().toUpperCase();
+
+        if (clearBtn) {
+          clearBtn.style.display = query ? 'inline-flex' : 'none';
+        }
+
+        if (query) {
+          orders = orders.filter((o) => o.id.toUpperCase().includes(query));
+        }
+
+        if (orders.length === 0) {
+          mount.innerHTML = `
+            <div style="background:#FFFFFF; border:2.5px dashed #18181B; border-radius:18px; padding:2.5rem 1.25rem; text-align:center;">
+              <div style="font-size:2.4rem; margin-bottom:0.5rem;">📦</div>
+              <h2 style="font-family:var(--font-display); font-size:1.35rem; margin-bottom:0.4rem;">
+                ${query ? `No encontramos el pedido "${query}"` : 'Aún no tienes pedidos registrados'}
+              </h2>
+              <p style="font-size:0.88rem; color:var(--ink-secondary); max-width:42ch; margin:0 auto 1.25rem;">
+                Añade cualquier prenda de la colección o diseña una en el Print Studio y completa tu compra para generar tu código de localización.
+              </p>
+              <div style="display:flex; justify-content:center; gap:0.75rem; flex-wrap:wrap;">
+                <a href="catalogo.html" class="tl-btn tl-btn--primary">Ir a la Colección →</a>
+                <a href="customizer.html" class="tl-btn tl-btn--blue">Diseñar en Print Studio</a>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        mount.innerHTML = orders.map((order) => {
+          const isTarget = highlightedTrackingId && order.id.toUpperCase() === highlightedTrackingId;
+          const destText = order.shippingTo
+            ? `${order.shippingTo.address}, ${order.shippingTo.postalCode} ${order.shippingTo.city}`
+            : 'Entrega estándar a domicilio · España Península';
+
+          return `
+            <article class="tl-order-card ${isTarget ? 'is-highlighted' : ''}" id="order-${order.id}">
+              <div class="tl-order-header">
+                <div>
+                  <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                    <span class="tl-tag tl-tag--yellow" style="font-size:0.86rem;">${order.id}</span>
+                    <span class="tl-tag tl-tag--acid">✓ ${order.status}</span>
+                    ${isTarget ? '<span class="tl-tag tl-tag--blue">📍 LOCALIZADO</span>' : ''}
+                  </div>
+                  <div style="font-size:0.78rem; color:var(--ink-secondary); font-weight:600; margin-top:0.35rem;">
+                    Realizado el ${order.date} ${order.couponUsed ? `· Cupón: ${order.couponUsed}` : ''}
+                  </div>
+                </div>
+
+                <div>
+                  <div style="font-size:0.72rem; color:var(--ink-secondary); font-weight:700;">TOTAL PAGADO</div>
+                  <div style="font-family:var(--font-display); font-size:1.35rem; font-weight:800;">
+                    ${window.ThreadLabApp.formatPrice(order.totals.grandTotal)}
+                  </div>
+                </div>
+              </div>
+
+              <div class="tl-live-route-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem;">
+                  <span style="font-size:0.74rem; font-weight:800; color:#FACC15;">🚚 UBICACIÓN ACTUAL DEL ENVÍO</span>
+                  <span style="font-size:0.72rem; color:#10B981; font-weight:700;">● En tránsito / Taller Central</span>
+                </div>
+                <div style="font-size:0.86rem; font-weight:700;">
+                  Hub Logístico ThreadLab Madrid → Destino: ${destText}
+                </div>
+                <div style="font-size:0.76rem; color:#D4D4D8;">
+                  Entrega estimada: 24/48h laborables · Transporte Exprés Asegurado
+                </div>
+              </div>
+
+              <div class="tl-progress-steps" aria-label="Estado del pedido">
+                <div class="tl-step-box is-done">1. Pago Verificado</div>
+                <div class="tl-step-box is-current">2. Preparación Lab</div>
+                <div class="tl-step-box">3. En Reparto</div>
+                <div class="tl-step-box">4. Entregado</div>
+              </div>
+
+              <div class="tl-order-lines">
+                ${order.items.map((item) => `
+                  <div class="tl-order-line">
+                    <div>
+                      <span>${item.qty}× ${item.name}</span>
+                      <span class="tl-tag" style="margin-left:0.35rem;">Talla ${item.size}</span>
+                      ${item.isCustom ? `<span class="tl-tag tl-tag--blue" style="margin-left:0.3rem;">${item.customMeta?.placement || 'Custom'}</span>` : ''}
+                    </div>
+                    <span>${window.ThreadLabApp.formatPrice(item.unitPrice * item.qty)}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('order-tracking-input');
+        const initialTrack = getInitialTrackingParam();
+
+        if (initialTrack) {
+          highlightedTrackingId = initialTrack;
+          if (input) input.value = initialTrack;
+        }
+
+        renderOrders(initialTrack);
+
+        const form = document.getElementById('order-search-form');
+        if (form && input) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            highlightedTrackingId = input.value.trim().toUpperCase();
+            renderOrders(input.value);
+          });
+          input.addEventListener('input', () => {
+            highlightedTrackingId = input.value.trim().toUpperCase();
+            renderOrders(input.value);
+          });
+        }
+
+        document.getElementById('order-clear-btn')?.addEventListener('click', () => {
+          highlightedTrackingId = '';
+          if (input) input.value = '';
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, '', 'pedidos.html');
+          }
+          renderOrders('');
+        });
+      });
+
+      document.addEventListener('wts:ready', () => renderOrders(getInitialTrackingParam()));
+      document.addEventListener('wts:order-created', () => renderOrders(getInitialTrackingParam()));
+    })();
+  </script>
+</body>
+</html>

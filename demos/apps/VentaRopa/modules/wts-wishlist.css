@@ -1,0 +1,102 @@
+/* ==========================================================================
+   MÓDULO AGNÓSTICO: LISTA DE DESEADOS (.wts-wishlist)
+   ========================================================================== */
+
+.wts-wish-btn {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  border: 2px solid var(--border-color, #18181B);
+  box-shadow: 2px 2px 0px var(--border-color, #18181B);
+  color: #18181B;
+  font-size: 1.15rem;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), background 0.15s ease, color 0.15s ease;
+}
+
+.wts-wish-btn:hover {
+  transform: scale(1.1);
+}
+
+.wts-wish-btn.is-active {
+  background: var(--accent-coral, #F43F5E);
+  color: #FFFFFF;
+  animation: wtsHeartPop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes wtsHeartPop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.32); }
+  100% { transform: scale(1); }
+}
+
+.wts-wish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.wts-wish-card {
+  background: var(--bg-surface, #FFFFFF);
+  border: 2.5px solid var(--border-color, #18181B);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0px var(--border-color, #18181B);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.wts-wish-card-img {
+  position: relative;
+  height: 220px;
+  background: #F4F4F5;
+  border-bottom: 2px solid var(--border-color, #18181B);
+}
+
+.wts-wish-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wts-wish-remove {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #18181B;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
+}
+
+.wts-wish-remove:hover {
+  background: #F43F5E;
+  color: #FFFFFF;
+}
+
+.wts-wish-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.wts-wish-empty {
+  background: var(--bg-surface, #FFFFFF);
+  border: 2.5px dashed var(--border-color, #18181B);
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}

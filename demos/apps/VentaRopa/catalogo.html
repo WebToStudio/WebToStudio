@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colección &amp; Filtros — ThreadLab Streetwear</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-user-club.css" />
+  <link rel="stylesheet" href="modules/wts-wishlist.css" />
+  <link rel="stylesheet" href="modules/wts-shop-cart.css" />
+</head>
+<body>
+  <div id="tl-header-mount"></div>
+
+  <main class="tl-section" style="padding-top:2rem;">
+    <div class="tl-container">
+      <div class="tl-section-head">
+        <div>
+          <span class="tl-tag tl-tag--blue" style="margin-bottom:0.45rem;">CATÁLOGO COMPLETO · STOCK REAL</span>
+          <h1 class="tl-section-title">Colección ThreadLab</h1>
+        </div>
+
+        <div id="catalog-vip-status" style="font-size:0.84rem; font-weight:700;"></div>
+      </div>
+
+      <!-- Panel Completo de Filtros de Tienda -->
+      <div class="tl-filter-panel" aria-label="Filtros de colección">
+        <!-- Fila 1: Tipo de Ropa -->
+        <div class="tl-filter-top-row">
+          <div style="font-size:0.74rem; font-weight:800; text-transform:uppercase; letter-spacing:0.03em;">
+            1. Tipo de Ropa
+          </div>
+          <div class="tl-chip-group" id="filter-type-chips">
+            <button type="button" class="tl-filter-chip is-active" data-filter-type="ALL">Todo (16)</button>
+            <button type="button" class="tl-filter-chip" data-filter-type="Camisetas">👕 Camisetas</button>
+            <button type="button" class="tl-filter-chip" data-filter-type="Sudaderas">🧥 Sudaderas</button>
+            <button type="button" class="tl-filter-chip" data-filter-type="Chaquetas">🦺 Chaquetas</button>
+            <button type="button" class="tl-filter-chip" data-filter-type="Pantalones">👖 Pantalones</button>
+            <button type="button" class="tl-filter-chip" data-filter-type="Accesorios">🧢 Accesorios</button>
+          </div>
+        </div>
+
+        <!-- Fila 2: Precio, Corte, Talla, Color y Ordenación -->
+        <div class="tl-filter-grid">
+          <label class="tl-filter-label">
+            <span>2. Rango de Precio</span>
+            <select id="filter-price" class="tl-select">
+              <option value="ALL">Cualquier precio</option>
+              <option value="0-40">Hasta 40,00 €</option>
+              <option value="40-70">De 40,00 € a 70,00 €</option>
+              <option value="70-999">Más de 70,00 €</option>
+            </select>
+          </label>
+
+          <label class="tl-filter-label">
+            <span>3. Tipo de Corte</span>
+            <select id="filter-fit" class="tl-select">
+              <option value="ALL">Todos los cortes</option>
+              <option value="Oversize">Oversize</option>
+              <option value="Boxy Fit">Boxy Fit</option>
+              <option value="Relaxed">Relaxed Fit</option>
+              <option value="Regular">Regular / Única</option>
+            </select>
+          </label>
+
+          <label class="tl-filter-label">
+            <span>4. Talla con Stock</span>
+            <select id="filter-size" class="tl-select">
+              <option value="ALL">Todas las tallas</option>
+              <option value="S">Talla S disponible</option>
+              <option value="M">Talla M disponible</option>
+              <option value="L">Talla L disponible</option>
+              <option value="XL">Talla XL disponible</option>
+            </select>
+          </label>
+
+          <label class="tl-filter-label">
+            <span>5. Ordenar por</span>
+            <select id="filter-sort" class="tl-select">
+              <option value="featured">Destacados</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+              <option value="stock-desc">Mayor stock disponible</option>
+            </select>
+          </label>
+
+          <div class="tl-filter-label">
+            <span>6. Color</span>
+            <select id="filter-color" class="tl-select">
+              <option value="ALL">Todos los colores</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fila 3: Píldoras visuales rápidas de color -->
+        <div>
+          <div id="filter-color-swatches" class="tl-color-filter-pills"></div>
+        </div>
+      </div>
+
+      <!-- Barra de conteo y reset -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1.25rem;">
+        <div id="catalog-count-label" style="font-size:0.88rem; font-weight:700; color:var(--ink-secondary);"></div>
+        <button type="button" id="catalog-reset-btn" class="tl-btn tl-btn--sm" style="display:none;">
+          ✕ Limpiar todos los filtros
+        </button>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="catalog-products-grid" class="tl-products-grid"></div>
+    </div>
+  </main>
+
+  <div id="tl-footer-mount"></div>
+
+  <script src="modules/wts-user-club.js"></script>
+  <script src="modules/wts-wishlist.js"></script>
+  <script src="modules/wts-shop-cart.js"></script>
+  <script src="js/threadlab-app.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const filterState = {
+        type: 'ALL',
+        price: 'ALL',
+        fit: 'ALL',
+        size: 'ALL',
+        color: 'ALL',
+        sort: 'featured',
+        search: ''
+      };
+
+      function applyUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('type');
+        const fit = params.get('fit');
+        const size = params.get('size');
+        const search = params.get('search');
+
+        if (type) {
+          filterState.type = type;
+          document.querySelectorAll('[data-filter-type]').forEach((chip) => {
+            chip.classList.toggle('is-active', chip.dataset.filterType.toLowerCase() === type.toLowerCase());
+          });
+        }
+        if (fit) {
+          filterState.fit = fit;
+          const fitSel = document.getElementById('filter-fit');
+          if (fitSel) fitSel.value = fit;
+        }
+        if (size && ['S', 'M', 'L', 'XL'].includes(size)) {
+          filterState.size = size;
+          const sizeSel = document.getElementById('filter-size');
+          if (sizeSel) sizeSel.value = size;
+        }
+        if (search) {
+          filterState.search = search.toLowerCase();
+        }
+      }
+
+      function populateColorControls() {
+        const colorSelect = document.getElementById('filter-color');
+        const swatchWrap = document.getElementById('filter-color-swatches');
+        if (!window.ThreadLabApp) return;
+
+        const catalog = window.ThreadLabApp.getCatalog();
+        const colorMap = new Map();
+        catalog.forEach((p) => {
+          if (!colorMap.has(p.colorName)) {
+            colorMap.set(p.colorName, p.colorHex);
+          }
+        });
+
+        if (colorSelect) {
+          colorSelect.innerHTML = `<option value="ALL">Todos los colores</option>` +
+            Array.from(colorMap.keys()).map((c) => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        if (swatchWrap) {
+          swatchWrap.innerHTML = Array.from(colorMap.entries()).map(([name, hex]) => `
+            <button type="button" class="tl-color-chip" data-color-pill="${name}">
+              <span class="tl-color-chip-dot" style="background:${hex};"></span>
+              <span>${name}</span>
+            </button>
+          `).join('');
+
+          swatchWrap.querySelectorAll('[data-color-pill]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              const chosen = btn.dataset.colorPill;
+              filterState.color = filterState.color === chosen ? 'ALL' : chosen;
+              if (colorSelect) colorSelect.value = filterState.color;
+              syncColorPills();
+              renderCatalog();
+            });
+          });
+        }
+      }
+
+      function syncColorPills() {
+        document.querySelectorAll('[data-color-pill]').forEach((btn) => {
+          btn.classList.toggle('is-active', btn.dataset.colorPill === filterState.color);
+        });
+      }
+
+      function renderCatalog() {
+        const grid = document.getElementById('catalog-products-grid');
+        const countLabel = document.getElementById('catalog-count-label');
+        const resetBtn = document.getElementById('catalog-reset-btn');
+        const vipStatus = document.getElementById('catalog-vip-status');
+
+        if (!grid || !window.ThreadLabApp || !window.WTS) return;
+
+        const isVip = window.WTS.UserClub.isVip();
+
+        if (vipStatus) {
+          vipStatus.innerHTML = isVip
+            ? `<span class="tl-tag tl-tag--acid">★ CUENTA VIP ACTIVA: -15% EN TODO</span>`
+            : `<button type="button" id="catalog-login-trigger" class="tl-tag tl-tag--yellow" style="cursor:pointer;">👤 Inicia sesión para -15% VIP →</button>`;
+
+          document.getElementById('catalog-login-trigger')?.addEventListener('click', () => {
+            window.WTS.UserClub.openLoginModal();
+          });
+        }
+
+        let items = window.ThreadLabApp.getCatalog().filter((p) => !p.vipOnly || isVip);
+
+        // 1. Tipo de ropa
+        if (filterState.type !== 'ALL') {
+          items = items.filter((p) => p.type.toLowerCase() === filterState.type.toLowerCase());
+        }
+
+        // 2. Rango de precio (evaluado sobre el precio efectivo del usuario)
+        if (filterState.price !== 'ALL') {
+          const [minP, maxP] = filterState.price.split('-').map(Number);
+          items = items.filter((p) => {
+            const eff = window.ThreadLabApp.getEffectivePrice(p.price);
+            return eff >= minP && eff <= maxP;
+          });
+        }
+
+        // 3. Tipo de corte
+        if (filterState.fit !== 'ALL') {
+          items = items.filter((p) => p.fit.toLowerCase() === filterState.fit.toLowerCase());
+        }
+
+        // 4. Talla con stock real
+        if (filterState.size !== 'ALL') {
+          items = items.filter((p) => (p.stock[filterState.size] || 0) > 0);
+        }
+
+        // 5. Color
+        if (filterState.color !== 'ALL') {
+          items = items.filter((p) => p.colorName === filterState.color);
+        }
+
+        // Búsqueda textual
+        if (filterState.search) {
+          items = items.filter((p) =>
+            p.name.toLowerCase().includes(filterState.search) ||
+            p.type.toLowerCase().includes(filterState.search) ||
+            p.fit.toLowerCase().includes(filterState.search) ||
+            p.colorName.toLowerCase().includes(filterState.search)
+          );
+        }
+
+        // Ordenación
+        if (filterState.sort === 'price-asc') {
+          items.sort((a, b) => a.price - b.price);
+        } else if (filterState.sort === 'price-desc') {
+          items.sort((a, b) => b.price - a.price);
+        } else if (filterState.sort === 'stock-desc') {
+          const sumStock = (p) => Object.values(p.stock).reduce((a, b) => a + b, 0);
+          items.sort((a, b) => sumStock(b) - sumStock(a));
+        }
+
+        const hasActiveFilters =
+          filterState.type !== 'ALL' ||
+          filterState.price !== 'ALL' ||
+          filterState.fit !== 'ALL' ||
+          filterState.size !== 'ALL' ||
+          filterState.color !== 'ALL' ||
+          filterState.search !== '';
+
+        if (resetBtn) resetBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
+        if (countLabel) {
+          countLabel.textContent = `Mostrando ${items.length} ${items.length === 1 ? 'prenda' : 'prendas'}${filterState.search ? ` para "${filterState.search}"` : ''}`;
+        }
+
+        if (items.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column:1 / -1; background:#FFF; border:2.5px dashed #18181B; border-radius:16px; padding:2.5rem 1.25rem; text-align:center;">
+              <h3 style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:0.4rem;">
+                No hay prendas con esos filtros combinados
+              </h3>
+              <p style="font-size:0.88rem; color:var(--ink-secondary); margin-bottom:1rem;">
+                Prueba a ampliar el rango de precio, cambiar el color o limpiar los filtros.
+              </p>
+              <button type="button" id="empty-reset-btn" class="tl-btn tl-btn--sm tl-btn--primary">Ver Toda la Colección</button>
+            </div>
+          `;
+          document.getElementById('empty-reset-btn')?.addEventListener('click', resetAllFilters);
+          return;
+        }
+
+        grid.innerHTML = items.map((p) => window.ThreadLabApp.renderProductCard(p)).join('');
+        window.WTS.Wishlist.syncAllButtons();
+      }
+
+      function resetAllFilters() {
+        filterState.type = 'ALL';
+        filterState.price = 'ALL';
+        filterState.fit = 'ALL';
+        filterState.size = 'ALL';
+        filterState.color = 'ALL';
+        filterState.sort = 'featured';
+        filterState.search = '';
+
+        document.querySelectorAll('[data-filter-type]').forEach((c) => {
+          c.classList.toggle('is-active', c.dataset.filterType === 'ALL');
+        });
+        document.getElementById('filter-price').value = 'ALL';
+        document.getElementById('filter-fit').value = 'ALL';
+        document.getElementById('filter-size').value = 'ALL';
+        document.getElementById('filter-color').value = 'ALL';
+        document.getElementById('filter-sort').value = 'featured';
+        syncColorPills();
+
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState({}, '', 'catalogo.html');
+        }
+        renderCatalog();
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        populateColorControls();
+        applyUrlParams();
+        syncColorPills();
+        renderCatalog();
+
+        document.querySelectorAll('[data-filter-type]').forEach((chip) => {
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('[data-filter-type]').forEach((c) => c.classList.remove('is-active'));
+            chip.classList.add('is-active');
+            filterState.type = chip.dataset.filterType;
+            renderCatalog();
+          });
+        });
+
+        document.getElementById('filter-price').addEventListener('change', (e) => {
+          filterState.price = e.target.value;
+          renderCatalog();
+        });
+
+        document.getElementById('filter-fit').addEventListener('change', (e) => {
+          filterState.fit = e.target.value;
+          renderCatalog();
+        });
+
+        document.getElementById('filter-size').addEventListener('change', (e) => {
+          filterState.size = e.target.value;
+          renderCatalog();
+        });
+
+        document.getElementById('filter-color').addEventListener('change', (e) => {
+          filterState.color = e.target.value;
+          syncColorPills();
+          renderCatalog();
+        });
+
+        document.getElementById('filter-sort').addEventListener('change', (e) => {
+          filterState.sort = e.target.value;
+          renderCatalog();
+        });
+
+        document.getElementById('catalog-reset-btn').addEventListener('click', resetAllFilters);
+      });
+
+      document.addEventListener('wts:ready', renderCatalog);
+      document.addEventListener('wts:user-changed', renderCatalog);
+      document.addEventListener('wts:stock-changed', renderCatalog);
+      document.addEventListener('wts:wishlist-changed', () => {
+        if (window.WTS && window.WTS.Wishlist) window.WTS.Wishlist.syncAllButtons();
+      });
+    })();
+  </script>
+</body>
+</html>

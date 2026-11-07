@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Cuenta &amp; Lista de Deseados — ThreadLab</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-user-club.css" />
+  <link rel="stylesheet" href="modules/wts-wishlist.css" />
+  <link rel="stylesheet" href="modules/wts-shop-cart.css" />
+</head>
+<body>
+  <div id="tl-header-mount"></div>
+
+  <main class="tl-section" style="padding-top:2rem;">
+    <div class="tl-container" style="display:flex; flex-direction:column; gap:2.75rem;">
+      <!-- 1. Cuadrado de Perfil + Engranaje Opciones + Botones de Acceso Rápido -->
+      <section aria-label="Mi Cuenta">
+        <div class="tl-section-head" style="margin-bottom:1rem;">
+          <div>
+            <span class="tl-tag tl-tag--yellow" style="margin-bottom:0.4rem;">★ ÁREA DE CLIENTE</span>
+            <h1 class="tl-section-title">Mi Cuenta</h1>
+          </div>
+        </div>
+
+        <div id="vip-portal-mount"></div>
+      </section>
+
+      <!-- 2. 3 Recomendaciones Personalizadas (Solo visibles tras iniciar sesión) -->
+      <section id="recomendaciones" style="display:none;" aria-label="Recomendaciones para ti">
+        <div class="tl-section-head" style="margin-bottom:1.15rem;">
+          <div>
+            <span class="tl-tag tl-tag--blue" style="margin-bottom:0.4rem;">SELECCIÓN PERSONALIZADA</span>
+            <h2 class="tl-section-title">3 Prendas Recomendadas para Ti</h2>
+          </div>
+          <a href="catalogo.html" class="tl-btn tl-btn--sm">Ver Colección →</a>
+        </div>
+
+        <div id="profile-recs-grid" class="tl-products-grid"></div>
+      </section>
+
+      <!-- 3. Lista de Deseados -->
+      <section id="deseados" aria-label="Lista de Deseados">
+        <div class="tl-section-head" style="margin-bottom:1.15rem;">
+          <div>
+            <span class="tl-tag tl-tag--coral" style="margin-bottom:0.4rem;">♥ FAVORITOS GUARDADOS</span>
+            <h2 class="tl-section-title">Mi Lista de Deseados</h2>
+          </div>
+          <a href="catalogo.html" class="tl-btn tl-btn--sm">+ Explorar Colección</a>
+        </div>
+
+        <div id="wishlist-view-mount"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="tl-footer-mount"></div>
+
+  <script src="modules/wts-user-club.js"></script>
+  <script src="modules/wts-wishlist.js"></script>
+  <script src="modules/wts-shop-cart.js"></script>
+  <script src="js/threadlab-app.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function refreshProfilePage() {
+        if (!window.WTS || !window.ThreadLabApp) return;
+
+        window.WTS.UserClub.renderProfilePortal('vip-portal-mount');
+        window.WTS.Wishlist.renderWishlistView('wishlist-view-mount');
+
+        const isVip = window.WTS.UserClub.isVip();
+
+        // Exactamente 3 recomendaciones de prendas cuando el usuario está logueado
+        const recsSection = document.getElementById('recomendaciones');
+        const recsGrid = document.getElementById('profile-recs-grid');
+        if (recsSection && recsGrid) {
+          if (isVip) {
+            recsSection.style.display = 'block';
+            const recs = window.WTS.UserClub.getRecommendations(3);
+            recsGrid.innerHTML = recs.map((p) => window.ThreadLabApp.renderProductCard(p)).join('');
+          } else {
+            recsSection.style.display = 'none';
+            recsGrid.innerHTML = '';
+          }
+        }
+
+        window.WTS.Wishlist.syncAllButtons();
+      }
+
+      document.addEventListener('DOMContentLoaded', refreshProfilePage);
+      document.addEventListener('wts:ready', refreshProfilePage);
+      document.addEventListener('wts:user-changed', refreshProfilePage);
+      document.addEventListener('wts:wishlist-changed', () => {
+        refreshProfilePage();
+      });
+      document.addEventListener('wts:stock-changed', refreshProfilePage);
+      document.addEventListener('wts:order-created', refreshProfilePage);
+    })();
+  </script>
+</body>
+</html>

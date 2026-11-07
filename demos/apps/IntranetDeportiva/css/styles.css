@@ -1,0 +1,736 @@
+:root {
+  /* Paleta Corporativa Médica / Alto Rendimiento */
+  --apex-white: #FFFFFF;
+  --apex-slate-50: #F8FAFC;
+  --apex-slate-100: #F1F5F9;
+  --apex-slate-200: #E2E8F0;
+  --apex-slate-300: #CBD5E1;
+  --apex-slate-400: #94A3B8;
+  --apex-slate-500: #64748B;
+  --apex-slate-700: #334155;
+  --apex-navy-900: #0F172A;
+  --apex-navy-800: #1E293B;
+
+  /* Acentos Clínicos y Técnicos */
+  --apex-blue-600: #0284C7;
+  --apex-blue-700: #0369A1;
+  --apex-blue-50: #F0F9FF;
+  --apex-green-600: #059669;
+  --apex-green-50: #ECFDF5;
+  --apex-amber-600: #D97706;
+  --apex-purple-600: #7C3AED;
+  --apex-red-600: #DC2626;
+
+  /* Tipografía */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Geometría */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 6px 18px -4px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 38px -10px rgba(15, 23, 42, 0.16);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--apex-navy-900);
+  background: var(--apex-slate-50);
+  line-height: 1.48;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0 0 0.45rem;
+  line-height: 1.22;
+  color: var(--apex-navy-900);
+}
+
+p {
+  margin: 0 0 0.75rem;
+  color: var(--apex-slate-700);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================================================
+   VISTA 1: BARRA SUPERIOR DE RETORNO + LOGIN EN 100dvh SIN SCROLL (index.html)
+   ========================================================================== */
+.apex-auth-body {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: radial-gradient(circle at top left, #E0F2FE 0%, var(--apex-slate-100) 48%, #E2E8F0 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-auth-topbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--apex-slate-200);
+  flex-shrink: 0;
+}
+
+.apex-auth-topbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.55rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.apex-auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--apex-navy-900);
+  background: var(--apex-slate-100);
+  border: 1px solid var(--apex-slate-300);
+  padding: 0.36rem 0.75rem;
+  border-radius: 7px;
+  transition: all 0.14s ease;
+}
+
+.apex-auth-back-link:hover {
+  background: var(--apex-navy-900);
+  color: var(--apex-white);
+  border-color: var(--apex-navy-900);
+}
+
+.apex-auth-topbar__status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--apex-slate-500);
+}
+
+.apex-auth-screen {
+  flex: 1;
+  width: 100%;
+  max-width: 490px;
+  margin: 0 auto;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.apex-auth-card {
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--apex-white);
+  border: 1px solid var(--apex-slate-200);
+  border-radius: 16px;
+  padding: 1.2rem 1.35rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.apex-auth-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--apex-slate-100);
+}
+
+.apex-auth-card__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--apex-navy-900);
+}
+
+.apex-auth-card__sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--apex-blue-600);
+}
+
+/* ==========================================================================
+   APP SHELL INTRANET (dashboard, calendario, especialistas, suscripcion)
+   ========================================================================== */
+.apex-app-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.apex-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(2px);
+}
+
+.apex-sidebar-backdrop.is-visible {
+  display: block;
+}
+
+.apex-sidebar {
+  width: 262px;
+  background: var(--apex-navy-900);
+  color: var(--apex-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.apex-sidebar__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.apex-sidebar__close-btn {
+  display: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--apex-white);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.apex-sidebar__close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 960px) {
+  .apex-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+  }
+  .apex-sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+  .apex-sidebar__close-btn {
+    display: inline-flex;
+  }
+}
+
+.apex-sidebar__top {
+  padding: 1.2rem;
+}
+
+.apex-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.02rem;
+}
+
+.apex-brand--light {
+  color: var(--apex-white);
+}
+
+.apex-brand__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--apex-blue-600) 0%, #0EA5E9 100%);
+  color: var(--apex-white);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.apex-brand__sub {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38BDF8;
+}
+
+.apex-sidebar__role-box {
+  margin-top: 1.05rem;
+  padding: 0.72rem 0.85rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.apex-sidebar__role-pill {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.14rem 0.46rem;
+  border-radius: 4px;
+  background: rgba(2, 132, 199, 0.28);
+  color: #38BDF8;
+  margin-bottom: 0.3rem;
+}
+
+.apex-sidebar__role-pill--client {
+  background: rgba(5, 150, 105, 0.28);
+  color: #34D399;
+}
+
+.apex-sidebar__role-pill--admin {
+  background: rgba(217, 119, 6, 0.28);
+  color: #FBBF24;
+}
+
+.apex-sidebar__nav {
+  margin-top: 1.15rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.apex-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.82rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--apex-slate-300);
+  transition: all 0.15s ease;
+}
+
+.apex-sidebar__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--apex-white);
+}
+
+.apex-sidebar__link.is-active {
+  background: var(--apex-blue-600);
+  color: var(--apex-white);
+  font-weight: 600;
+}
+
+.apex-sidebar__bottom {
+  padding: 1rem 1.2rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.apex-sidebar__switch-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--apex-slate-400);
+  font-weight: 700;
+}
+
+.apex-sidebar__quick-select {
+  width: 100%;
+  background: var(--apex-navy-800);
+  color: var(--apex-white);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  padding: 0.44rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.apex-app-main {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-app-topbar {
+  background: var(--apex-white);
+  border-bottom: 1px solid var(--apex-slate-200);
+  padding: 0.68rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.apex-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.apex-mobile-drawer-btn {
+  display: inline-flex;
+  border: 1px solid var(--apex-slate-300);
+  background: var(--apex-white);
+  border-radius: 6px;
+  padding: 0.38rem 0.62rem;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+@media (min-width: 961px) {
+  .apex-mobile-drawer-btn {
+    display: none;
+  }
+}
+
+.apex-app-content {
+  padding: 1.25rem 1.4rem 2rem;
+  max-width: 1380px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+/* Botones y Tarjetas */
+.apex-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.52rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.apex-btn--primary {
+  background: var(--apex-blue-600);
+  color: var(--apex-white);
+}
+
+.apex-btn--primary:hover {
+  background: var(--apex-blue-700);
+}
+
+.apex-btn--clinical {
+  background: var(--apex-green-600);
+  color: var(--apex-white);
+}
+
+.apex-btn--clinical:hover {
+  background: #047857;
+}
+
+.apex-btn--outline {
+  background: var(--apex-white);
+  border-color: var(--apex-slate-300);
+  color: var(--apex-navy-900);
+}
+
+.apex-btn--outline:hover {
+  background: var(--apex-slate-100);
+}
+
+.apex-btn--full {
+  width: 100%;
+}
+
+.apex-card {
+  background: var(--apex-white);
+  border: 1px solid var(--apex-slate-200);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+/* ==========================================================================
+   DASHBOARD CLIENTE TIPO CALENDARIO VISUAL
+   ========================================================================== */
+.apex-client-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+@media (min-width: 900px) {
+  .apex-client-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.apex-mini-stat {
+  background: var(--apex-white);
+  border: 1px solid var(--apex-slate-200);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.apex-mini-stat__label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--apex-slate-500);
+}
+
+.apex-mini-stat__val {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--apex-navy-900);
+  margin-top: 0.15rem;
+}
+
+.apex-mini-stat__sub {
+  font-size: 0.74rem;
+  color: var(--apex-blue-600);
+  font-weight: 600;
+}
+
+.apex-client-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+}
+
+@media (min-width: 1120px) {
+  .apex-client-board {
+    grid-template-columns: minmax(0, 1fr) 310px;
+  }
+}
+
+.apex-client-board__main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.apex-board-side {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.apex-legend-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--apex-slate-700);
+}
+
+.apex-legend-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.apex-legend-dot i {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* KPIs Admin / Staff */
+.apex-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .apex-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .apex-kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.apex-kpi {
+  background: var(--apex-white);
+  border: 1px solid var(--apex-slate-200);
+  border-radius: var(--radius-md);
+  padding: 1.05rem;
+}
+
+.apex-kpi__label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--apex-slate-500);
+}
+
+.apex-kpi__val {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--apex-navy-900);
+  margin: 0.2rem 0;
+}
+
+.apex-kpi__sub {
+  font-size: 0.76rem;
+  color: var(--apex-green-600);
+  font-weight: 600;
+}
+
+/* Cabecera y Filtros */
+.apex-page-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.apex-area-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.apex-chip {
+  border: 1px solid var(--apex-slate-300);
+  background: var(--apex-white);
+  color: var(--apex-slate-700);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.apex-chip.is-active,
+.apex-chip:hover {
+  background: var(--apex-navy-900);
+  color: var(--apex-white);
+  border-color: var(--apex-navy-900);
+}
+
+/* Tarjetas de Especialistas con Llamada Directa */
+.apex-doctors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 680px) {
+  .apex-doctors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1120px) {
+  .apex-doctors-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.apex-doc-card {
+  background: var(--apex-white);
+  border: 1px solid var(--apex-slate-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.apex-doc-card__img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.apex-doc-card__body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.apex-doc-card__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.16rem 0.48rem;
+  border-radius: 4px;
+  background: var(--apex-blue-50);
+  color: var(--apex-blue-600);
+  margin-bottom: 0.3rem;
+}
+
+.apex-doc-card__actions {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.apex-session-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--apex-slate-200);
+  border-radius: 8px;
+  background: var(--apex-slate-50);
+  margin-bottom: 0.55rem;
+}

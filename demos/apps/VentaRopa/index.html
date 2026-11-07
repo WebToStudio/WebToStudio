@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThreadLab — Streetwear &amp; Print Studio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="modules/wts-user-club.css" />
+  <link rel="stylesheet" href="modules/wts-wishlist.css" />
+  <link rel="stylesheet" href="modules/wts-shop-cart.css" />
+</head>
+<body>
+  <div id="tl-header-mount"></div>
+
+  <main>
+    <!-- HERO ESCAPARATE DE VENTAS -->
+    <section class="tl-hero">
+      <div class="tl-container tl-hero-grid">
+        <div>
+          <div class="tl-hero-eyebrow">
+            <span>⚡ COLECCIÓN AW/26 · ENVÍO GRATIS +65€</span>
+          </div>
+
+          <h1 class="tl-hero-title">
+            Ropa Urbana &amp; <span class="tl-hero-highlight">Print Studio.</span>
+          </h1>
+
+          <p class="tl-hero-desc">
+            Camisetas heavyweight, sudaderas 480 GSM, chaquetas workwear y pantalones cargo. Compra la colección completa o diseña tu prenda personalizada en nuestro taller.
+          </p>
+
+          <div class="tl-hero-ctas">
+            <a href="catalogo.html" class="tl-btn tl-btn--primary">
+              Ver Toda la Colección →
+            </a>
+            <a href="customizer.html" class="tl-btn tl-btn--blue">
+              ✦ Personalizar Camiseta
+            </a>
+            <button type="button" class="tl-btn tl-btn--acid" data-open-fit-finder>
+              📏 Guía de Tallas
+            </button>
+          </div>
+
+          <div class="tl-hero-metrics">
+            <div class="tl-metric-box">
+              <strong>16 PRENDAS</strong>
+              <span>Drops activos</span>
+            </div>
+            <div class="tl-metric-box">
+              <strong>24 / 48H</strong>
+              <span>Envío exprés</span>
+            </div>
+            <div class="tl-metric-box">
+              <strong>-15% VIP</strong>
+              <span>Con tu cuenta</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prenda Estrella Interactiva -->
+        <div class="tl-hero-stage">
+          <div class="tl-stage-topbar">
+            <span class="tl-tag tl-tag--coral">BESTSELLER #01</span>
+            <div class="tl-view-switch" role="group" aria-label="Cambiar vista de prenda">
+              <button type="button" id="hero-view-front" class="is-active">Frente</button>
+              <button type="button" id="hero-view-back">Espalda</button>
+            </div>
+          </div>
+
+          <div class="tl-stage-canvas" id="hero-stage-canvas">
+            <svg id="hero-tee-svg" class="tl-stage-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Camiseta estrella ThreadLab">
+              <path
+                id="hero-tee-body"
+                d="M92 30 L114 32 Q150 54 186 32 L208 30 L282 72 L256 132 L220 112 L220 296 L80 296 L80 112 L44 132 L18 72 Z"
+                fill="#18181B"
+                stroke="#18181B"
+                stroke-width="4"
+                stroke-linejoin="round"
+              />
+              <g id="hero-graphic-front">
+                <rect x="166" y="88" width="36" height="36" rx="6" fill="#FACC15" stroke="#18181B" stroke-width="2.5" />
+                <text x="184" y="111" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="13" fill="#18181B">TL</text>
+                <text x="150" y="268" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="10" fill="#A1A1AA" letter-spacing="2">HEAVYWEIGHT LAB</text>
+              </g>
+              <g id="hero-graphic-back" style="display:none;">
+                <circle cx="150" cy="148" r="52" fill="#3B82F6" stroke="#FAFAFA" stroke-width="3" />
+                <polygon points="150,106 184,174 116,174" fill="#FACC15" stroke="#18181B" stroke-width="2.5" />
+                <text x="150" y="224" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="15" fill="#FAFAFA" letter-spacing="2">CYBER ACID 07</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="tl-stage-footer">
+            <div>
+              <div style="font-family:var(--font-display); font-weight:700; font-size:1.05rem;">
+                Cyber Acid Backprint Tee
+              </div>
+              <div style="font-size:0.78rem; color:var(--ink-secondary); font-weight:600;">
+                38,00 € · Cambia color o gira la vista
+              </div>
+            </div>
+
+            <div class="tl-swatch-group" aria-label="Color de vista previa">
+              <button type="button" class="tl-swatch is-active" data-hero-color="#18181B" style="background:#18181B;" title="Negro Lavado"></button>
+              <button type="button" class="tl-swatch" data-hero-color="#FAFAFA" style="background:#FAFAFA;" title="Blanco Tiza"></button>
+              <button type="button" class="tl-swatch" data-hero-color="#3B82F6" style="background:#3B82F6;" title="Azul Eléctrico"></button>
+              <button type="button" class="tl-swatch" data-hero-color="#F43F5E" style="background:#F43F5E;" title="Coral Neón"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="tl-marquee" aria-hidden="true">
+      <div class="tl-marquee-track">
+        <span>✦ ENVÍO GRATIS +65€</span>
+        <span>⚡ -15% AUTOMÁTICO AL INICIAR SESIÓN EN TU CUENTA VIP</span>
+        <span>👕 CAMISETAS · SUDADERAS · CHAQUETAS · PANTALONES CARGO</span>
+        <span>🎨 PERSONALIZA TU CAMISETA EN EL PRINT STUDIO</span>
+        <span>✦ ENVÍO GRATIS +65€</span>
+        <span>⚡ -15% AUTOMÁTICO AL INICIAR SESIÓN EN TU CUENTA VIP</span>
+        <span>👕 CAMISETAS · SUDADERAS · CHAQUETAS · PANTALONES CARGO</span>
+        <span>🎨 PERSONALIZA TU CAMISETA EN EL PRINT STUDIO</span>
+      </div>
+    </div>
+
+    <!-- CATEGORÍAS / DEPARTAMENTOS DE ROPA -->
+    <section class="tl-section" style="padding-bottom:1rem;">
+      <div class="tl-container">
+        <div class="tl-dept-grid">
+          <a href="catalogo.html?type=Camisetas" class="tl-dept-card">
+            <span style="font-size:1.4rem;">👕</span>
+            <strong style="font-family:var(--font-display); font-size:1rem;">Camisetas</strong>
+            <span style="font-size:0.75rem; color:var(--ink-secondary); font-weight:600;">260–300 GSM · Desde 34€</span>
+          </a>
+
+          <a href="catalogo.html?type=Sudaderas" class="tl-dept-card">
+            <span style="font-size:1.4rem;">🧥</span>
+            <strong style="font-family:var(--font-display); font-size:1rem;">Sudaderas</strong>
+            <span style="font-size:0.75rem; color:var(--ink-secondary); font-weight:600;">Hoodies 480G · Desde 62€</span>
+          </a>
+
+          <a href="catalogo.html?type=Chaquetas" class="tl-dept-card">
+            <span style="font-size:1.4rem;">🦺</span>
+            <strong style="font-family:var(--font-display); font-size:1rem;">Chaquetas</strong>
+            <span style="font-size:0.75rem; color:var(--ink-secondary); font-weight:600;">Workwear &amp; Tech · Desde 84€</span>
+          </a>
+
+          <a href="catalogo.html?type=Pantalones" class="tl-dept-card">
+            <span style="font-size:1.4rem;">👖</span>
+            <strong style="font-family:var(--font-display); font-size:1rem;">Pantalones</strong>
+            <span style="font-size:0.75rem; color:var(--ink-secondary); font-weight:600;">Cargo &amp; Denim · Desde 74€</span>
+          </a>
+
+          <a href="customizer.html" class="tl-dept-card" style="background:#DBEAFE;">
+            <span style="font-size:1.4rem;">✦</span>
+            <strong style="font-family:var(--font-display); font-size:1rem;">Print Studio</strong>
+            <span style="font-size:0.75rem; color:var(--ink-primary); font-weight:700;">Crea tu diseño único →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZONA PRIVADA DE MIEMBRO LOGUEADO -->
+    <section id="home-logged-member-zone" class="tl-section" style="display:none; background:rgba(16, 185, 129, 0.08); border-top:2px solid #18181B; border-bottom:2px solid #18181B;">
+      <div class="tl-container" style="display:flex; flex-direction:column; gap:1.35rem;">
+        <div class="tl-section-head" style="margin-bottom:0;">
+          <div>
+            <span id="home-member-badge" class="tl-tag tl-tag--acid" style="margin-bottom:0.4rem;">★ SESIÓN VIP ACTIVA</span>
+            <h2 id="home-member-welcome" class="tl-section-title">Tus Recomendaciones VIP</h2>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <a href="perfil.html" class="tl-btn tl-btn--sm tl-btn--primary">🎟️ Rasca y Gana VIP</a>
+            <a href="perfil.html#deseados" class="tl-btn tl-btn--sm">♥ Mis Deseados</a>
+          </div>
+        </div>
+
+        <div id="home-member-recs-grid" class="tl-products-grid"></div>
+      </div>
+    </section>
+
+    <!-- LO MÁS VENDIDO DE LA TIENDA -->
+    <section class="tl-section">
+      <div class="tl-container">
+        <div class="tl-section-head">
+          <div>
+            <span class="tl-tag tl-tag--yellow" style="margin-bottom:0.45rem;">COLECCIÓN DESTACADA</span>
+            <h2 class="tl-section-title">Novedades &amp; Top Ventas</h2>
+          </div>
+          <a href="catalogo.html" class="tl-btn tl-btn--sm tl-btn--dark">Filtrar Toda la Colección →</a>
+        </div>
+
+        <div id="home-featured-grid" class="tl-products-grid"></div>
+      </div>
+    </section>
+
+    <!-- BANNER DE ACCESO A CUENTA / DESCUENTOS VIP -->
+    <section class="tl-section" style="padding-top:0;">
+      <div class="tl-container">
+        <div style="background:var(--ink-primary); color:#FFFFFF; border:2.5px solid #18181B; border-radius:16px; box-shadow:6px 6px 0px #FACC15; padding:1.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.1rem;">
+          <div style="max-width:56ch;">
+            <span class="tl-tag tl-tag--acid" style="color:#18181B; margin-bottom:0.5rem;">★ VENTAJAS DE CUENTA</span>
+            <h2 style="font-family:var(--font-display); font-size:clamp(1.35rem, 3vw, 1.95rem); line-height:1.12; margin-bottom:0.35rem;">
+              ¿Ya tienes cuenta? Activa tu -15% directo y tu Rasca y Gana
+            </h2>
+            <p style="font-size:0.88rem; color:#D4D4D8;">
+              Inicia sesión en 1 clic para desbloquear descuentos en toda la ropa, guardar tu lista de deseados y ver prendas seleccionadas para tu talla.
+            </p>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:0.65rem;">
+            <button type="button" id="home-open-login-btn" class="tl-btn tl-btn--primary">
+              👤 Iniciar Sesión
+            </button>
+            <a href="perfil.html" class="tl-btn" style="background:#FFFFFF; color:#18181B;">
+              Ver Mi Cuenta →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="tl-footer-mount"></div>
+
+  <script src="modules/wts-user-club.js"></script>
+  <script src="modules/wts-wishlist.js"></script>
+  <script src="modules/wts-shop-cart.js"></script>
+  <script src="js/threadlab-app.js"></script>
+  <script src="js/layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function initHeroStage() {
+        const frontBtn = document.getElementById('hero-view-front');
+        const backBtn = document.getElementById('hero-view-back');
+        const gFront = document.getElementById('hero-graphic-front');
+        const gBack = document.getElementById('hero-graphic-back');
+        const teeBody = document.getElementById('hero-tee-body');
+
+        if (frontBtn && backBtn) {
+          frontBtn.addEventListener('click', () => {
+            frontBtn.classList.add('is-active');
+            backBtn.classList.remove('is-active');
+            gFront.style.display = 'block';
+            gBack.style.display = 'none';
+          });
+
+          backBtn.addEventListener('click', () => {
+            backBtn.classList.add('is-active');
+            frontBtn.classList.remove('is-active');
+            gFront.style.display = 'none';
+            gBack.style.display = 'block';
+          });
+        }
+
+        document.querySelectorAll('[data-hero-color]').forEach((swatch) => {
+          swatch.addEventListener('click', () => {
+            document.querySelectorAll('[data-hero-color]').forEach((s) => s.classList.remove('is-active'));
+            swatch.classList.add('is-active');
+            if (teeBody) teeBody.setAttribute('fill', swatch.dataset.heroColor);
+          });
+        });
+      }
+
+      function renderHomeStore() {
+        if (!window.WTS || !window.ThreadLabApp) return;
+
+        const featuredGrid = document.getElementById('home-featured-grid');
+        if (featuredGrid) {
+          const featuredItems = window.ThreadLabApp.getCatalog()
+            .filter((p) => !p.vipOnly && p.featured)
+            .slice(0, 8);
+          featuredGrid.innerHTML = featuredItems.map((item) => window.ThreadLabApp.renderProductCard(item)).join('');
+        }
+
+        const memberZone = document.getElementById('home-logged-member-zone');
+        const memberRecsGrid = document.getElementById('home-member-recs-grid');
+        const memberWelcome = document.getElementById('home-member-welcome');
+        const memberBadge = document.getElementById('home-member-badge');
+        const loginBtn = document.getElementById('home-open-login-btn');
+
+        const user = window.WTS.UserClub.getUser();
+        if (memberZone && memberRecsGrid) {
+          if (user) {
+            memberZone.style.display = 'block';
+            memberBadge.textContent = `★ HOLA ${user.name.toUpperCase()} · -15% VIP ACTIVO`;
+            memberWelcome.textContent = `Seleccionado para ti (Talla ${user.preferredSize} · ${user.preferredFit})`;
+            const recs = window.WTS.UserClub.getRecommendations(4);
+            memberRecsGrid.innerHTML = recs.map((item) => window.ThreadLabApp.renderProductCard(item)).join('');
+            if (loginBtn) loginBtn.textContent = `★ Mi Perfil VIP (${user.name.split(' ')[0]})`;
+          } else {
+            memberZone.style.display = 'none';
+            memberRecsGrid.innerHTML = '';
+            if (loginBtn) loginBtn.textContent = '👤 Iniciar Sesión';
+          }
+        }
+
+        window.WTS.Wishlist.syncAllButtons();
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initHeroStage();
+        renderHomeStore();
+
+        const loginBtn = document.getElementById('home-open-login-btn');
+        if (loginBtn) {
+          loginBtn.addEventListener('click', () => {
+            if (window.WTS.UserClub.isVip()) {
+              window.location.href = 'perfil.html';
+            } else {
+              window.WTS.UserClub.openLoginModal();
+            }
+          });
+        }
+      });
+
+      document.addEventListener('wts:ready', renderHomeStore);
+      document.addEventListener('wts:user-changed', renderHomeStore);
+      document.addEventListener('wts:stock-changed', renderHomeStore);
+      document.addEventListener('wts:wishlist-changed', () => {
+        if (window.WTS && window.WTS.Wishlist) window.WTS.Wishlist.syncAllButtons();
+      });
+    })();
+  </script>
+</body>
+</html>

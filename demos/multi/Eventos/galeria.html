@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería y Casos de Éxito — Chispa Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="badge badge-yellow">Portfolio Vivo</span>
+        <h1>Casos de éxito que dejaron huella</h1>
+        <p class="hero-lead">Explora algunos de nuestros últimos montajes. Haz clic en cualquier tarjeta para descubrir los detalles técnicos y creativos.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Filtros Interactivos -->
+        <div class="filter-bar" role="group" aria-label="Filtrar eventos por categoría">
+          <button class="filter-btn active" data-filter="todos">Todos (6)</button>
+          <button class="filter-btn" data-filter="Corporativo">Corporativo</button>
+          <button class="filter-btn" data-filter="Festivales">Festivales</button>
+          <button class="filter-btn" data-filter="Privados">Privados</button>
+        </div>
+
+        <!-- Grid de 6 Proyectos -->
+        <div class="gallery-grid" id="gallery-grid">
+          
+          <article class="gallery-card shadow-pink" data-category="Festivales"
+            data-title="Neon Pulse Urban Fest"
+            data-city="Barcelona"
+            data-attendees="480 asistentes"
+            data-img="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=80"
+            data-details="Producción integral en antigua fábrica textil del Poblenou. Incluyó 2 escenarios simultáneos con mapping reactivo al sonido, 6 foodtrucks locales, zona de arte urbano en vivo y sistema de barras sin colas.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Neon Pulse Urban Fest" loading="lazy">
+              <span class="cat-tag bg-pink text-white">Festivales</span>
+            </div>
+            <div class="gallery-info">
+              <h3>Neon Pulse Urban Fest</h3>
+              <div class="gallery-meta">
+                <span>📍 Barcelona</span>
+                <span>👥 480 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="gallery-card shadow-violet" data-category="Corporativo"
+            data-title="Kinetix Future Summit"
+            data-city="Madrid"
+            data-attendees="220 asistentes"
+            data-img="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=80"
+            data-details="Convención anual con estética retro-futurista. Montamos un escenario circular 360º, talleres interactivos de prototipado rápido, catering saludable de autor y cierre con sesión electrónica inmersiva.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Kinetix Future Summit" loading="lazy">
+              <span class="cat-tag bg-violet text-white">Corporativo</span>
+            </div>
+            <div class="gallery-info">
+              <h3>Kinetix Future Summit</h3>
+              <div class="gallery-meta">
+                <span>📍 Madrid</span>
+                <span>👥 220 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="gallery-card shadow-green" data-category="Privados"
+            data-title="Boda Verbena Eléctrica"
+            data-city="Sevilla"
+            data-attendees="160 asistentes"
+            data-img="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
+            data-details="Celebración al aire libre bajo guirnaldas de bombillas vintage y neones personalizados. Cena tipo cóctel con estaciones en vivo, banda de versiones indie y fotomatón 360º con atrezzo festivalero.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Boda Verbena Eléctrica" loading="lazy">
+              <span class="cat-tag bg-green text-white">Privados</span>
+            </div>
+            <div class="gallery-info">
+              <h3>Boda Verbena Eléctrica</h3>
+              <div class="gallery-meta">
+                <span>📍 Sevilla</span>
+                <span>👥 160 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="gallery-card shadow-yellow" data-category="Corporativo"
+            data-title="Lanzamiento Aura Audio"
+            data-city="Valencia"
+            data-attendees="140 asistentes"
+            data-img="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80"
+            data-details="Pop-up sensorial en azotea frente al mar para presentar auriculares de alta fidelidad. Cabinas de escucha aisladas con iluminación cromática, coctelería molecular y cobertura en directo con creadores.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Lanzamiento Aura Audio" loading="lazy">
+              <span class="cat-tag bg-yellow">Corporativo</span>
+            </div>
+            <div class="gallery-info">
+              <h3>Lanzamiento Aura Audio</h3>
+              <div class="gallery-meta">
+                <span>📍 Valencia</span>
+                <span>👥 140 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="gallery-card shadow-pink" data-category="Festivales"
+            data-title="Solaris Rooftop Market"
+            data-city="Málaga"
+            data-attendees="350 asistentes"
+            data-img="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80"
+            data-details="Fin de semana de diseño independiente, vinilos y música en directo. Escenografía tropical pop, 18 stands modulares de marcas emergentes y sesiones acústicas al atardecer.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80" alt="Solaris Rooftop Market" loading="lazy">
+              <span class="cat-tag bg-pink text-white">Festivales</span>
+            </div>
+            <div class="gallery-info">
+              <h3>Solaris Rooftop Market</h3>
+              <div class="gallery-meta">
+                <span>📍 Málaga</span>
+                <span>👥 350 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="gallery-card shadow-violet" data-category="Privados"
+            data-title="30º Aniversario Disco Jungle"
+            data-city="Bilbao"
+            data-attendees="95 asistentes"
+            data-img="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80"
+            data-details="Fiesta temática privada en invernadero botánico con bolas de espejos gigantes, iluminación magenta y verde lima, barra libre de autor y show sorpresa de percusión electrónica.">
+            <div class="gallery-thumb">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="30º Aniversario Disco Jungle" loading="lazy">
+              <span class="cat-tag bg-violet text-white">Privados</span>
+            </div>
+            <div class="gallery-info">
+              <h3>30º Aniversario Disco Jungle</h3>
+              <div class="gallery-meta">
+                <span>📍 Bilbao</span>
+                <span>👥 95 asistentes</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Ligero de Detalles -->
+  <div id="gallery-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-box shadow-yellow">
+      <button id="modal-close" class="modal-close" aria-label="Cerrar detalles">✕</button>
+      <img id="modal-img" src="" alt="" class="modal-image">
+      <div class="modal-content">
+        <div class="modal-badges">
+          <span id="modal-cat" class="badge badge-pink"></span>
+          <span id="modal-meta" class="modal-meta-text"></span>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <div class="modal-actions">
+          <a href="cotizar.html" class="btn btn-primary">Quiero un montaje similar →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+/* ==========================================================================
+   MÓDULO AGNÓSTICO: PRINT STUDIO CUSTOMIZER (.wts-customizer)
+   Optimizado 100% Mobile First (sin sticky invasivo ni overflow)
+   ========================================================================== */
+
+.wts-studio-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+}
+
+@media (min-width: 980px) {
+  .wts-studio-layout {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.25rem;
+  }
+}
+
+/* Lienzo Interactivo de Prenda */
+.wts-studio-stage {
+  background: var(--bg-surface, #FFFFFF);
+  border: 2.5px solid var(--border-color, #18181B);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0px var(--border-color, #18181B);
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 980px) {
+  .wts-studio-stage {
+    position: sticky;
+    top: 90px;
+    padding: 1.25rem;
+    box-shadow: 8px 8px 0px var(--border-color, #18181B);
+  }
+}
+
+.wts-studio-stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.wts-studio-canvas {
+  position: relative;
+  min-height: 310px;
+  border: 2px solid var(--border-color, #18181B);
+  border-radius: 12px;
+  background-color: #F4F4F5;
+  background-image:
+    linear-gradient(to right, rgba(24, 24, 27, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 24, 27, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .wts-studio-canvas {
+    min-height: 390px;
+    padding: 1.5rem 1rem;
+  }
+}
+
+.wts-tee-mockup {
+  position: relative;
+  width: 260px;
+  max-width: 100%;
+  height: 295px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .wts-tee-mockup {
+    width: 300px;
+    height: 340px;
+  }
+}
+
+.wts-tee-base-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(5px 7px 0px rgba(24, 24, 27, 0.22));
+}
+
+/* Zona de Estampación Dinámica */
+.wts-print-zone {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wts-print-zone[data-placement="chest-left"] {
+  top: 28%;
+  right: 26%;
+  width: 58px;
+}
+
+.wts-print-zone[data-placement="center-large"] {
+  top: 29%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+}
+
+.wts-print-zone[data-placement="back-full"] {
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 128px;
+}
+
+.wts-print-graphic svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.18));
+}
+
+.wts-print-text {
+  margin-top: 0.3rem;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  word-break: break-word;
+  padding: 0.12rem 0.3rem;
+  border-radius: 4px;
+}
+
+.wts-print-zone[data-placement="chest-left"] .wts-print-text { font-size: 0.52rem; }
+.wts-print-zone[data-placement="center-large"] .wts-print-text { font-size: 0.8rem; }
+.wts-print-zone[data-placement="back-full"] .wts-print-text { font-size: 0.9rem; }
+
+.wts-studio-specs {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink-secondary, #52525B);
+}
+
+/* Panel de Controles */
+.wts-studio-controls {
+  background: var(--bg-surface, #FFFFFF);
+  border: 2.5px solid var(--border-color, #18181B);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0px var(--border-color, #18181B);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .wts-studio-controls {
+    padding: 1.5rem;
+  }
+}
+
+.wts-control-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wts-control-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.wts-color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.wts-color-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.68rem;
+  border: 2px solid var(--border-color, #18181B);
+  border-radius: 999px;
+  background: var(--bg-subtle, #F4F4F5);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.wts-color-btn.is-active {
+  background: var(--accent-yellow, #FACC15);
+  box-shadow: 2px 2px 0px #18181B;
+}
+
+.wts-color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #18181B;
+  flex-shrink: 0;
+}
+
+.wts-graphic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+}
+
+@media (min-width: 520px) {
+  .wts-graphic-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wts-graphic-card {
+  border: 2px solid var(--border-color, #18181B);
+  border-radius: 12px;
+  padding: 0.6rem 0.45rem;
+  background: var(--bg-subtle, #F4F4F5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.wts-graphic-card.is-active {
+  background: #DBEAFE;
+  box-shadow: 3px 3px 0px #18181B;
+}
+
+.wts-graphic-thumb {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+}
+
+.wts-graphic-thumb svg {
+  width: 40px;
+  height: 40px;
+}
+
+.wts-placement-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+@media (min-width: 440px) {
+  .wts-placement-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.wts-placement-btn {
+  border: 2px solid var(--border-color, #18181B);
+  border-radius: 10px;
+  padding: 0.55rem 0.45rem;
+  background: var(--bg-subtle, #F4F4F5);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.wts-placement-btn.is-active {
+  background: var(--accent-acid, #10B981);
+  box-shadow: 3px 3px 0px #18181B;
+}
+
+.wts-text-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.wts-text-input {
+  flex: 1 1 200px;
+  min-width: 0;
+  width: 100%;
+  height: 42px;
+  padding: 0 0.85rem;
+  border: 2px solid var(--border-color, #18181B);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: #FFFFFF;
+}
+
+.wts-ink-pills {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wts-ink-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #18181B;
+}
+
+.wts-ink-dot.is-active {
+  outline: 2.5px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.wts-studio-size-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 440px) {
+  .wts-studio-size-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wts-price-summary {
+  background: #18181B;
+  color: #FAFAFA;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.wts-price-summary .tl-btn {
+  width: 100%;
+}
+
+@media (min-width: 520px) {
+  .wts-price-summary .tl-btn {
+    width: auto;
+  }
+}

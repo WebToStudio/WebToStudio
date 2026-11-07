@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasa tu Coche y Concesionarios | AutoSelect Enterprise</title>
+  <meta name="description" content="Valora tu vehículo actual paso a paso en menos de 1 minuto y localiza nuestros centros oficiales en Madrid, Barcelona y Sevilla.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <span class="eyebrow">Valoración Profesional</span>
+        <h1>Tasa tu Coche y Red de Concesionarios</h1>
+        <p>
+          Calcula una oferta orientativa instantánea basada en datos reales de mercado VO y entrega tu vehículo como parte de pago o venta directa.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-2" style="align-items: start;">
+          <!-- Tasador Interactivo Paso a Paso -->
+          <div class="form-panel">
+            <span class="eyebrow">Tasador Digital 3 Pasos</span>
+            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 1.25rem;">Obtén tu valoración instantánea</h2>
+
+            <div class="wizard-steps" role="tablist">
+              <div class="wizard-step-indicator is-active" id="step-ind-1">1. Vehículo</div>
+              <div class="wizard-step-indicator" id="step-ind-2">2. Uso y Estado</div>
+              <div class="wizard-step-indicator" id="step-ind-3">3. Valoración</div>
+            </div>
+
+            <form id="valuation-wizard-form">
+              <!-- Paso 1 -->
+              <div class="wizard-pane is-active" id="wizard-pane-1">
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <div class="field-group">
+                    <label for="val-brand" class="field-label">Marca del fabricante *</label>
+                    <select id="val-brand" class="field-control" required>
+                      <option value="24000">Audi / BMW / Mercedes-Benz</option>
+                      <option value="26500">Polestar / Tesla / Volvo</option>
+                      <option value="18500">Volkswagen / Cupra / Mazda</option>
+                      <option value="16000">Toyota / Hyundai / Kia</option>
+                      <option value="14500">SEAT / Peugeot / Renault / Ford</option>
+                    </select>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="val-model" class="field-label">Modelo y versión *</label>
+                    <input type="text" id="val-model" class="field-control" required placeholder="Ej. Audi A4 35 TDI S tronic">
+                  </div>
+
+                  <div class="grid-2" style="gap: 1rem;">
+                    <div class="field-group">
+                      <label for="val-year" class="field-label">Año de matriculación *</label>
+                      <select id="val-year" class="field-control" required>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023" selected>2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018 o anterior</option>
+                      </select>
+                    </div>
+
+                    <div class="field-group">
+                      <label for="val-fuel" class="field-label">Combustible *</label>
+                      <select id="val-fuel" class="field-control" required>
+                        <option value="1.08">Eléctrico (BEV)</option>
+                        <option value="1.06" selected>Híbrido / PHEV</option>
+                        <option value="1.00">Gasolina</option>
+                        <option value="0.96">Diésel</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+                    <button type="button" class="btn btn-primary" id="to-step-2">Siguiente: Uso y Estado →</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 2 -->
+              <div class="wizard-pane" id="wizard-pane-2">
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <div class="field-group">
+                    <label for="val-km" class="field-label">Kilómetros actuales *</label>
+                    <input type="number" id="val-km" class="field-control" min="0" max="400000" step="500" value="48000" required>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="val-condition" class="field-label">Estado general y mantenimiento *</label>
+                    <select id="val-condition" class="field-control" required>
+                      <option value="1.05">Excelente — Revisiones oficiales al día, sin daños estéticos</option>
+                      <option value="1.00" selected>Bueno — Desgaste normal acorde a kilometraje, mecánica perfecta</option>
+                      <option value="0.88">Adecuado — Requiere reacondicionamiento de chapa o neumáticos</option>
+                      <option value="0.74">Con avería / Sin historial — Requiere intervención mecánica</option>
+                    </select>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="val-email" class="field-label">Email para enviar informe PDF (opcional)</label>
+                    <input type="email" id="val-email" class="field-control" placeholder="cliente@empresa.es">
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                    <button type="button" class="btn btn-outline" id="back-to-1">← Anterior</button>
+                    <button type="submit" class="btn btn-primary">Calcular Tasación Ahora</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paso 3: Resultado -->
+              <div class="wizard-pane" id="wizard-pane-3">
+                <div class="valuation-box">
+                  <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #A1A1AA;">
+                    Valoración Orientativa AutoSelect Enterprise
+                  </span>
+                  <div class="valuation-amount" id="val-result-range">19.450 € – 20.800 €</div>
+                  <p id="val-result-summary" style="font-size: 0.875rem; color: #D4D4D8; margin-bottom: 1.25rem;"></p>
+
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <a href="inventario.html" class="btn btn-primary btn-sm">Aplicar como entrada en Inventario</a>
+                    <button type="button" class="btn btn-outline btn-sm" id="restart-wizard" style="background: transparent; color: #FFFFFF; border-color: #52525B;">
+                      Nueva tasación
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Ubicaciones de Concesionarios y Contacto -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <span class="eyebrow">Centros Físicos</span>
+              <h2 class="section-title" style="font-size: 1.5rem;">Showrooms y Hubs de Entrega</h2>
+            </div>
+
+            <article class="card" style="padding: 1.35rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <h3 style="font-size: 1.0625rem; font-weight: 600;">Madrid · Flagship Alcobendas</h3>
+                <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent);">Central</span>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Av. de la Industria 48, 28108 Alcobendas, Madrid</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.4rem;">Lunes a Sábado: 09:30 – 20:30 · Tel: 910 882 410</p>
+            </article>
+
+            <article class="card" style="padding: 1.35rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <h3 style="font-size: 1.0625rem; font-weight: 600;">Barcelona · Hub Zona Franca</h3>
+                <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);">Showroom &amp; EV Lab</span>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Passeig de la Zona Franca 112, 08038 Barcelona</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.4rem;">Lunes a Sábado: 09:30 – 20:00 · Tel: 932 714 900</p>
+            </article>
+
+            <article class="card" style="padding: 1.35rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <h3 style="font-size: 1.0625rem; font-weight: 600;">Sevilla · Centro Logístico Torneo</h3>
+                <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);">Sur</span>
+              </div>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Calle Astronomía 1, Torre 2, 41015 Sevilla</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.4rem;">Lunes a Viernes: 09:00 – 19:30 · Sábados: 10:00 – 14:00 · Tel: 954 991 320</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script>
+    (function () {
+      const panes = [
+        document.getElementById('wizard-pane-1'),
+        document.getElementById('wizard-pane-2'),
+        document.getElementById('wizard-pane-3')
+      ];
+      const indicators = [
+        document.getElementById('step-ind-1'),
+        document.getElementById('step-ind-2'),
+        document.getElementById('step-ind-3')
+      ];
+
+      function goToStep(stepNumber) {
+        panes.forEach((p, idx) => p.classList.toggle('is-active', idx === stepNumber - 1));
+        indicators.forEach((ind, idx) => {
+          ind.classList.remove('is-active', 'is-done');
+          if (idx + 1 === stepNumber) ind.classList.add('is-active');
+          if (idx + 1 < stepNumber) ind.classList.add('is-done');
+        });
+      }
+
+      document.getElementById('to-step-2').addEventListener('click', () => {
+        const modelInput = document.getElementById('val-model');
+        if (!modelInput.value.trim()) {
+          modelInput.focus();
+          return;
+        }
+        goToStep(2);
+      });
+
+      document.getElementById('back-to-1').addEventListener('click', () => goToStep(1));
+      document.getElementById('restart-wizard').addEventListener('click', () => goToStep(1));
+
+      document.getElementById('valuation-wizard-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const baseBrand = Number(document.getElementById('val-brand').value);
+        const modelText = document.getElementById('val-model').value.trim();
+        const year = Number(document.getElementById('val-year').value);
+        const fuelFactor = Number(document.getElementById('val-fuel').value);
+        const km = Number(document.getElementById('val-km').value);
+        const conditionFactor = Number(document.getElementById('val-condition').value);
+
+        const currentYear = 2026;
+        const age = Math.max(0, currentYear - year);
+        const ageFactor = Math.max(0.42, 1 - age * 0.085);
+        const kmPenalty = Math.min(0.35, (km / 100000) * 0.14);
+
+        const rawEstimate = baseBrand * ageFactor * fuelFactor * conditionFactor * (1 - kmPenalty);
+        const minOffer = Math.round((rawEstimate * 0.96) / 50) * 50;
+        const maxOffer = Math.round((rawEstimate * 1.03) / 50) * 50;
+
+        document.getElementById('val-result-range').textContent =
+          `${minOffer.toLocaleString('es-ES')} € – ${maxOffer.toLocaleString('es-ES')} €`;
+
+        document.getElementById('val-result-summary').textContent =
+          `Estimación calculada para ${modelText} (${year}) con ${km.toLocaleString('es-ES')} km. Oferta válida durante 15 días tras peritación física gratuita en cualquiera de nuestros hubs.`;
+
+        goToStep(3);
+      });
+    })();
+  </script>
+</body>
+</html>
